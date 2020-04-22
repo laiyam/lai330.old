@@ -3,7 +3,11 @@ body	{
 	font-size: 20px;
 }
 
-h1 {
-  background-color: #ddeedd;
-  padding: 1em;
+h1	{
+	background-color: #ddeedd;
+	padding: 1em;
 }
+
+ul	{
+	padding: 1em;
+}	
