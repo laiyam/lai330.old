@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>WDD 330 Lai Yam Portfolio</title>
+		<link rel="stylesheet" href="../css/styles.css" />
+	</head>
+	<body>
+		<div>
+            <h3>Sum All the Numbers</h3>
+            <p>Enter a number and the functions take the number and sum all the numbers up to the number provided.</p>
+            <Label>Enter a number:</Label>
+            <input type="number" id="num"><br>
+            <button type="button" onclick="addNumbersDec()">Sum by Declaration</button>
+            <button type="button" onclick="addNumbersExp()">Sum by Expression</button>
+            <button type="button" onclick="addNumbersArr()">Sum by Arrow</button>
+            <p id="sumTotal"></p>
+        </div>
+    <script>
+        var num;
+        var total;
+        var i;
+
+        function addNumbersDec() {
+            num = Number(document.getElementById("num").value);
+            total = 0;
+            for (i=0; i<=num; i++) {
+                total += i;
+            };
+            document.getElementById("sumTotal").innerHTML = "Function Declaration:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
+        }
+/*
+        total = function() {
+            for (i=0; i<=num; i++) {
+                total += i;
+            };
+            document.getElementById("sumTotal").innerHTML = "Function Expression:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
+        }
+
+        total = (num) => {
+            var sumNums = 0;
+            for (i=0; i<=num; i++) {
+                sumNums += i;
+            }
+            return sumNums;
+            document.getElementById("sumTotal").innerHTML = "Arrow Function:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
+        }
+*/
+
+    </script>
+	</body>
+</html>
