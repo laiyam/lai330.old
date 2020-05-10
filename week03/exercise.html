@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Array Cardio 💪</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>WDD 330 Lai Yam Portfolio</title>
+		<link rel="stylesheet" href="../css/styles.css" />
+	</head>
+	<body>
+	<nav>
+		<a href="../index.html">Portfolio</a> |
+		<a href="../index.html">Back</a>
+	</nav>
+	<p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+	
+	<h2>Inventors</h2>
+		<table id = "inventorTable"></table>
+		
+	<h2>1. Array.prototype.filter()</h2>
+		<p>Filter the list of inventors for those who were born in the 1500's</p>
+		<table id = "filterTable"></table>
+		
+	<h2>2. Array.prototype.map()</h2>
+		<p>Give us an array of the inventors' first and last names</p>
+		<table id = "mapTable"></table>
+		
+	<h2>3. Array.prototype.sort()</h2>
+		<p>Sort the inventors by birthdate, oldest to youngest</p>
+		<table id = "sortYearTable"></table>
+		
+	<h2>4. Array.prototype.reduce()</h2>
+		<p>How many years did all the inventors live?</p>
+		<p id = "totalAge"></p>
+		
+	<h2>5. Array.prototype.sort()</h2>
+		<p>Sort the inventors by years lived</p>
+		<table id = "sortAgeTable"></table>
+		
+	<h2>People</h2>
+		<table id = "peopleTable"></table>
+		
+	<h2>7. Sort Exercise</h2>
+		<p>Sort the people alphabetically by last name</p>
+		<table id = "sortLetterTable"></table>
+	
+	<h2>8. Reduce Exercise</h2>
+		<p>Sum up the instances of each of these</p>
+		<table id = "sumUpTable"></table>
+	
+	
+	<script>
+	// Get your shorts on - this is an array workout!
+	// ## Array Cardio Day 1
+
+	// Some data we can work with
+
+	const inventors = [
+		{ first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+        { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+        { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+        { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+        { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+        { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+        { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+        { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+        { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+        { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+        { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+        { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+	];
+
+	const people = [
+        'Beck, Glenn',
+        'Becker, Carl',
+        'Beckett, Samuel',
+        'Beddoes, Mick',
+        'Beecher, Henry',
+        'Beethoven, Ludwig',
+        'Begin, Menachem',
+        'Belloc, Hilaire',
+        'Bellow, Saul',
+        'Benchley, Robert',
+        'Benenson, Peter',
+        'Ben-Gurion, David',
+        'Benjamin, Walter',
+        'Benn, Tony',
+        'Bennington, Chester',
+        'Benson, Leana',
+        'Bent, Silas',
+        'Bentsen, Lloyd',
+        'Berger, Ric',
+        'Bergman, Ingmar',
+        'Berio, Luciano',
+        'Berle, Milton',
+        'Berlin, Irving',
+        'Berne, Eric',
+        'Bernhard, Sandra',
+        'Berra, Yogi',
+        'Berry, Halle',
+        'Berry, Wendell',
+        'Bethea, Erin',
+        'Bevan, Aneurin',
+        'Bevel, Ken',
+        'Biden, Joseph',
+        'Bierce, Ambrose',
+        'Biko, Steve',
+        'Billings, Josh',
+        'Biondo, Frank',
+        'Birrell, Augustine',
+        'Black, Elk',
+        'Blair, Robert',
+        'Blair, Tony',
+        'Blake, William'
+	];
+
+	
+	// Display the create table for inventors
+	inventorList(inventors,"inventorTable");
+
+	// Array.prototype.filter()
+	// 1. Filter the list of inventors for those who were born in the 1500's
+	const filtered = inventors.filter(function (items) {
+        return items.year >= 1500 && items.year < 1600;
+	});
+	//	const filtered = inventors.filter(inventors => (inventors.year >= 1500 && inventors.year < 1600));
+	inventorList(filtered,"filterTable");
+	console.table(filtered);
+
+	// Array.prototype.map()
+	// 2. Give us an array of the inventors' first and last names
+	const fullNames = inventors.map(function (items){
+        return `${items.first} ${items.last}`;
+	});
+	//	const fullNames = inventors.map(inventors => `${inventors.first} ${inventors.last}`);
+	inventorNames(fullNames,"mapTable");
+	console.log(fullNames);
+
+	// Array.prototype.sort()
+	// 3. Sort the inventors by birthdate, oldest to youngest
+	const sortDate = inventors.sort(function(a, b) {
+		return a.year > b.year ? 1 : -1;
+		});
+	inventorList(sortDate,"sortYearTable");
+	console.table(sortDate);
+
+	// Array.prototype.reduce()
+	// 4. How many years did all the inventors live?
+	const tAge = inventors.reduce((addTotal, inventor) => {
+		return addTotal + (inventor.passed - inventor.year);
+		}, 0);
+	document.getElementById("totalAge").innerHTML = "The total age of all inventors is " + tAge + ".";
+	console.log(tAge);
+
+	// 5. Sort the inventors by years lived
+	const sortAge = inventors.sort(function(a, b) {
+		const aAge = a.passed - a.year;
+		const bAge = b.passed - b.year;
+		return aAge > bAge ? -1 : 1;
+		});
+	inventorList(sortAge,"sortAgeTable");
+	console.table(sortAge);
+
+	// 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+	// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+	// goto the link above and open the console. Paste the following two lines in.  That will create a list of links in memory that you can reference through the console. Use that list to finish the problem.
+	// const category = document.querySelector('.mw-category');
+	// const links = Array.from(category.querySelectorAll('a'));
+	//const de = links
+	//	.map(link => link.textContent)
+	//	.filter(streetName => streetName.includes('de'));
+	
+	inventorNames(people,"peopleTable");
+	console.log(people);
+	
+	// 7. sort Exercise
+	// Sort the people alphabetically by last name
+	const sortLetter = people.sort((lastOne, nextOne) => {
+		const [aLast, aFirst] = lastOne.split(', ');
+		const [bLast, bFirst] = nextOne.split(', ');
+		return aLast > bLast ? 1 : -1;
+    });
+	inventorNames(sortLetter,"sortLetterTable");
+    console.log(sortLetter);
+
+	// 8. Reduce Exercise
+	// Sum up the instances of each of these
+	const data = [
+		'car',
+        'car',
+        'truck',
+        'truck',
+        'bike',
+        'walk',
+        'car',
+        'van',
+        'bike',
+        'walk',
+        'car',
+        'van',
+        'car',
+        'truck'
+	];
+//	const fullNames = inventors.map(function (items){
+//        return `${items.first} ${items.last}`;
+	const totalData = data.reduce(function(obj, item) {
+		if (!obj[item]) {
+			obj[item] = 0;
+		};
+		obj[item]++;
+		return obj;
+    }, {});
+	
+	var h = "<tr><th>Data</th></tr>";
+	var r = "<tr>"
+	for (var i in totalData) {
+		if (totalData.hasOwnProperty(i)) {
+		r += "<td>" + i + " : " + totalData[i] + "</td><tr>";
+		};
+		var fullTable = h + r;
+		document.getElementById("sumUpTable").innerHTML = fullTable;
+	};
+	//inventorNames(totalData,"sumUpTable");
+    console.log(totalData);
+	
+	//build table for inventors
+	function inventorList(nList, iTable) {
+		var h = "<tr><th>First Name</th><th>Last Name</th><th>Year of Birth</th><th>Year of Death</th></tr>";
+		var r = "<tr>"
+		for (var i in nList) {
+			if (nList[i] != null) {
+			r += "<td>" + nList[i].first + "</td>";
+			r += "<td>" + nList[i].last + "</td>";
+			r += "<td>" + nList[i].year + "</td>";
+			r += "<td>" + nList[i].passed + "</td><tr>";
+			};
+			var fullTable = h + r;
+			document.getElementById(iTable).innerHTML = fullTable; 
+		};
+	};
+		
+	//build table for inventor names
+	function inventorNames(nList, iTable) {
+		var h = "<tr><th>Name</th></tr>";
+		var r = "<tr>"
+		for (var i in nList) {
+			if (nList[i] != null) {
+			r += "<td>" + nList[i] + "</td><tr>";
+			};
+			var fullTable = h + r;
+			document.getElementById(iTable).innerHTML = fullTable; 
+		};
+	};
+	
+	</script>
+
+	
+
+
+	
+    
+	
+    
+	</body>
+</html>
