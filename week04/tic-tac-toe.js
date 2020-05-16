@@ -15,6 +15,7 @@ var p1, p2, playerSymbol = "O";
 
 //Player 1 selects symbol
 document.getElementByID("button.id").addEventListener("touchend", selectSymbol());
+//document.getElementById(id).addEventListener("onclick", mark(id, playerSymbol));
 document.getElementByID("resetButton").addEventListener("touchend", reset());
 
 //Declare the player's symbol
@@ -46,7 +47,6 @@ function selectSymbol() {
 //Player function to mark the cell
 function markCell(id) {
     if (gameActive == true) {
-
         if (document.getElementById(id).innerHTML == "") {
             document.getElementById(id).innerHTML = playerSymbol;
             mark(id, playerSymbol);
@@ -75,7 +75,9 @@ function mark(tdId, cellSymbol) {
 
 //Reset the game
 function reset() {
-    gameNum++;
+    if (gameActive == false) {
+        gameNum++;
+    }
     document.getElementById("topMsg").innerHTML = "Game " + gameNum;
     for (i = 0; i < 10; i++) {
         cellIdx = "p" + i;
@@ -83,8 +85,17 @@ function reset() {
         gameActive = true;
         document.getElementById(cellIdx).innerHTML = "";
         document.getElementById(cellIdx).style.color = "black";
+        document.getElementById("player1").style.color = "black";
+        document.getElementById("player2").style.color = "black";
+        document.getElementById("p1Label").style.color = "black";
+        document.getElementById("p2Label").style.color = "black";
         document.getElementById("msg").style.color = "black";
-        document.getElementById("msg").innerHTML = "Game Reseted! The last loser starts the game first.";
+        if (lastWin == "p1") {
+            document.getElementById("msg").innerHTML = "Game Reseted!  Player 1 starts the new game first.";
+        } else {
+            document.getElementById("msg").innerHTML = "Game Reseted!  Player 2 starts the new game first.";
+        }
+        
     };
     
 }
@@ -96,11 +107,15 @@ function checkWinner(symbol) {
             cell[winSigns[i][1]] == symbol &&
             cell[winSigns[i][2]] == symbol) {
             if (symbol == document.getElementById("player1").innerHTML) {
-                document.getElementById("msg").style.color = "blue";
+                document.getElementById("msg").style.color = "red";
+                document.getElementById("player1").style.color = "red";
+                document.getElementById("p1Label").style.color = "red";
                 document.getElementById("msg").innerHTML = "Player 1 won the game!";
                 lastWin = "p1";
             } else {
-                document.getElementById("msg").style.color = "blue";
+                document.getElementById("msg").style.color = "red";
+                document.getElementById("player2").style.color = "red";
+                document.getElementById("p2Label").style.color = "red";
                 document.getElementById("msg").innerHTML = "Player 2 won the game!";
                 lastWin = "p2";
             }
