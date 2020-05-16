@@ -15,7 +15,7 @@ var p1, p2, playerSymbol = "O";
 
 //Player 1 selects symbol
 document.getElementByID("button.id").addEventListener("touchend", selectSymbol());
-//document.getElementById(id).addEventListener("onclick", mark(id, playerSymbol));
+document.getElementById(id).addEventListener("onclick", mark(id, playerSymbol));
 document.getElementByID("resetButton").addEventListener("touchend", reset());
 
 //Declare the player's symbol
@@ -40,12 +40,12 @@ function selectSymbol() {
 
         //Timeout for Symbol Selection in 3 seconds
         //setTimeout(startMsg, 3000);
-        gameType = "old";
     }
 }
 
 //Player function to mark the cell
 function markCell(id) {
+    gameType = "old";
     if (gameActive == true) {
         if (document.getElementById(id).innerHTML == "") {
             document.getElementById(id).innerHTML = playerSymbol;
