@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tic-Tac-Toe</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+    <body>
+        <nav>
+            <a href="../index.html">Portfolio</a> |
+            <a href="index.html">Back</a>
+        </nav>
+
+        <div>
+            <h2>Tic-Tac-Toe</h2>
+            <h4>by Lai</h4>
+        </div>
+        <h3>Select Your Symbol on a TouchScreen</h3>
+        <div>
+            <label for="player1">Player 1: </label>
+            <button id="player1" value="O" onclick="selectSymbol()">O</button><br>
+            <label for="player2">Player 2: </label>
+            <button id="player2" value="X" onclick="selectSymbol()">X</button>
+        </div>
+        <h3 id="msg">Player 1 starts first!</h3>
+
+        <!--Tic-Tac-Toe Cell Table-->>
+        <div>
+            <table id="tttTable">
+                <tr>
+                    <td ontouchend="markCell(id)" , id="p0"></td>
+                    <td ontouchend="markCell(id)" , id="p1" ; style="border-left: 10px solid blue; border-right: 10px solid blue;"></td>
+                    <td ontouchend="markCell(id)" , id="p2"></td>
+                </tr>
+                <tr style="border-top: 10px solid blue; border-bottom: 10px solid blue;">
+                    <td ontouchend="markCell(id)" , id="p3"></td>
+                    <td ontouchend="markCell(id)" , id="p4" ; style="border-left: 10px solid blue; border-right: 10px solid blue;"></td>
+                    <td ontouchend="markCell(id)" , id="p5"></td>
+                </tr>
+                <tr>
+                    <td ontouchend="markCell(id)" , id="p6"></td>
+                    <td ontouchend="markCell(id)" , id="p7" ; style="border-left: 10px solid blue; border-right: 10px solid blue;"></td>
+                    <td ontouchend="markCell(id)" , id="p8"></td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+        <div style="text-align:center">
+            <button id="resetButton" onclick = "reset()">RESET</button>
+        </div>
+        <script src="tic-tac-toe.js"></script>
+
+    </body>
+</html>

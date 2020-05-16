@@ -1,0 +1,764 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 Lai Yam Portfolio</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Portfolio</a> |
+        <a href="Tic-Tac-Toe.html">Exercise: Tic-Tac-Toe</a>|
+        <a href="../week03/index.html">Back</a> |
+        <a href="../week05/index.html">Next</a>
+    </nav>
+    <h1>WDD 330 Lai Yam Portfolio</h1>
+    <h2>Week 04</h2>
+    <ul>
+        <li>Week 4 Notes</li>
+        <ol>
+            <b>Sitepoint Note: </b>
+            <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">
+                Read Javascript:
+                Novice to Ninja
+            </a> Ch5 to Ch7.
+        </ol>
+        <ul>
+            <ol>
+                <b>Ch5: Objects: </b>
+                <ul>
+                    <li>
+                        An object in JavaScript is a self-contained set of related values and functions. If a property’s value is a function,
+                        it is known as a method.
+                    </li>
+                    <li>Six primitive data types:  strings, numbers, booleans, symbols, undefined, and null</li>
+                    <li>
+                        Creating Objects:  const spiderman = {} OR const spiderman = new Object()<br>
+                        const name = 'Iron Man'; const realName = 'Tony Stark';<br>
+                        // long way<br>
+                        const ironMan = { name: name, realName: realName };<br>
+                        // short ES6 way<br>
+                        const ironMan = { name, realName };
+                    </li>
+                    <li>
+                        Accessing Properties:  superman.fly() OR superman['fly']()<br>
+                        supergirl[name] OR supergirl.name()
+                    </li>
+                    <li>
+                        Calling Methods:  superman.fly() OR superman['fly']()
+                    </li>
+                    <li>
+                        Checking if Properties or Methods Exist:<br>
+                        'city' in superman;<br>
+                        superman.city !== undefined;<br>
+                        superman.hasOwnProperty('city');<br>
+                        superman.hasOwnProperty('name');
+                    </li>
+                    <li>
+                        Finding all the Properties of an Object:<br>
+                        for(const key in superman) {<br>
+                        console.log(key + ": " + superman[key]);
+                        }
+                    </li>
+                    <li>
+                        Adding Properties:<br>
+                        superman.city = 'Metropolis';
+                    </li>
+                    <li>
+                        Changing Properties:<br>
+                        superman['real name'] = 'Kal-El';
+                    </li>
+                    <li>
+                        Removeing Properties:<br>
+                        delete superman.fly
+                    </li>
+                    <li>
+                        Objects Are Copied By Reference:<br>
+                        const thor = { name: 'Thor'<br>
+                        const cloneThor = thor;<br>
+                        cloneThor.name = 'Clor';<br>
+                        thor.name<br>
+                        << 'Clor'
+                    </li>
+                    <li>
+                        Namespacing:<br>
+                        Use the object literal pattern to create a namespace for groups of related functions
+                    </li>
+                    <li>
+                        Built-in Objects<br>
+                        Two main built-in objects included in JavaScript: arrays and functions. JavaScript has
+                        a number of other built-in global objects that can be accessed from anywhere in a program.
+                    </li>
+                    <li>
+                        JavaScript Object Notation, or JSON1<br>
+                        The parse() method takes a string of data in JSON format and returns a JavaScript object:<br>
+                        JSON.parse(batman);<br>
+                        The stringify() method does the opposite, taking a JavaScript object and returning a string of JSON data<br>
+                        JSON.stringify(wonderWoman);
+                    </li>
+                    <li>
+                        Rounding Methods: <br>
+                        Math.ceil(), Math.floor(), Math.round(), Math.trunc, Math.exp(), Math.pow(), Math.sqrt, Math.cbrt, Math.hypot()
+                    </li>
+                    <li>
+                        Other Methods: <br>
+                        Math.log(), Math.max(), Math.min(),
+                    </li>
+                    <li>
+                        Date Object: <br>
+                        const today = new Date();<br>
+                        today.toString();<br>
+                        const christmas = new Date('2017 12 25');<br>
+                        christmas.toString();<br>
+                        const eid = new Date('Sunday, June 25, 2017');<br>
+                        // Eid-al-Fitr<br>
+                        eid.toString();<br>
+                        new Date(year,month,day,hour,minutes,seconds,milliseconds)<br>
+                        const solstice = new Date(2017, 5, 21);<br>
+                        // Summer Solstice<br>
+                        solstice.toString();<br>
+                        << 'Wed Jun 21 2017 00:00:00 GMT+0100 (BST)'<br>
+                        An alternative is to use a timestamp, which is a single integer argument that represents the number
+                        of milliseconds since the Epoch (1st January 1970):<br>
+                        const diwali = new Date(1508367600000);<br>
+                        diwali.toString();<br>
+                        << 'Thu Oct 19 2017 00:00:00 GMT+0100 (BST)'
+                    </li>
+                    <li>
+                        Getter Methods: <br>
+                        The getTime(), getTimezoneOffset() and getYear() methods don’t have UTC equivalents.<br>
+                        diwali.getDay(); // it's on a Thursday<br>
+                        << 4<br>
+                        The getDay() and getUTCDay() methods are used to find the day of the week that the date object falls on.<br>
+                        diwali.getDay(); // it's on a Thursday<br>
+                        << 4<br>
+                        The getDate() and getUTCDate()methods return the day of the month for the date object.<br>
+                        diwali.getDate(); // it's on the 19th<br>
+                        << 19<br>
+                        The getMonth() and getUTCMonth() methods can be used to find the month of the date object.<br>
+                        diwali.getMonth(); // it's in October<br>
+                        << 9<br>
+                        There are also getHours(), getUTCHours(), getMinutes(), getUTCMinutes(), getSeconds(), getUTCSeconds,
+                        getMilliseconds(), and getUTCMilliseconds() methods that will return the hours, minutes, seconds and
+                        milliseconds since midnight.<br>
+                        The getTime() method returns a timestamp representing the number of milliseconds:<br>
+                        diwali.getTime();<br>
+                        << 1508367600000
+                    </li>
+                    <li>
+                        Setter Methods: <br>
+                        diwali.setDate(7);<br>
+                        << 1507330800000<br>
+                        diwali.setMonth(10); <br>
+                        // November is month 10<br>
+                        << 1510012800000<br>
+                        diwali.setFullYear(2018);<br>
+                        << 1541548800000<br>
+                        toString() method:<br>
+                        diwali.toString();<br>
+                        << 'Wed Nov 07 2018 00:00:00 GMT+0000 (GMT)'<br>
+                        There are also setHours(), setUTCHours(), setMinutes(), setUTCMinutes(), setSeconds(), setUTCSeconds,
+                        setMilliseconds() and setUTCMilliseconds() methods.<br>
+                        diwali.setTime(1447200000000);<br>
+                        << 1541548800000
+                    </li>
+                </ul>
+            </ol>
+            <ol>
+                <b>Ch6: Document Object Model: </b>
+                <ul>
+                    <li>
+                        DOM: <br>
+                        Document Object Model or DOM for short, represents an HTML document as a network of connected nodes that form a tree-like structure.<br>
+                    </li>
+                    <li>
+                        The DOM treats everything on a web page as a node. HTML tags, the text inside these tags, even the attributes of
+                        a tag are all nodes. The HTML tag is the root node, and every other part of the document is a child node of this.
+                    </li>
+                    <li>
+                        <b>Getting Elements </b>
+                        access the body element of a web page and assign it to the variable body by entering the following code into the browser console<br>
+                        const body = document.body;<br>
+                        typeof body;<br>
+                        << "object";<br>
+                    <li>
+                        All nodes have a numerical code to signify what type they are.
+                    </li>
+                    <li>
+                        <b>Legacy DOM Shortcut Methods: </b>
+                        Document.body returns the body element of a web page.<br>
+                        Document.images returns a node list of all the images in the document.<br>
+                        Document.links returns a node list of all the "a" elements and "area"<br>
+                        elements that have an href attribute.<br>
+                        Document.anchors returns a node list of all the "a" elements that have a name attribute.<br>
+                        Document.forms returns a node list of all the forms in the document.
+                    </li>
+                    <b>Getting An Element By Its ID</b>
+                    <br>
+                    The getElementById() method does exactly what it says on the tin. It returns a reference
+                    to the element with a unique id attribute that is given as an argument.
+                    <br>
+                    const h1 = document.getElementById('title');
+                    <li>
+                        Every id attribute should be unique to just one element
+                    </li>
+                    <li>
+                        <b>Get Elements By Their Tag Name</b><br>
+                        getElementsByTagName() will return a live node list of all the elements with the tag name that is provided as an argument.<br>
+                        const listItems = document.getElementsByTagName('li');
+                    </li>
+                    <li>
+                        <b>Get Elements By Their Class Name</b><br>
+                        getElementsByClassName() will return a live node list of all elements that have the class name that is supplied as an argument.
+                    </li>
+                    <li>
+                        <b>Query Selectors</b><br>
+                        The document.querySelector() method allows you to use CSS notation to find the first element in the document that matches a CSS
+                        selector provided as an argument. If no elements match, it will return null.<br>
+                        The document.querySelectorAll() method also uses CSS
+                        notation but returns a node list of all the elements in the document that match the CSS query selector.
+                    </li>
+                    <li>
+                        <b>Finding the Value of a Node: </b><br>
+                        const textNode = wonderWoman.firstChild;<br>
+                        << "Wonder Woman"<br>
+                        textNode.nodeValue;<br>
+                        << "Wonder Woman"<br>
+                        wonderWoman.textContent<br>
+                        << "Wonder Woman"
+                    </li>
+                    <li>
+                        <b>Getting An Element’s Attributes</b>
+                        The getAttribute() method returns the value of the attribute provided as an argument:<br>
+                        wonderWoman.getAttribute('class');<br>
+                        << "hero"
+                    </li>
+                    <li>
+                        <b>Setting An Element’s Attributes</b><br>
+                        The setAttribute can change the value of an element’s attributes. It takes two arguments:
+                        the attribute that you wish to change, and the new value of that attribute.<br>
+                        wonderWoman.setAttribute('class', 'villain');<br>
+                        << undefined<br>
+                        wonderWoman.getAttribute('class');<br>
+                        << "villain"
+                    </li>
+                    <li>
+                        The className Property: <br>
+                        A className property that allows the class of an element to be set directly. In addition,
+                        it can be used to find out the value of the class attribute.<br>
+                        wonderWoman.className;<br>
+                        << "villain"
+                    </li>
+                    <li>
+                        <b>The classList Property:</b><br>
+                        -The classList property is a list of all the classes an element has. It has a number
+                        of methods that make it easier to modify the class of an element.<br>
+                        -The add method can be used to add a class to an element without overwriting any
+                        classes that already exist.
+                        wonderWoman.classList.add('warrior');<br>
+                        -The remove method will remove a specific class from an element.<br>
+                        wonderWoman.classList.remove('warrior');<br>
+                        -The toggle method is a particularly useful method that will add a class if an element
+                        doesn’t have it already, and remove the class if it does have it. It returns true if
+                        the class was added and false if it was removed.<br>
+                        wonderWoman.classList.toggle('hero'); // will remove the<br>
+                        ➥ 'hero' class<br>
+                        << false<br>
+                        wonderWoman.classList.toggle('hero'); // will add the 'hero'<br>
+                        ➥ class back<br>
+                        << true<br>
+                        The contains method will check to see if an element has a particular class<br>
+                        wonderWoman.classList.contains('hero');<br>
+                        << true<br>
+                        wonderWoman.classList.contains('villain');<br>
+                        << false
+                    </li>
+                    <li>
+                        Creating An Element<br>
+                        The document object has a createElement() method that takes a tag name as a parameter
+                        and returns that element.<br>
+                        const flash = document.createElement('li');
+                    </li>
+                    <li>
+                        Creating a Text Node<br>
+                        A text node can be created using the document.createTextNode() method.<br>
+                        const flashText = document.createTextNode('Flash');
+                    </li>
+                    <li>
+                        Appending Nodes<br>
+                        Every node object has an appendChild() method that will add another node
+                        (given as an argument) as a child node<br>
+                        flash.appendChild(flashText);<br>
+                        The textContent property that every element object has. This will add a text node to
+                        an element without the need to append it.<br>
+                        const flash = document.createElement('li');<br>
+                        flash.textContent = 'Flash';
+                    </li>
+                    <li>
+                        A Function To Create Elements<br>
+                        function createElement (tag,text) {<br>
+                        const el = document.createElement(tag);<br>
+                        el.textContent = text;<br>
+                        return el<br>
+                        }<br>
+                        const aquaman = createElement('li','Aquaman');
+                    </li>
+                    <li>
+                        Adding Elements to the Page<br>
+                        We have already seen the appendChild() method. This can be called on a node to
+                        The Document Object Model 239 add a new child node. The new node will always be added
+                        at the end of any existing child nodes.<br>
+                        heroes.appendChild(flash);
+                    </li>
+                    <li>
+                        -The appendChild method is useful as you’ll often want to add a new element to the bottom of a list.
+                    </li>
+                    <li>
+                        -The insertBefore() method will place a new element before another element in the markup.
+                        It’s important to note that this method is called on the parent node.<br>
+                        heroes.insertBefore(aquaman,wonderWoman);
+                    </li>
+                    <li>
+                        -The appendChild() and insertBefore() methods can be used to move markup that already exists in the DOM as well.<br>
+                        heroes.appendChild(wonderWoman);
+                    </li>
+                    <li>
+                        Remove Elements From a Page<br>
+                        An element can be removed from a page using the removeChild() method. This method is called
+                        on the parent node and has a single parameter, which is the node to be removed.<br>
+                        heroes.removeChild(aquaman);<br>
+                    </li>
+                    <li>
+                        Replacing Elements on a Page<br>
+                        The replaceChild() method can be used to replace one node with another. It’s
+                        called on the parent node and has two parameters.<br>
+                        const h1 = document.getElementById('title');<br>
+                        const oldText = h1.firstChild;<br>
+                        const newText = document.createTextNode('Justice League of<br>
+                        ➥ America');<br>
+                        h1.replaceChild(newText,oldText);
+                    </li>
+                    <li>
+                        innerHTML<br>
+                        The innerHTML element property was standardized as part of the HTML5, although it was already supported by all the major browsers.<br>
+                        heroes.innerHTML
+                    </li>
+                    <li>
+                        -The innerHTML property is also writable and can be used to place a chunk of HTML inside an element.<br>
+                        h1.innerHTML = 'Suicide Squad';
+                    </li>
+                    <li>
+                        -The power of the innerHTML property becomes even more apparent if you want to insert a large amount of HTML into the document.<br>
+                        heroes.innerHTML =<br>
+                    </li>
+                    <li>
+                        Live Collections<br>
+                        The node lists returned by the document.getElementsByClassName() and document.getElementsByTagName() methods
+                        are live collections that will update to reflect any changes on the page.
+                    </li>
+                    <li>
+                        Updating CSS<br>
+                        Every element node has a style property. This can be used to dynamically modify the presentation of any element on a web page.<br>
+                        const heroes = document.getElementById('roster');<br>
+                        const superman = heroes.children[0];<br>
+                        superman.style.border = "red 2px solid";<br>
+                        << "red 2px solid"
+                    </li>
+                    <li>
+                        Camel Case Properties<br>
+                        Any CSS property names that are separated by dashes must be written in camelCase notation,
+                        so the dash is removed and the next letter is capitalized because dashes are not legal characters in property names.<br>
+                        superman.style.backgroundColor = 'blue';<br>
+                        << "blue"<br>
+                        OR<br>
+                        superman.style['background color'] = 'blue';<br>
+                        << "blue"
+                    </li>
+                    <li>
+                        Disappearing Act<br>
+                        One particularly useful CSS property often employed is the display property.<br>
+                        superman.style.display = 'none';<br>
+                        << "none"<br>
+                        OR<br>
+                        superman.style.display = 'block';<br>
+                        << "block"<br>
+                    </li>
+                    <li>
+                        Checking Style Properties<br>
+                        The style property can also be used to see what CSS styles have been set on an
+                        element, but unfortunately it applies only to inline styles, and styles set using JavaScript.<br>
+                        There is a function called getComputedStyle() that will retrieve all the style
+                        information of an element that is given as a parameter. This is a read-only
+                        property, so is only used for finding out information about the style of an element.<br>
+                        getComputedStyle(superman);<br>
+                        << CSSStyleDeclaration {0: "alt", 1:<br>
+                        ➥ "animation-delay", 2: "animation-direction", 3:<br>
+                        ➥ "animation-duration", 4: "animation-fill-mode", 5:<br>
+                        ➥ "animation-iteration-count", 6: "animation-name", 7:<br>
+                        ➥ "animation-play-state", 8: "animation-timing-function", 9:<br>
+                        ➥ "background-attachment", …}<br>
+                    </li>
+                </ul>
+            </ol>
+            <ol>
+                <b>Ch7: Events: </b>
+                <ul>
+                    <li>
+                        Events occur when a user interacts with a web page.
+                    </li>
+                    <li>
+                        Event Listeners<br>
+                        Event listeners in JavaScript work like setting a notification to alert you when something
+                        happens. Instead of the program having to constantly check to see if an event has occurred,
+                        the event listener will let it know when the event happens, and the program can then respond appropriately.
+                        This allows the program to continue with other tasks while it waits for the event to happen.<br>
+                        Events occur when a user interacts with a web page.
+                    </li>
+                    <li>
+                        Inline Event Handlers<br>
+                        An onclick event handler to a paragraph element:<br>
+                        onclick="console.log('You Clicked Me!')"<br>
+                    </li>
+                    <li>
+                        Using Event Listeners<br>
+                        -The addEventListener() method is called on a node object, the node to which
+                        the event listener is being applied.<br>
+                        document.body.addEventListener('click',doSomething);<br>
+                        -The addEventListener() method can also be called without a node, in which
+                        case it is applied to the global object, usually the whole browser window.<br>
+                        addEventListener('click', () => alert('You Clicked!'));<br>
+                        OR<br>
+                        function doSomething() {<br>
+                        alert('You Clicked!');<br>
+                        }<br>
+                        addEventListener('click',doSomething);<br>
+                    </li>
+                    <li>
+                        The Event Object<br>
+                        Whenever an event handler is triggered by an event, the callback function is
+                        called. This function is automatically passed an event object as a parameter that
+                        contains information about the event.<br>
+                        function doSomething(event){<br>
+                        console.log(event.type);<br>
+                        }
+                    </li>
+                    <li>
+                        The Event Target<br>
+                        The target property returns a reference to the node that fired the event.<br>
+                        function doSomething(event){<br>
+                        console.log(event.target);<br>
+                        }
+                    </li>
+                    <li>
+                        Coordinates of an Event<br>
+                        -The screenX and screenY properties show the number of pixels from the left and
+                        top of the screen respectively where the event took place.<br>
+                        -The clientX and clientY properties show the number of pixels from the left and
+                        top of the client that is being used (usually the browser window).<br>
+                        -The pageX and pageY properties show the number of pixels from the left and top,
+                        respectively, where the event took place in the document.<br>
+                        function doSomething(event){<br>
+                        console.log(`screen: (${event.screenX},${event.screenY}),<br>
+                        ➥ page: (${event.pageX},${event.pageY}), client:<br>
+                        ➥ (${event.screenX},${event.screenY})`)<br>
+                        }
+                    </li>
+                    <li>
+                        Types of Events<br>
+                        -Mouse Events<br>
+                        The click event that occurs when a mouse button is clicked.<br>
+                        const clickParagraph = document.getElementById('click');<br>
+                        clickParagraph.addEventListener('click',() =><br>
+                        ➥ console.log('click') );<br>
+                        clickParagraph.addEventListener('mousedown',() =><br>
+                        ➥ console.log('down') );<br>
+                        clickParagraph.addEventListener('mouseup',() =><br>
+                        ➥ console.log('up') );<br><br>
+                        << mousedown<br>
+                        mouseup<br>
+                        click<br><br>
+                        const dblclickParagraph =<br>
+                        ➥ document.getElementById('dblclick');<br>
+                        dblclickParagraph.addEventListener('dblclick', highlight);<br>
+                        function highlight(event){<br>
+                        event.target.classList.toggle('highlight');<br>
+                        }
+                    </li>
+                    <li>
+                        -The mouseover event occurs when the mouse pointer is placed over the element
+                        to which the event listener is attached, while the mouseout event occurs when the
+                        mouse pointer moves away from an element.<br>
+                        const mouseParagraph = document.getElementById('mouse');<br>
+                        mouseParagraph.addEventListener('mouseover', highlight);<br>
+                        mouseParagraph.addEventListener('mouseout', highlight);<br><br>
+                        mouseParagraph.addEventListener('mousemove', () =><br>
+                        ➥ console.log('You Moved!') );<br>
+                    </li>
+                    <li>
+                        Keyboard Events<br>
+                        1. The keydown event occurs when a key is pressed and will continue to occur if the key is held down.<br>
+                        2. The keypress event occurs after a keydown event but before a keyup event.
+                        The keypress event only occurs for keys that produce character input (plus
+                        the Delete key). This means that it’s the most reliable way to find out the
+                        character that was pressed on the keyboard.<br>
+                        3. The keyup event occurs when a key is released.<br>
+                        addEventListener('keydown',highlight);<br><br>
+                        addEventListener('keyup', (event) => console.log(`You<br>
+                        ➥ stopped pressing the key on ${new Date}`));<br><br>
+                        addEventListener('keypress', (event) => console.log(`You<br>
+                        ➥ pressed the ${event.key} character`));
+                    </li>
+                    <li>
+                        Modifier Keys<br>
+                        Pressing the modifier keys such as Shift, Ctrl, Alt and meta (Cmd on Mac) will
+                        fire the keydown and keyup events, but not the keypress event as they don’t
+                        produce any characters on the screen.<br>
+                        addEventListener('keydown', (event) => console.log(`You<br>
+                        ➥ pressed the ${event.key} character`));<br>
+                        << "You pressed the Control character"<br><br>
+                        addEventListener('keydown', (event) => {<br>
+                        if (event.key === 'c' && event.ctrlKey) {<br>
+                        console.log('Action canceled!');<br>
+                        }<br>
+                        });<br><br>
+                        addEventListener('click', (event) => {<br>
+                        if (event.shiftKey) {<br>
+                        console.log('A Shifty Click!');<br>
+                        }<br>
+                        });
+                    </li>
+                    <li>
+                        Touch Events<br>
+                        Many modern devices now support touch events. These are used on smartphones
+                        and tablets, as well as touch-screen monitors, satellite navigators and trackpads.<br>
+                        addEventListener('touchend', () => console.log('Touch stopped');<br>
+                    </li>
+                </ul>
+            </ol>
+        </ul>
+        <ol>
+            <b>Reading note: </b>
+            <a href="https://javascript.info/object-methods">Object Methods</a> and
+            <a href="https://zellwk.com/blog/this/">This in Javascript</a>
+        </ol>
+        <ol>
+            <b>Object Methods</b>
+            <ul>
+                <li>
+                    <b>“this” in methods</b>
+                    let user = {<br>
+                    name: "John",<br>
+                    age: 30,<br><br>
+                    sayHi() {<br>
+                    // "this" is the "current object"<br>
+                    alert(this.name);<br>
+                    }<br>
+                    };<br><br>
+                    user.sayHi(); // John<br><br>
+
+                    let user = {<br>
+                    name: "John",<br>
+                    age: 30,<br><br>
+                    sayHi() {<br>
+                    alert(user.name); // "user" instead of "this"<br>
+                    }<br>
+                    };
+                </li>
+            </ul>
+            <ul>
+                <li><b>	This in JavaScript</b></li>
+                <li>
+                    This in a global context<br>
+                    console.log(this) // Window<br>
+                </li>
+                <li>
+                    This in object construction<br>
+                    function Human (age) {<br>
+                    this.age = age<br><br>
+                    }<br><br>
+                    let greg = new Human(22)<br>
+                    let thomas = new Human(24)<br>
+                    console.log(greg) // this.age = 22<br>
+                    console.log(thomas) // this.age = 24
+                </li>
+                <li>
+                    This in an object method<br>
+                    let o = {<br>
+                    // A method<br>
+                    aMethod () {}<br>
+                    }<br><br>
+                    let o = {<br>
+                    sayThis () {<br>
+                    console.log(this)<br>
+                    }<br>
+                    }<br><br>
+                    o.sayThis() // o<br><br>
+                    function Human (name) {<br>
+                    return {<br>
+                    name,<br>
+                    getName() {<br>
+                    return this.name<br>
+                    }<br>
+                    }<br>
+                    }<br><br>
+                    const zell = new Human('Zell')<br>
+                    const vincy = new Human('Vincy')<br><br>
+                    console.log(zell.getName()) // Zell
+                </li>
+                <li>
+                    This in a simple function<br>
+                    function hello () {<br>
+                    // say hello!<br>
+                    }<br><br>
+                    function simpleFunction () {<br>
+                    console.log(this)<br>
+                    }<br><br>
+
+                    const o = {<br>
+                    sayThis () {<br>
+                    simpleFunction()<br>
+                    }<br>
+                    }<br><br>
+
+                    simpleFunction() // Window<br>
+                    o.sayThis() // Window<br><br>
+                    const o = {<br>
+                    doSomethingLater () {<br>
+                    setTimeout(function() {<br>
+                    this.speakLeet() // Error<br>
+                    }, 1000)<br>
+                    },<br>
+                    speakLeet() {<br>
+                    console.log(`1337 15 4W350M3`)<<br>
+                    }<br>
+                    }<br><br>
+                    const o = {<br>
+                    doSomethingLater () {<br>
+                    const self = this<br>
+                    setTimeout(function() {<br>
+                    self.speakLeet()<br>
+                    }, 1000)<br>
+                    },<br>
+                    speakLeet() {<br>
+                    console.log(`1337 15 4W350M3`)<br>
+                    }<br>
+                    }
+                </li>
+                <li>
+                    This in arrow functions<br>
+                    const o = {<br>
+                    doSomethingLater () {<br>
+                    setTimeout(() => this.speakLeet(), 1000)<br>
+                    },<br>
+                    speakLeet() {<br>
+                    console.log(`1337 15 4W350M3`)<br>
+                    }<br>
+                    }
+                </li>
+                <li>
+                    This in event listeners<br>
+                    let button = document.querySelector('button')<br><br>
+
+                    button.addEventListener('click', function() {<br>
+                    console.log(this) // button<br>
+                    })<br><br>
+                    function LeetSpeaker (elem) {<br>
+                    return {<br>
+                    listenClick () {<br>
+                    elem.addEventListener('click', function () {<br>
+                    // Do something here<br>
+                    })<br>
+                    }<br>
+                    }<br>
+                    }<br><br>
+                    function LeetSpeaker (elem) {<br>
+                    return {<br>
+                    listenClick () {<br>
+                    const self = this<br>
+                    elem.addEventListener('click', function () {<br>
+                    self.speakLeet()<br>
+                    })<br>
+                    },<br>
+                    speakLeet() { console.log(`1337 15 4W350M3`) }<br>
+                    }<br>
+                    }<br><br>
+                    function LeetSpeaker (elem) {<br>
+                    return {<br>
+                    listenClick () {<br>
+                    elem.addEventListener('click', (e) => {<br>
+                    console.log(e.currentTarget) // elem<br>
+                    this.speakLeet()<br>
+                    })<br>
+                    },<br>
+                    speakLeet() { console.log(`1337 15 4W350M3`) }<br>
+                    }<br>
+                    }<br><br>
+                    function someFunction () {<br>
+                    console.log('do something')<br><br>
+
+                    // Removes the event listener.<br>
+                    document.removeEventListener('click', someFunction)<br>
+                    }<br><br>
+
+                    document.addEventListener('click', someFunction)<br><br>
+                    function LeetSpeaker (elem) {<br>
+                    return {<br>
+                    listenClick () {<br>
+                    this.listener = this.speakLeet.bind(this)<br>
+                    elem.addEventListener('click', this.listener)<br>
+                    },<br><br>
+
+                    speakLeet(e) {<br>
+                    const elem = e.currentTarget<br>
+                    console.log(`1337 15 4W350M3`)<br>
+                    elem.removeEventListener('click', this.listener)<br>
+                    }<br>
+                    }<br>
+                    }
+                </li>
+                <li>
+                    Changing this with bind<br>
+                    bind is a method that is present in every function. It allows you to change the this context.
+                    This method takes in any number of arguments and returns the bound function.<br>
+                    function sayThis () {<br>
+                    console.log(this)<br>
+                    }<br>
+                    const boundFunc = sayThis.bind(/* arguments...*/)<br><br>
+                    function sayThis () {<br>
+                    console.log(this)<br>
+                    }<br>
+                    const boundFunc = sayThis.bind({hippy: 'hipster'})<br>
+                    boundFunc()<br><br>
+                    function sayParams (...args) {<br>
+                    console.log(...args)<br>
+                    }<br>
+                    const boundFunc = sayParams.bind(null, 1, 2, 3, 4, 5)<br>
+                    boundFunc()<br><br>
+                    function LeetSpeaker (elem) {<br>
+                    return {<br>
+                    listenClick () {<br>
+                    // Binds this.speakLeet with a reference to the instance.<br>
+                    // Sets bound function to this.listener, so we can remove it later.<br>
+                    this.listener = this.speakLeet.bind(this)<br>
+                    elem.addEventListener('click', this.listener)<br>
+                    },<br><br>
+
+                    speakLeet(e) {<br>
+                    console.log(`1337 15 4W350M3`)<br><br>
+
+                    // Gets the element so we can remove the event listener.<br>
+                    const elem = e.currentTarget<br><br>
+
+                    // Removes the event listener.<br>
+                    elem.removeEventListener('click', this.listener)<br>
+                    }<br>
+                    }<br>
+                    }
+                </li>
+            </ul>
+        </ol>
+        <ol><a href="exercise.html" ">Exercise</a></ol>
+    </ul>
+</body>
+</html>
