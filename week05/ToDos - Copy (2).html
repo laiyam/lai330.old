@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todos</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+    <body onload="updateTask()">
+        <nav>
+            <a href="../index.html">Portfolio</a> |
+            <a href="index.html">Back</a>
+        </nav>
+
+        <div>
+            <form style="height:400px;">
+                <h2>To Dos</h2>
+                <!--Task Table-->
+                <div style="height:280px; width:400px; overflow:scroll;">
+                    <table id="fullTask"></table>
+                </div><br>
+                <!--Input Table-->
+                <div style="width:390px; text-align:center;">
+                    <p style="float:left; margin: 0 15px; width:120px;" id="taskStatus">Completed: 18</p>
+                    <button type:"button" id="allTaskBtn" onclick="updateTask()">All</button>
+                    <button type:"button" id="activeTaskBtn" onclick="slotActive()">Active</button>
+                    <button type:"button" id="completedTaskBtn" onclick="slotCompleted()">Completed</button>
+                    <br><br>
+
+                    <input type="text" id="taskInput" style="width:260px; height:28px; padding:0 15px; font-size:18px;">
+                    <button type="button" style="font-size:16px;" onclick="addTask()">╋</button><br><br>
+                    <button type="button" onclick="clearStg()">Reset Local Storage</button>
+                </div>
+            </form>
+        </div>
+
+        
+
+
+        <!--script src="tic-tac-toe.js"></script-->
+        <script>
+            //document.getElementById("fullTask").addEventListener("load", updateTask());
+
+            var taskList = JSON.parse(localStorage.getItem("taskList"));
+
+            /*//taskTable = JSON.parse(localStorage.getItem("taskList"));
+            taskTable = document.getElementById("fullTask");
+            console.log(taskTable);
+            //document.getElementById("taskStatus").innerHTML = taskTable;
+            if (taskTable != null) {
+                for (var i = 0; i < taskTable.rows.length; i++) {
+                    for (var j = 0; j < taskTable.rows[i].cells.length; j++)
+                        taskTable.rows[i].cells[j].onclick = function () { getval(this); };
+                    //taskTable.rows[2].cells[1].onclick = function() { getval(this); };
+                }
+            }*/
+            
+            
+
+
+
+            //Task											
+            function todo(taskMark, taskInput, delTask) {								//keywords refer reservation object
+                this.taskMark = taskMark;
+                this.taskInput = taskInput;
+                this.delTask = delTask;
+            }
+
+            //var taskMarkE = document.getElementById("taskMark").checked;
+            var taskMarkE; // = "☐"; //"&#9746"
+            var taskInputE = document.getElementById("taskInput").value;
+            //var delTaskE = document.getElementById("delTask").value;
+            var delTaskE; // = "✖";
+
+            //add new task
+            function addTask() {
+                //var taskMarkE = document.getElementById("taskMark").checked;
+                taskMarkE = "☐";      //☐ &#9744, ☒ &#9746, ☑ &#9745;
+                taskInputE = document.getElementById("taskInput").value;
+                //var delTaskE = document.getElementById("delTask").value;
+                delTaskE = "✖";         //✖ &#10006,  ╳ &#9587
+                var newTodo = new todo(taskMarkE, taskInputE, delTaskE);
+                taskList = JSON.parse(localStorage.getItem("taskList"));						//reterive reservation string from local storage and convert to object
+                var newList = [];
+                if (taskList === null) {
+                    taskList = newList;
+                }
+
+                taskList.push(newTodo);													        //add new reservation string to local storage 
+                localStorage.setItem("taskList", JSON.stringify(taskList));						//convert reservation list object to string and store to local storage 
+                taskMark = "&#9746";
+                taskInput.value = "";
+                delTask = "✖";   
+                updateTask();
+            }
+
+
+
+
+            
+
+
+
+
+
+
+            //remove a task
+            function deleteTask(taskNumE) {
+                //var taskNumE = document.getElementById("taskNum").value;
+                //taskList = JSON.parse(localStorage.getItem("taskList"));
+                //taskNum.value = "";
+                //reterive reservation string from local storage and convert to object
+                delete taskList[taskNumE];															//using the keyvalue to delete reservation from object
+                localStorage.setItem("taskList", JSON.stringify(taskList));							//convert reservation list object to string and store to local storage
+                //taskNum.value = "";
+                updateTask();
+            }
+
+            function updateTask() {
+                //var h = "<tr><th>#</th><th>Name</th><th>Phone</th><th>Date</th><th>Time</th><th>Seats</th></tr>";
+                var r = "<tr>"
+                for (var i in taskList) {
+                    if (taskList[i] != null) {
+                        r += "<td hidden>" + i + "</td>";
+                        r += "<td id='i" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                        r += "<td id='i" + i + "c1' style='width:250px; text-align:left; padding:0px 15px;'>" + taskList[i].taskInput + "</td>";
+                        r += "<td id='i" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                    };
+                };
+                //var b = "<tr><td> </td><td><input type='text' id='task'></td><td>X</td></tr>"
+                var taskTable = r;
+                document.getElementById("fullTask").innerHTML = taskTable;  //Create HTML String from JavaScript Object Methods
+                //console.log(taskTable);
+                //return taskTable;
+                //document.getElementById("taskStatus").innerHTML = taskTable;
+            }
+
+
+            function getval(cell) {
+                //document.getElementById("taskStatus").innerHTML = x.innerHTML;
+                
+                var x = cell.closest('tr').rowIndex;
+                //var y = cell.cellIndex;
+                var changeCell = fullTask.rows[x].cells[2];
+                //console.log(changeCell);
+                //taskList[i].taskMark
+                //document.getElementById("taskStatus").innerHTML = x.cellIndex;
+                //x++
+                var rowIdx = (fullTask.rows[x].cells[0]).innerHTML;
+                var strickCellId = "i" + rowIdx + "c1";
+                var s = "i0c1"
+                //var rowIdx = document.getElementById(fullTask.rows[x].cells[0]).innerHTML;
+                console.log(cell);
+                console.log(x);                              //row #
+                console.log(taskList);                       //array
+                console.log(fullTask.rows[x].cells[2]);      //control
+                console.log(cell.innerHTML);                 //symbol
+                console.log((fullTask.rows[x].cells[0]).innerHTML);     //arry index
+                console.log(rowIdx);                         //array index undevined
+                console.log(strickCellId);                   //strick cell ID
+                //console.log(document.getElementById("i0c1").innerHTML);
+
+                if (cell.innerHTML == "✖") {
+                    deleteTask(rowIdx);
+                }   else if (cell.innerHTML == "☐") {
+
+                
+                    //taskList[tableRow][tableCol] = "&#9745";
+                    taskList[rowIdx].taskMark = "☑";
+                    document.getElementById(strickCellId).style.textDecoration = "line-through"; 
+
+                } else if (cell.innerHTML == "☑") {
+                    taskList[rowIdx].taskMark = "☐";
+                    document.getElementById(strickCellId).style.textDecoration = "none";
+                }
+                //document.getElementById("x").innerHTML = "&#9745";
+                //var y = document.getElementById("taskStatus").innerHTML = x.cellIndex;
+                localStorage.setItem("taskList", JSON.stringify(taskList));	
+                //console.log(taskList[x].taskMark);
+                console.log(taskList);                      //array
+                //document.getElementById("taskStatus").innerHTML = taskTable;
+                updateTask();
+            }
+            
+
+
+
+
+
+
+            //localStorage.clear();																//**clear the local storage**
+            function clearStg() {
+                localStorage.clear();
+                taskList = JSON.parse(localStorage.getItem("taskList"));
+                updateTask();
+            }
+        </script>
+
+    </body>
+</html>

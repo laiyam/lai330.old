@@ -18,35 +18,46 @@
             <p id="sumTotal"></p>
         </div>
     <script>
-        var num;
-        var total;
-        var i;
+        //var num;
+        //var total;
+        //var i;
+		//var sumNums;
 
         function addNumbersDec() {
             num = Number(document.getElementById("num").value);
-            total = 0;
-            for (i=0; i<=num; i++) {
-                total += i;
-            };
+			total = 0;
+			i = 0;
+			for (;;) {
+				if (i > num) break;
+				total += i;
+				i++;
+			}
             document.getElementById("sumTotal").innerHTML = "Function Declaration:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
         }
-/*
-        total = function() {
-            for (i=0; i<=num; i++) {
-                total += i;
-            };
+
+
+		function addNumbersExp() {
+			num = Number(document.getElementById("num").value);
+			total = 0;
+				for (i=0; i<=num; i++) {
+					total += i;
+				};
             document.getElementById("sumTotal").innerHTML = "Function Expression:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
         }
+		
 
-        total = (num) => {
-            var sumNums = 0;
-            for (i=0; i<=num; i++) {
-                sumNums += i;
-            }
-            return sumNums;
-            document.getElementById("sumTotal").innerHTML = "Arrow Function:<br>The sum of the numbers from 1 to " + num + " is " + total + ".";
+        function addNumbersArr() {
+			num = Number(document.getElementById("num").value);
+			sumNums = 0;
+			total = () => {
+				for (var i=0; i<=num; i++) {
+					sumNums += i;
+				};
+				total = sumNums;		
+				return total;
+			};
+            document.getElementById("sumTotal").innerHTML = "Arrow Function:<br>The sum of the numbers from 1 to " + num + " is " + total() + ".";
         }
-*/
 
     </script>
 	</body>

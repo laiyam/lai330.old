@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 Lai Yam Portfolio</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Portfolio</a> |
+        <a href="hike/index.html">Team Exercise: Hikes</a>|
+        <a href="ToDos.html">Exercise: To Dos</a>|
+        <a href="../week04/index.html">Back</a> |
+        <a href="../week06/index.html">Next</a>
+    </nav>
+    <h1>WDD 330 Lai Yam Portfolio</h1>
+    <h2>Week 05</h2>
+    <ul>
+        <li>Week 4 Notes</li>
+        <ol>
+            <b>Sitepoint Note: </b>
+            <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">
+                Read Javascript:
+                Novice to Ninja
+            </a> Ch10
+        </ol>
+        <li>
+            <li>
+                <b>Ch10: Testing and Debugging </b>
+                <li>
+                    Errors, Exceptions, and Warnings
+                    <ul>
+                        <li>
+                            System error ― there’s a problem with the system or external devices with
+                            which the program is interacting.
+                        </li>
+                        <li>
+                            Programmer error ― the program contains incorrect syntax or faulty logic; it
+                            could even be as simple as a typo.
+                        </li>
+                        <li>
+                            User error ― the user has entered data incorrectly, which the program is
+                            unable to handle.
+                        </li>
+                    </ul>
+                </li>
+                <li>Exceptions</li>
+                <ul>
+                    <li>
+                        An exception is an error that produces a return value that can then be used by the
+                        program to deal with the error.
+                    </li>
+                </ul>
+                <li>
+                    Stack Traces
+                    <ul>
+                        <li>
+                            An exception is an error that produces a return value that can then be used by the
+                            program to deal with the error.
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    Stack Traces
+                    <ul>
+                        <li>
+                            A stack trace will work
+                            backwards from the point at which the error occurred to identify the original
+                            function or method that started the sequence.
+                        </li>
+                        <li>
+                            The stacks trace to work backwards and see that this error was caused by invoking the
+                            function one() in the first place.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Warnings
+                    <ul>
+                        <li>
+                            A warning can occur if there’s an error in the code that isn’t enough to cause the
+                            program to crash. This means the program will continue to run after a warning.
+                            This might sound good, but it can be problematic.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    The Importance of Testing and Debugging
+                    <ul>
+                        <li>
+                            JavaScript implements exceptions at all until ECMAScript version 3.
+                        </li>
+                        <li>
+                            The stacks trace to work backwards and see that this error was caused by invoking the function one() in the first place.
+                        </li>
+                        <li>
+                            A programmer should try to make the code fail gracefully.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Strict Mode
+                    <ul>
+                        <li>
+                            ECMAScript 5 introduced a strict mode that produces more exceptions and warnings and prohibits the use of some deprecated features.
+                        </li>
+                        <li>
+                            Strict mode encourages a better quality of JavaScript to be written that befits a ninja programmer.
+                        </li>
+                        <li>
+                            Strict mode simply requires the following string to be added to the first line of a JavaScript file:
+                        </li>
+                        <li>
+                            'use strict';
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Linting Tools
+                    <ul>
+                        <li>
+                            Linting tools are also useful for enforcing a programming style guide.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Feature Detection
+                    <ul>
+                        <li>
+                            The recommended way to determine browser support for a feature is to use
+                            feature detection. This is done using an if statement to check whether an
+                            object or method exists before trying to actually call the method.
+                        </li>
+                        <li>
+                            browser
+                            sniffing. This involves using the string returned by window.navigator.userAgent
+                            property
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Debugging in the Browser
+                    <ul>
+                        <li>
+                            Debugging is the process of finding out where bugs occur in the code and then
+                            dealing with them.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    The Trusty Alert
+                    <ul>
+                        <li>
+                            The most basic form of debugging is to use the alert() method to show a dialog
+                            at certain points in the code.
+                        </li>
+                        <li>
+						alert() stops a program from running until
+                        OK is clicked, it allows us to effectively put breakpoints in the code that let us
+                        check the value of variables at that point to see if they’re what we expect them to
+                        be.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Using the Console
+                    <ul>
+                        <li>
+                            Most modern JavaScript environments have a console object that provides a
+                            360 JavaScript: Novice to Ninja, 2nd Edition
+                            number of methods for logging information and debugging.
+                        </li>
+                        <li>
+                            The console.log() method can be used to
+                            log the value of variables at different stages of the program
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Debugging Tools
+                    <ul>
+                        <li>
+                            Most modern browsers also have a debugging tool that allows you to set
+                            breakpoints in your code that will pause it at certain points.
+                        </li>
+                        <li>
+                            One of the most useful commands is the debugger keyword.
+                        </li>
+                        <li>
+                            Remove Debugging Code Prior to Shipping
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Error Objects
+                    <ul>
+                        <li>
+                            const error = new Error();
+                        </li>
+                        <li>
+                            EvalError is not used in the current ECMAScript specification and only
+                            retained for backwards compatibility. It was used to identify errors when
+                            using the global eval() function.
+                        </li>
+                        <li>
+                            RangeError is thrown when a number is outside an allowable range of values.
+                        </li>
+                        <li>
+                            ReferenceError is thrown when a reference is made to an item that doesn’t
+                            exist. For example, calling a function that hasn’t been defined.
+                        </li>
+                        <li>
+                            SyntaxError is thrown when there’s an error in the code’s syntax.
+                        </li>
+                        <li>
+                            TypeError is thrown when there’s an error in the type of value used; for
+                            example, a string is used when a number is expected.
+                        </li>
+                        <li>
+                            URIError is thrown when there’s a problem encoding or decoding the URI.
+                        </li>
+                        <li>
+                            InternalError is a non-standard error that is thrown when an error occurs in
+                            the JavaScript engine.
+                        </li>
+                        The name property returns the name of the error constructor function used as a
+                        string, such as “Error” or “ReferenceError”.
+                </li>
+                <li>
+                    The message property returns a description of the error and should be
+                    provided as an argument to the Error constructor function.
+                </li>
+                <li>The stack property will return a stack trace for that error.
+        </li>
+        </li>
+        <li>
+            Throwing Exceptions
+            <ul>
+                <li>
+                    It’s possible to throw your own exceptions using the
+                    364 JavaScript: Novice to Ninja, 2nd Edition
+                    throw statement.
+                </li>
+                <li>
+                    To throw an error object. This can then be caught in a
+                    catch block.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Exception Handling
+            <ul>
+                <li>
+                    When an exception occurs, the program terminates with an error message.
+                </li>
+                try, catch, and finally
+                <li>
+                    The code inside the catch block will only run if an exception is thrown inside
+                    the try block. The error object is automatically passed as a parameter to the
+                    366 JavaScript: Novice to Ninja, 2nd Edition
+                    catch block.
+                </li> 
+                <li>
+                    actually return a string representation of an imaginary number
+                </li>
+            </ul>
+        </li>
+        <li>
+            Tests
+            <ul>
+                <li>
+                    A test can simply be a function that tests a piece of code runs as it should.
+                </li>
+                <li>
+                    The squareRoot() function that we wrote earlier returns the correct answer
+                </li>
+            </ul>
+        </li>
+        <li>
+            Test-driven Development
+            <ul>
+                <li>
+                    Test-driven development(TDD) is the process of writing tests before any actual code.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Exception Handling
+            <l>
+        <li>
+            The code is continually tested at each stage to make sure it continues to work. This process
+            should be followed in small piecemeal chunks every time a new feature is
+            implemented, resulting in the following workflow:
+            <ol>
+                <li>
+                </li>Write tests (that initially fail)<li>
+                </li>Write code to pass the tests<li>
+                </li>Refactor the code<li>
+                </li>Test refactored code<li>
+                </li>Write more tests for new features
+
+            </ol>
+        </li>
+    </ul>
+    <li>
+        Testing Frameworks
+        <ul>
+            <li>
+                Testing frameworks provide a structure to write meaningful tests and then run them.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Jest
+        <ul>
+            <li>
+                npm install -g jest
+            </li>
+            <li>
+                Jest11 is a TDD framework, created by Facebook, that has gained a lot of
+                popularity recently. It makes it easy to create and run tests by providing helper
+                methods for common test assertions.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Crunching Some Numbers
+        <ul>
+            <li>
+                “Number Cruncher” that will contain some functions that operate on numbers.
+            </li>
+            Use of toEqual() -- he toEqual() match in this test. This is because we are testing an
+            array
+            <li>
+                (see examples in page. 372)
+            </li>
+        </ul>
+    </li>
+        
+    </ul>
+</body>
+</html>

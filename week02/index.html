@@ -9,7 +9,7 @@
 	<body>
 	<nav>
 		<a href="../index.html">Portfolio</a> |
-		<a href="exercise.html">Exercise</a>|
+		<a href="exercises.html">Exercise</a>|
 		<a href="../week01/index.html">Back</a> |
 		<a href="../week03/index.html">Next</a>
 	</nav>
@@ -19,23 +19,446 @@
 			<li>Reading Notes:</li>
                 <ul><b>JSNN Ch2: Programming Basics</b>
                     <li>
+						JavaScript Grammar:</b><br>There’s no need to actually use a semicolon to terminate a statement because
+						JavaScript interpreters use a process called Automatic Semicolon Insertion (ASI).
+						This will attempt to place semicolons at the end of lines for you. However, it can
+						be error-prone and cause a number of automated services such as code minifiers
+						and validators to not work properly.
+                    </li>
+					<li>
+						<b>Reserved Words:</b><br>abstract, await, boolean, break, byte, case, catch, char,
+						class, const, continue, debugger, default, delete, do,
+						double, else, enum, export, extends, false, final, finally,
+						float, for, function, goto, if, implements, import, in,
+						instanceof, int, interface, let, long, native, new, null,
+						package, private, protected, public, return, short, static,
+						super, switch, synchronized, this, throw, throws, transient,
+						true, try, typeof, var, volatile, void, while, with, yield
+					</li>
+                    <li>
+						<b>Primitive Data Types:</b><br> 
+						String<br>
+						Symbol4<br>
+						Number<br>
+						Boolean<br>
+						Undefined<br>
+						Null
+                    </li>
+					<li>
+						<b>Variables Declaring and Assigning:</b><br>
+						Variables have to be declared before they can be used. From ES6 onwards,
+						JavaScript uses the keywords const and let to declare variables. The keyword
+						const is used when the variable will not be reassigned to another value, whereas
+						let is used if the variable might be reassigned later in the program.<br>
                     </li>
                     <li>
+						<b>Naming Constants & Variables:</b><br>
+						Constant and variable names can start with any upper or lower-case letter, an
+						underscore, _, or dollar character, $. They can also contain numbers, but cannot
+						start with them.<br>
+						Camel case starts with a lowercase letter and then each new word is capitalized:<br>
+						firstNameAndLastName<br>
+						Underscore separates each new word with an underscore:<br>
+						first_name_and_last_name
                     </li>
+					<li>
+						<b>Direct Assignment and Assignment By Reference</b><br>
+						const c = { value: 1 };<br>
+						let d = c; // c.value = 1, d.value = 1<br>
+						d.value = 2; // c.value = 2, d.value = 2<br>
+						In the example above, the change to the value property of d also results in the
+						value property of c changing as well. This is because the variables c and d are
+						both referencing the same object, so any changes to one of them will also affect
+						the other.
+                    </li>
+					<li>
+						<b>Strings</b><br>
+						Using a Constructor Function</b><br>
+						You can also create a string object using the following constructor function:
+						new String("hello")<br>
+						<< [String: 'hello']<br><br>
+						Another option is to escape the quotation mark. You place a backslash before the
+						apostrophe so it appears as an apostrophe inside the string instead of terminating<br>
+						the string:<br>
+						'It\'s me'
+					</li>
+                    <li><b>Backslashes</b><br>
+						Single quote marks \'<br>
+						Double quote marks \"<br>
+						End of line \n<br>
+						Carriage return \r<br>
+						Tab \t<br><br>
+						"This is a backslash \\"<br>
+						<< "This is a backslash \"
+                    </li>
+					<li>
+						<b>String Properties and Methods</b><br>
+						name.length; // retrieve the name variable’s length property<br>
+						<< 5
+					</li>
+					<li>
+						A method is an action that a primitive data type or object can perform. To call a
+						method, we use the dot operator (.) followed by the name of the method,
+						followed by parentheses (this is a useful way to distinguish between a property
+						and a method ― methods end with parentheses). For example, we can write a
+						string in all capital letters using the toUpperCase() method:
+						name.toUpperCase();<br>
+						<< 'ALEXA'<br>
+						Or the toLowerCase() method, which will write my name in all lower-case<br>
+						letters:<br>
+						name.toLowerCase();<br>
+						<< 'alexa'<br>
+						If you want to know which character is at a certain position, you can use the
+						charAt() method:<br>
+						name.charAt(1);<br>
+						<< 'l'
+                    </li>
+                    <li>
+						If a character doesn’t appear in the string, -1 will be returned:<br>
+						name.indexOf('z');<br>
+						<< -1<br>
+						If we want the last occurrence of a character or substring, we can use the
+						lastIndexOf() method:<br>
+						name.lastIndexOf('a');<br>
+						<< 4<br>
+						If all we want to know if a string contains a certain character, then ES2016
+						provides the useful includes() method:<br>
+						name.includes('a');<br>
+						<< true<br>
+						name.includes('z');<br>
+						<< false
+                    </li>
+					<li><b>Symbols</b><br>
+						Symbols are the only primitives that don’t have a literal form. The only way to
+						create them is to use the Symbol() function:<br>
+						const uniqueID = Symbol();
+					</li>
+					<li>
+						<b>Numbers</b><br>
+						typeof 42; // integer<br>
+						<< 'number'<br>
+						typeof 3.14159; // floating point decimal<br>
+						<< 'number'
+					</li>
+					<li>
+						<b>Constructor Function for Numbers</b><br>
+						new Number(3)<br>
+						<< [Number: 3]
+					</li>
+					<li>
+						<b>Number Methods</b><br>
+						toExponential() method; this returns the number as a string in exponential notation.<br>
+						Use two dots:<br>
+						5..toExponential();<br>
+						>> "5e+0"<br>
+						Put a space before the dot:<br>
+						Programming Basics
+					</li>
+					
                 </ul>
                 <ul><b>JSNN Ch3: Arrays, Logic, and Loops</b>
-                    <li>
+                    <li><b>an array constructor function:</b><br>
+						const myArray = new Array();<br>
+					<< []
                     </li>
-                    <li>
+                    <li><b>Initializing an Array</b><br>
+						const heroes = [];
                     </li>
+					<li><b>Adding Values to Arrays</b><br>
+						heroes[0] = 'Superman';
+                    </li>
+                    <li><b>Creating Array Literals</b><br>
+						const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk'];<br>
+					<< ['Captain America', 'Iron Man', 'Thor', 'Hulk']
+                    </li>
+					<li><b>Array Properties and Methods</b><br>
+						const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+                    </li>
+                    <li><b>Merging Arrays</b><br>
+						concat() method can be used to merge an array with one or more arrays:<br>
+						avengers.concat(['Hulk','Hawkeye', 'Black Widow']);<br>
+						<< ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']<br><br>
+						avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow']);<br>
+						<< ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']<br><br>
+						avengers<br>
+						96 JavaScript: Novice to Ninja, 2nd Edition<br>
+						<< ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']<br><br>
+						avengers = [ ...avengers, ...['Hulk','Hawkeye', 'Black Widow'] ];<br>
+						<< ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']
+                    </li>
+					<li><b>The join() Method</b><br>
+						avengers.join();<br>
+						<< 'Captain America, Iron Man, Thor, Hulk, Hawkeye, Black Widow'<br>
+						avengers.join(' & ');<br>
+						<< 'Captain America & Iron Man & Thor & Hulk & Hawkeye & Black Widow'
+                    </li>
+                    <li><b>Slicing and Splicing</b><br>
+						The slice() method creates a subarray; effectively chopping out a slice of an
+						original array, starting at one position and finishing at another.<br>
+						avengers.slice(2,4) // starts at the third item (index of 2) and finishes at the fourth (the item with index 4 is not included)<br>
+						<< ['Thor', 'Hulk']
+                    </li>
+					<li><b>Finding if a Value is in an Array</b><br>
+						item is not in the array, it will return -1:<br>
+						avengers.
+                    </li>
+                    <li><b>Multidimensional Arrays</b><br>
+						const coordinates = [[1,3],[4,2]];<br>
+						<< [[1,3],[4,2]]<br>
+						flatten multi-dimensional<br>
+						arrays. Flattening an array involves removing all nested arrays so all the values
+						are on the same level in the array
+                    </li>
+					<li><b>Sets</b><br>
+						Sets offer a useful way to keep track of data without having to check if any values
+						have been duplicated. It’s also quick and easy to check if a particular value is in a
+						set, which can be a slow operation if an array is used.
+                    </li>
+                    <li><b>Creating Sets</b><br>
+						const list = new Set();
+                    </li>
+					<li><b>Set Methods</b><br>
+						const jla = new Set().add('Superman').add('Batman').add('Wonder Woman');<br>
+						jla<br>
+						<< Set { 'Superman', 'Batman', 'Wonder Woman' }<br>
+						jla.size();<br><br>
+						The has() method can be used to check if a value is in a set. This returns a
+						boolean value of true or false:<br>
+						jla.has('Superman');<br>
+						<< true<br>
+						jla.has('Green Lantern');<br>
+						<< false<br>
+						<< 3<br><br>
+						Sets do not have index notation for inspecting individual entries, so you can't
+						find the value of the first element in a set like this:<br>
+						jla[0]<br>
+						<< undefined
+                    </li>
+                    <li><b>Removing Values From Sets</b><br>
+					jla.delete('Superman');<br>
+					<< true<br>
+					jla.delete('Flash');<br>
+					<< false<br><br>
+					The clear() method can be used to remove all values from a set:<br>
+					jla.clear();<br>
+					jla<br>
+					<< Set {}<br>
+					jla.size<br>
+					<< 0
+                    </li>
+					<li><b>Converting Sets to Arrays</b><br>
+					const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');<br>
+					shoppingSet<br>
+					<< Set { 'Apples', 'Bananas', 'Beans' }<br><br>
+					Then we convert it into an array:<br>
+					const shoppingArray = [...shoppingSet]<br><br>
+					shoppingArray<br>
+					<< [ 'Apples', 'Bananas', 'Beans' ]<br><br>
+					The Array.from() method to convert a set into an array<br>
+					const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');<br>
+					const shoppingArray = Array.from(shoppingSet);<br><br>
+					The spread operator with the ability to pass an array to
+					the new Set() constructor, we now have a convenient way to create a copy of an
+					array with any duplicate values removed:<br>
+					const duplicate = [3, 1, 4, 1, 5, 9, 2, 6 ,5,3,5,9];<br>
+					<< [ 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 9 ]<br>
+					const nonDuplicate = [...new
+                    </li>
+                    <li><b>Weak Sets</b><br>
+					When objects are added to sets, they will be stored there as long as the set exists,
+					even if the original reference to the object is removed. The technical term for this
+					is the object is prevented from being garbage-collected, which can cause a
+					memory leak. This can be seen in the following example:<br>
+					let array = [1,2,3];<br>
+					const strong = new Set().add(array);<br>
+					array = null; // remove reference to the original<br>
+					strong<br>
+					<< Set { [ 1, 2, 3 ] }<br><br>
+					The array still exists inside the set and we can get the original value of array
+					back using the spread operator:<br>
+					array = [...strong][0];<br>
+					array<br>
+					<< [1,2,3]
+                    </li>
+					<li><b>Memory Leaks</b><br>
+					A memory leak occurs when a program retains references to values that can no
+					longer be accessed in its memory. This means that memory is being used to store
+					values that are no longer required by the program, effectively wasting system
+					resources.<br>
+					Memory leaks can cause problems by gradually reducing the overall memory
+					available, which can cause the program, or even the entire system, to run more
+					slowly.<br>
+					Most modern programming language, including JavaScript, employ various
+					dynamic memory management techniques such as garbage collection, which is the
+					process of automatically removing items from memory that are no longer required
+					by the program. Some languages, such as C++, require the programmer to manually
+					manage memory by removing items from memory once they are finished with.<br>
+					Weak sets avoid this situation by garbage collecting any references to a “dead
+					object” that’s had its original reference removed.<br><br>
+					To create a weak set, the new operator and the WeakSet() constructor in the same
+					way that we created a set:<br>
+					const weak = new WeakSet();<br><br>
+					Only non-primitive data types can be added to weak sets. Trying to add primitive
+					values will throw a type error:<br>
+					weak.add(2)<br>
+					<< TypeError: Invalid value used in weak set
+                    </li>
+					<li><b>Maps</b><br>
+					They are a convenient way of keeping a list of key and value pairs, and are similar to
+					“hashes”, or“hash tables” or “dictionaries” in other programming languages.<br>
+					- Objects are limited to using strings for key values, whereas maps can use any
+					Arrays, Logic, and Loops 111 data type as a key.<br>
+					- There is no efficient way to find the number of key-value pairs an object has,
+					whereas this is easy to do with maps using the size property.<br>
+					- Objects have methods that can be called and prototypes that
+					can be used to create a chain of inheritance, whereas maps
+					are solely focused on the storage and retrieval of key-value pairs.<br>
+					- The value of an object’s properties can be accessed directly, whereas maps
+					restrict you to using the get() method to retrieve any values.
+                    </li>
+					<li><b>Creating Maps</b><br>
+						const romanNumerals = new Map();
+                    </li>
+					<li><b>Adding Entries To Maps</b><br>
+						romanNumerals.set(1,'I');<br>
+						<< Map { 1 => 'I' }<br>
+						the value using the “hash rocket” symbol (=>).
+                    </li>
+					<li><b>Map Methods</b><br>
+						romanNumerals.get(4);<br>
+						<< 'IV'<br><br>
+						A map can be created with multiple values by using a nested array as a parameter:<br>
+						heroes.size<br>
+						<< 2
+                    </li>
+					<li><b>Converting Maps to Arrays</b><br>
+						Maps can be converted into a nested array of key-value pairs in a similar way to sets.<br>
+						[...romanNumerals]<br>
+						<< [ [ 1, 'I' ], [ 2, 'II' ], [ 3, 'III' ], [ 4, 'IV'], [ 5, 'V' ] ]<br><br>
+						Array.from(romanNumerals)<br>
+						<< [ [ 1, 'I' ], [ 2, 'II' ], [ 3, 'III' ], [ 4, 'IV' ], [ 5, 'V' ] ]
+                    </li>
+					<li><b>Weak Maps</b><br>
+						const weak = new WeakMap();<br>
+                    </li>
+
+
                 </ul>
                 <ul><b>JSNN Ch4: Functions</b>
-                    <li>
+                    <li><b>In JavaScript, functions are considered to be first-class objects.</b><br>
                     </li>
-                    <li>
+                    <li><b>Function Declarations</b><br>
+					Starts with the function keyword and is followed by the name of the function,<br>
+					function hello(){<br>
+					console.log('Hello World!');<br>
+					}
+                    </li>
+					<li><b>Function Expressions</b><br>
+						A function literal is to create a function expression:<br>
+						const goodbye = function(){<br>
+						console.log('Goodbye World!');
+						};
+                    </li>
+                    <li><b>Function() Constructors</b><br>
+					const hi = new Function('console.log("Hi World!");');<br>
+					**It’s not recommended to declare functions in this way. 
+					A programmer should always declare functions using function literals,
+					function declarations or function expressions.
+                    </li>
+					<li><b>Invoking a Function</b><br>
+					Invoking a function is to run the code inside the function’s body. To invoke a function, simply enter its name, followed by parentheses.
+					hello();<br>
+					<< 'Hello world!'<br>
+					**Parentheses are needed to invoke a function ― either by name or by reference to the variable it is assigned to.
+                    </li>
+                    <li><b>Return Values</b><br>
+						All functions return a value, which can be specified using the return statement,
+						which comes after the return keyword.<br>
+						function howdy(){<br>
+						return 'Howdy World!';<br>
+						}
+                    </li>
+					<li><b>Parameters and Arguments</b><br>
+						Parameters and arguments are terms that are often used interchangeably to represent values provided for the function as an input.<br><br>
+						function square(x){<br>
+						return x*x;<br>
+						}<br><br>
+						When we invoke this function, we need to provide an argument, which is the
+						number to be squared:<br>
+						square(4.5);<br>
+						<< 20.25
+                    </li>
+                    <li><b>Variable Numbers of Arguments</b><br>
+					Every function has a special variable called arguments. This is an array-like
+					object that contains every argument passed to the function when it is invoked.<br><br>
+					The arguments object that is returned contains every value that was entered.
+					The problem is that arguments is not an array. It has a length property and you
+					can read and write each element using index notation, but it doesn’t have array
+					methods such as slice(), join(), and forEach().<br><br>
+					A much better option is to use the rest operator. This was introduced in ES6 and
+					can be used to deal with multiple arguments by creating an array of arguments
+					that are available inside the body of the function.
+                    </li>
+					<li><b>Arrow Functions</b><br>
+					A new syntax for declaring functions called the arrow syntax.<br>
+					Arrow functions can be identified by the arrow symbol, => that gives them their
+					name. The parameters come before the arrow and the main body of the function
+					comes after. Arrow functions are always anonymous, so if you want to refer to
+					them, you must assign them to a variable.<br>
+					const square = x => x*x;<br><br>
+					const add = (x,y) => x + y;<br>
+					const hello = () => alert('Hello World!');
+                    </li>
+                    <li><b>Function Hoisting</b><br>
+					The function hoist() can be invoked before it is actually defined.
+                    </li>
+					<li><b>Callbacks</b><br>
+						function sing(song) {<br>
+						console.log(`I'm singing along to ${song}`);<br>
+						}<br>
+						sing('Let It Go')<br>
+						<< 'I'm singing along to Let It Go'<br><br>
+						We can make the sing() function more flexible by adding a callback parameter:<br>
+						function sing(song,callback) {<br>
+						console.log(`I'm singing along to ${song}.`);<br>
+						callback();<br>
+						}
+					</li>
+                    <li><b>Array Iterators</b><br>
+					<ul>
+						<li>
+							forEach()
+						</li>
+						<li>
+							map()<br>
+							The map() method is very similar to the forEach() method.
+						</li>
+						<li>
+							Reduce()<br>
+							The reduce() method is another method that iterates over each value in the
+							array, but this time it cumulatively combines each result to return just a single
+							value. The callback function is used to describe how to combine each value of the
+							array with the running total.<br>
+							[1,2,3,4,5].reduce( (acc,val) => prev + val );<br>
+							<< 15
+						</li>
+						<li>
+							Filter()<br>
+							const numbers = [ 2, 7, 6, 5, 11, 23, 12 ]<br>
+							numbers.filter(x => x%2 === 0 ); // this returns true if the number is even<br>
+							<< [ 2, 6, 12 ]
+					</ul>
+                    </li>
+					<li><b>Chaining Iterators Together</b><br>
+					[1,2,3].map( x => x*x ).reduce((acc,x) => acc + x );<br>
+					<< 14<br><br>
+					const sales = [ 100, 230, 55];<br>
+					totalAfterTaxSales = sales.map( (amount) => amount * 1.15 ).reduce( (acc,val) => acc + val );<br>
+					<< 442.75
+                    </li>
+                    <li><b>Improving the mean() Function</b>
                     </li>
                 </ul>
-
                 <li><a href="exercises.html">Exercises</a></li>
                 <li>Questions:</li>
 

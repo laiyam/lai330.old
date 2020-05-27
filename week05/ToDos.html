@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todos</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+
+    <body onload="updateTask()">
+            <nav>
+                <a href="../index.html">Portfolio</a> |
+                <a href="index.html">Back</a>
+            </nav>
+
+            <div>
+                <form style="height:400px;">
+                    <h2>To Dos</h2>
+                    <!--Task Table-->
+                    <div style="height:280px; width:400px; overflow:scroll;">
+                        <table id="fullTask"></table>
+                    </div><br>
+                    <!--Input Table-->
+                    <div style="width:390px; text-align:center;">
+                        <p style="float:left; margin: 0 15px; width:120px;" id="taskStatus"></p>
+                        <button type:"button" id="allTaskBtn" onclick="countAll()">All</button>
+                        <button type:"button" id="activeTaskBtn" onclick="selectTask('☐')">Active</button>
+                        <button type:"button" id="completedTaskBtn" onclick="selectTask('☑')">Completed</button>
+                        <br><br>
+
+                        <input type="text" id="taskInput" style="width:260px; height:28px; padding:0 15px; font-size:18px;">
+                        <button type="button" style="font-size:16px;" onclick="addTask()">╋</button><br><br>
+                        <button type="button" onclick="clearStg()">Reset Local Storage</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+            <!--script src="todo.js"></script-->
+            <script>
+                //document.getElementById("fullTask").addEventListener("load", updateTask());
+
+                var taskList = JSON.parse(localStorage.getItem("taskList"));
+
+                //ToDos Task
+                function todo(taskMark, taskInput, delTask) {								//keywords refer reservation object
+                    this.taskMark = taskMark;
+                    this.taskInput = taskInput;
+                    this.delTask = delTask;
+                }
+
+                //var taskMarkE = document.getElementById("taskMark").checked;
+                var taskMarkE; // = "☐"; //"&#9746"
+                var taskInputE = document.getElementById("taskInput").value;
+                var delTaskE; // = "✖";
+
+                //add new task
+                function addTask() {
+                    //var taskMarkE = document.getElementById("taskMark").checked;
+                    taskMarkE = "☐";      //☐ &#9744, ☒ &#9746, ☑ &#9745;
+                    taskInputE = document.getElementById("taskInput").value;
+                    //var delTaskE = document.getElementById("delTask").value;
+                    delTaskE = "✖";         //✖ &#10006,  ╳ &#9587
+                    var newTodo = new todo(taskMarkE, taskInputE, delTaskE);
+                    taskList = JSON.parse(localStorage.getItem("taskList"));						//reterive task string from local storage and convert to object
+                    var newList = [];
+                    if (taskList === null) {
+                        taskList = newList;
+                    }
+
+                    //Initial Todos Task
+                    taskList.push(newTodo);													        //add new task string to local storage
+                    localStorage.setItem("taskList", JSON.stringify(taskList));						//convert task list object to string and store to local storage
+                    taskMark = "☐";
+                    taskInput.value = "";
+                    delTask = "✖";
+                    updateTask();
+                }
+
+                //<script src="Remove.js">
+                //Remove a task
+                function deleteTask(taskNumE) {
+                    delete taskList[taskNumE];															//using the keyvalue to delete task from object
+                    localStorage.setItem("taskList", JSON.stringify(taskList));							//convert task list object to string and store to local storage
+                    updateTask();
+                }
+
+                //Refresh Task Table
+                function updateTask() {
+                    var r = "<tr>"
+                    for (var i in taskList) {
+                        if (taskList[i] != null) {
+                            r += "<td hidden>" + i + "</td>";
+                            r += "<td id='i" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                            r += "<td id='i" + i + "c1' style='width:250px; text-align:left; padding:0px 15px;'>" + taskList[i].taskInput + "</td>";
+                            r += "<td id='i" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                        };
+                    };
+                    var taskTable = r;
+                    document.getElementById("fullTask").innerHTML = taskTable;  //Create HTML String from JavaScript Object Methods
+                    countAll();
+                }
+
+
+                //Get click values
+                function getval(cell) {
+                    var x = cell.closest('tr').rowIndex;
+                    var changeCell = fullTask.rows[x].cells[2];
+                    var rowIdx = (fullTask.rows[x].cells[0]).innerHTML;
+                    var strickCellId = "i" + rowIdx + "c1";
+
+                    //var rowIdx = document.getElementById(fullTask.rows[x].cells[0]).innerHTML;
+                    console.log(cell);
+                    console.log(x);                              //row #
+                    console.log(taskList);                       //array
+                    console.log(fullTask.rows[x].cells[2]);      //control
+                    console.log(cell.innerHTML);                 //symbol
+                    console.log((fullTask.rows[x].cells[0]).innerHTML);     //arry index
+                    console.log(rowIdx);                         //array index undevined
+                    console.log(strickCellId);                   //strick cell ID
+                    console.log(taskList.length);                //array length
+                    //console.log(document.getElementById("i0c1").innerHTML);
+
+                    if (cell.innerHTML == "✖") {
+                        deleteTask(rowIdx);
+                    } else if (cell.innerHTML == "☐") {
+
+                        //taskList[tableRow][tableCol] = "&#9745";
+                        taskList[rowIdx].taskMark = "☑";
+                        document.getElementById(strickCellId).style.textDecoration = "line-through";
+
+                    } else if (cell.innerHTML == "☑") {
+                        taskList[rowIdx].taskMark = "☐";
+                        document.getElementById(strickCellId).style.textDecoration = "none";
+                    }
+                    localStorage.setItem("taskList", JSON.stringify(taskList));
+                    console.log(taskList);                      //array
+                    updateTask();
+                }
+
+
+
+                //Count All Tasks
+                function countAll() {
+                    taskList = JSON.parse(localStorage.getItem("taskList"));
+                    //console.log(countObj);
+                    var tTotal = 0;
+                    //var tLabel;
+                    console.log(taskList);
+                    console.log(taskList.length);
+                    //console.log(taskList[0].taskMark);
+                    //if (countObj == null) {
+                    for (i = 0; i <= taskList.length; i++) {
+                        //console.log(taskList[i].taskMark);
+                        if (taskList[i] != null) {
+                            tTotal++;
+                        }
+                        //tTotal = taskList.length - tTotal;
+                    }
+                    console.log(tTotal);                        //Number of Active Tasks
+                    document.getElementById("taskStatus").innerHTML = "All Tasks: " + tTotal;
+                }
+
+
+
+
+                //Filter Task Table
+                function selectTask(taskSymbol) {
+                    //document.getElementById("taskStatus").innerHTML = "All Tasks: " + allTotal;
+                    switch (taskSymbol) {
+                        case "☑":
+                            tLabel = "Complete Tasks: ";
+                            filterTask(taskSymbol);
+                            break;
+                        case "☐":
+                            tLabel = "Active Tasks: ";
+                            filterTask(taskSymbol);
+                            break;
+                    }
+
+                    function filterTask(st) {
+                        var f = "<tr>"
+                        var counts = 0;
+                        for (var i = 1; i <= taskList.length; i++) {
+                            if (taskList[i] != null) {
+                                if (taskList[i].taskMark === st) {
+                                    f += "<td hidden>" + i + "</td>";
+                                    f += "<td id='i" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                                    f += "<td id='i" + i + "c1' style='width:250px; text-align:left; padding:0px 15px;'>" + taskList[i].taskInput + "</td>";
+                                    f += "<td id='i" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                                    counts++;
+                                };
+                            };
+                        };
+
+                        var filteredTable = f;
+                        document.getElementById("fullTask").innerHTML = filteredTable;
+                        if (st == "☑") {
+                            document.getElementById("taskStatus").innerHTML = "Completed Tasks: " + counts;
+                        } else {
+                            document.getElementById("taskStatus").innerHTML = "Active Tasks: " + counts;
+                        }
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //localStorage.clear();																//**clear the local storage**
+                function clearStg() {
+                    localStorage.clear();
+                    taskList = JSON.parse(localStorage.getItem("taskList"));
+                    updateTask();
+                }
+
+
+            </script>
+
+        </body>
+</html>
