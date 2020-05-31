@@ -1,0 +1,85 @@
+
+html, .main {
+	padding:0;
+	margin:auto;
+	width:680px;
+}
+
+body	{
+	margin:auto;
+	font-size: 20px;
+}
+
+
+h2, h3, h4, p	{
+	text-align: center;
+}
+
+form {
+	height:400px;
+	font-size:15px;
+}
+
+#fullTask {
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 350px;
+	background-color: white;
+}
+
+.active {
+	width: 250px;
+	text-align: left;
+	text-decoration-line: none;
+}
+
+.completed {
+	width: 250px;
+	text-align: left;
+	text-decoration-line: line-through;
+}
+
+#toDoDiv {
+	height: 280px;
+	width: 400px;
+	overflow: scroll;
+}
+
+#inputDiv {
+	width: 390px;
+	text-align: center;
+}
+
+#taskStatus {
+	float:left; 
+	margin: 0 15px; 
+	width:120px;
+}
+
+#taskInput {
+	width: 260px;
+	height: 28px;
+	padding: 0 15px;
+}
+
+
+
+
+
+table, div {
+	margin: auto;
+}
+
+tr {
+
+	border: 1px solid black;
+	height: 20px;
+
+}
+
+button, label {
+	border-radius: 0px;
+	font-size: 14px;
+	margin: auto;
+}
+

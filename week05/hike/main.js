@@ -42,7 +42,7 @@ const hikeList = [
   }
 ];
 
-const imgBasePath = "img/";
+const imgBasePath = "images/";
 //on load grab the array and insert it into the page
 window.addEventListener("load", () => {
     showHikeList();
