@@ -5,11 +5,11 @@ function selectTask(taskSymbol) {
     //document.getElementById("taskStatus").innerHTML = "All Tasks: " + allTotal;
     console.log(taskSymbol);
     switch (taskSymbol) {
-        case "☑":
-            tLabel = "Complete: ";
+        case "☐":
+            tLabel = "Active: ";
             filterTask(taskSymbol, tLabel);
             break;
-        case "☐":
+        case "☑":
             tLabel = "Active: ";
             filterTask(taskSymbol, tLabel);
             break;
@@ -21,10 +21,18 @@ function selectTask(taskSymbol) {
 }
 
 function filterTask(st, la) {
+    taskList = JSON.parse(localStorage.getItem("taskList"));
     console.log(st, la);
     //var nst = st;
     var r = "<tr>"
     var counts = 0;
+    var newList = [];
+    if (st = null) {
+        st = '';
+    }
+    if (taskList === null) {
+        taskList = newList;
+    }
     for (var i = 0; i <= taskList.length; i++) {
         if (taskList[i] != null) {
             var m = taskList[i].taskMark;
@@ -42,11 +50,11 @@ function filterTask(st, la) {
                 r += "<td hidden>" + i + "</td>";
                 r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                 r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
+                //r += "<td id='l" + i + "c1' " + crossMark + ">XXXXX</td>";
                 r += "<td id='l" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
-                //counts++;
-                //console.log(r);
-                //console.log(counts);
-            } else if (taskList[i].taskMark != "") {
+                counts++;
+                console.log(counts);
+            } else if (taskList[i].taskMark != '') {
                 r += "<td hidden>" + i + "</td>";
                 r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                 r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
@@ -56,13 +64,11 @@ function filterTask(st, la) {
             }
 
         }
-        //console.log(counts);
-
     }
 
 
     var filteredTable = r;
-    console.log(taskList);
+    //console.log(taskList);
     document.getElementById("fullTask").innerHTML = filteredTable;
     document.getElementById("taskStatus").innerHTML = la + counts;
 

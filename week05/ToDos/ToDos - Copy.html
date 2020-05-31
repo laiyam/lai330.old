@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todos</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+
+    <body onload="selectTask('')">
+        <script src="addToDo.js"></script>
+        <!--script src="filterToDo.js"></!--script>
+        <script src="removeToDo.js"></script>
+        <script src="resetToDo.js"></script>
+        <script-- src="addToDo.js"></script-->
+
+        <nav>
+            <a href="../../index.html">Portfolio</a> |
+            <a href="../index.html">Back</a>
+        </nav>
+
+
+        <form id="toDoForm">
+            <h2>To Dos List</h2>
+            <!--Task Table-->
+            <div id="toDoDiv">
+                <table id="fullTask"></table>
+            </div>
+            <!--Input Table-->
+
+        </form>
+       
+
+        <div id="inputDiv">
+            <p id="taskStatus"></p>
+            <button type:"button" id="allTaskBtn" onclick="selectTask('')">All</button>
+            <button type:"button" id="activeTaskBtn" onclick="selectTask('☑')">Active</button>
+            <button type:"button" id="completedTaskBtn" onclick="selectTask('☐')">Completed</button>
+            <br><br>
+
+            <input type="text" id="fullTask">
+            <button type="button" onclick="addTask()">╋</button>
+            <br><br>
+            <button type="button" onclick="clearStg()">Reset Local Storage</button>
+        </div>
+
+
+
+    </body>
+    </html>

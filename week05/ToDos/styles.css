@@ -16,7 +16,7 @@ h2, h3, h4, p	{
 }
 
 form {
-	height:400px;
+	height:350px;
 	font-size:15px;
 }
 
@@ -75,6 +75,10 @@ tr {
 	border: 1px solid black;
 	height: 20px;
 
+}
+
+td {
+	padding: 5px 5px 5px 12px;
 }
 
 button, label {

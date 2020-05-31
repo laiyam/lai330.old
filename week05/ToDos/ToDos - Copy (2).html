@@ -9,12 +9,12 @@
 </head>
 
 
-<body onload="selectTask('')">
+<body>
     <!--script-- type="text/javascript" src="allToDo.js"></!--script-->
-    <script src="filterToDo.js"></script>
+    <!--script src="filterToDo.js"></script>
     <script src="removeToDo.js"></script>
     <script src="resetToDo.js"></script>
-    <script src="addToDo.js"></script>
+    <script-- src="addToDo.js"></script-->
 
     <nav>
         <a href="../index.html">Portfolio</a> |
@@ -28,7 +28,7 @@
         <div id="toDoDiv">
             <table id="fullTask"></table>
         </div>
-        <!--Input Table-->
+            <!--Input Table-->
 
 
 
@@ -37,7 +37,7 @@
 
     </form>
     <!--script src="todo.js"></script-->
-    <!--script>
+    <script>
         //<script src="addToDo.js">
         var taskList = JSON.parse(localStorage.getItem("taskList"));
         //allTask();
@@ -173,11 +173,11 @@
             //allTask();
             selectTask();
         }
-    <script-->
+    </script>
 
     <div id="inputDiv">
         <p id="taskStatus"></p>
-        <button type:"button" id="allTaskBtn" onclick="selectTask('')">All</button>
+        <button type:"button" id="allTaskBtn" onclick="selectTask()">All</button>
         <button type:"button" id="activeTaskBtn" onclick="selectTask('☑')">Active</button>
         <button type:"button" id="completedTaskBtn" onclick="selectTask('☐')">Completed</button>
         <br><br>

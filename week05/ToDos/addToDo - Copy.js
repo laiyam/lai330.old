@@ -10,9 +10,9 @@ function todo(taskMark, taskInput, delTask) {								//keywords refer reservatio
     this.delTask = delTask;
 }
 
-//var taskMarkE; // = "☐"; //"&#9746"
-//var taskInputE; // = document.getElementById("taskInput").value;
-//var delTaskE; // = "✖";
+var taskMarkE; // = "☐"; //"&#9746"
+var taskInputE = document.getElementById("taskInput").value;
+var delTaskE; // = "✖";
 
 //add new task
 function addTask() {
