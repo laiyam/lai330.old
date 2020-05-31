@@ -1,4 +1,4 @@
-﻿//<script src="addToDo.js">
+//<script src="addToDo.js">
 var taskList = JSON.parse(localStorage.getItem("taskList"));
 //allTask();
 //selectTask('');
