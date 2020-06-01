@@ -106,10 +106,11 @@
             }
             function filterTask(st, la) {
                 console.log(st, la);
-                /*if (st = null) {
-                    st = 'all';
-                }*/
                 var r = "<tr>"
+                var newList = [];
+                if (taskList === null) {
+                    taskList = newList;
+                }
                 var counts = 0;
                 for (var i = 0; i <= taskList.length; i++) {
                     if (taskList[i] != null) {
@@ -140,9 +141,7 @@
                             console.log(counts);
                             counts++;
                         }
-                        
-                    }
-                    
+                    }             
                 }
                 var filteredTable = r;
                 console.log(taskList);
@@ -170,8 +169,8 @@
                 //localStorage.clear();																//**clear the local storage**
             function clearStg() {
                 localStorage.clear();
-                //taskList = JSON.parse(localStorage.getItem("taskList"));
-                //allTask();
+                taskList = [];
+                //console.log(taskList);
                 selectTask('all');
             }
         </script>
@@ -185,11 +184,8 @@
 
             <input type="text" id="taskInput">
             <button type="button" onclick="addTask('all')">╋</button>
-            <!--br><br>
-            <button-- type="button" onclick="clearStg()">Reset Local Storage</button-->
+            <br><br>
+            <button type="button" onclick="clearStg()">Reset Local Storage</button>
         </div>
-
-
-
     </body>
 </html>

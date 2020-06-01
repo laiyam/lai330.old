@@ -24,8 +24,11 @@ function filterTask(st, la) {
     //console.log(st, la);
 
     var r = "<tr>"
+    var newList = [];
+    if (taskList === null) {
+        taskList = newList;
+    }
     var counts = 0;
-
     for (var i = 0; i <= taskList.length; i++) {
         if (taskList[i] != null) {
             var m = taskList[i].taskMark;

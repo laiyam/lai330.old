@@ -9,43 +9,41 @@
 </head>
 
 
-<body onload="selectTask('all')">
-    <!--script-- type="text/javascript" src="allToDo.js"></!--script-->
-    <script src="filterToDo.js"></script>
-    <script src="removeToDo.js"></script>
-    <script src="resetToDo.js"></script>
-    <script src="addToDo.js"></script>
+    <body onload="selectTask('all')">
+        <!--script-- type="text/javascript" src="allToDo.js"></!--script-->
+        <script src="filterToDo.js"></script>
+        <script src="removeToDo.js"></script>
+        <script src="resetToDo.js"></script>
+        <script src="addToDo.js"></script>
 
-    <nav>
-        <a href="../index.html">Portfolio</a> |
-        <a href="../index.html">Back</a>
-    </nav>
+        <nav>
+            <a href="../index.html">Portfolio</a> |
+            <a href="../index.html">Back</a>
+        </nav>
 
 
-    <form id="toDoForm">
-        <h2>To Dos List</h2>
-        <!--Task Table-->
-        <div id="toDoDiv">
-            <table id="fullTask"></table>
+        <form id="toDoForm">
+            <h2>To Dos List</h2>
+            <!--Task Table-->
+            <div id="toDoDiv">
+                <table id="fullTask"></table>
+            </div>
+
+        </form>
+
+        <!--Input Table-->
+        <div id="inputDiv">
+            <p id="taskStatus"></p>
+            <button type:"button" id="allTaskBtn" onclick="selectTask('all')">All</button>
+            <button type:"button" id="activeTaskBtn" onclick="selectTask('☐')">Active</button>
+            <button type:"button" id="completedTaskBtn" onclick="selectTask('☑')">Completed</button>
+            <br><br>
+
+            <input type="text" id="taskInput">
+            <button type="button" onclick="addTask('all')">╋</button>
+            <br><br>
+            <button type="button" onclick="clearStg()">Reset Local Storage</button>
         </div>
 
-    </form>
-
-    <!--Input Table-->
-    <div id="inputDiv">
-        <p id="taskStatus"></p>
-        <button type:"button" id="allTaskBtn" onclick="selectTask('all')">All</button>
-        <button type:"button" id="activeTaskBtn" onclick="selectTask('☐')">Active</button>
-        <button type:"button" id="completedTaskBtn" onclick="selectTask('☑')">Completed</button>
-        <br><br>
-
-        <input type="text" id="taskInput">
-        <button type="button" onclick="addTask('all')">╋</button>
-        <!--br><br>
-        <button-- type="button" onclick="clearStg()">Reset Local Storage</button-->
-    </div>
-
-
-
-</body>
+    </body>
 </html>
