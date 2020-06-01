@@ -31,14 +31,11 @@
             <!--Input Table-->
 
 
-
-
-
-
         </form>
         <!--script src="todo.js"></script-->
         <script>
             //<script src="addToDo.js">
+            var currentTable;
             var taskList = JSON.parse(localStorage.getItem("taskList"));
             //allTask();
             //selectTask('all');
@@ -71,7 +68,7 @@
                     delTask = "✖";
                     //allTask();
                     console.log(taskList);
-                    selectTask('all');
+                    selectTask(currentTable);
                 }
             }
                     //<script src="removeToDo.js">
@@ -81,7 +78,7 @@
                 localStorage.setItem("taskList", JSON.stringify(taskList));							//convert task list object to string and store to local storage
                 //allTask();
                 console.log(taskList);
-                selectTask('all');
+                selectTask(currentTable);
             }
                 //<script src="filterToDo.js">
                 //Filter Task output table
@@ -128,22 +125,23 @@
 
                         if (st == "all") {
                             r += "<td hidden>" + i + "</td>";
-                            r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                            r += "<td id='l" + i + "c0' class='check' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                             r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
-                            r += "<td id='l" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                            r += "<td id='l" + i + "c2' class='check' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
                             console.log(counts);
                             counts++;
                         } else if (taskList[i].taskMark == st) {
                             r += "<td hidden>" + i + "</td>";
-                            r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                            r += "<td id='l" + i + "c0' class='check' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                             r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
-                            r += "<td id='l" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                            r += "<td id='l" + i + "c2' class='check' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
                             console.log(counts);
                             counts++;
                         }
                     }             
                 }
                 var filteredTable = r;
+                currentTable = st;
                 console.log(taskList);
                 document.getElementById("fullTask").innerHTML = filteredTable;
                 document.getElementById("taskStatus").innerHTML = la + counts;
@@ -163,7 +161,7 @@
                     taskList[rowIdx].taskMark = "☐";
                 }
                 localStorage.setItem("taskList", JSON.stringify(taskList));
-                selectTask("all");
+                selectTask(currentTable);
             }
                 //<script src="resetToDo.js">
                 //localStorage.clear();																//**clear the local storage**
@@ -171,7 +169,7 @@
                 localStorage.clear();
                 taskList = [];
                 //console.log(taskList);
-                selectTask('all');
+                selectTask(currentTable);
             }
         </script>
 

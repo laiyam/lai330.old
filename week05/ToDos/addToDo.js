@@ -1,6 +1,6 @@
 //<script src="addToDo.js">
 var taskList = JSON.parse(localStorage.getItem("taskList"));
-
+var currentTable;
 
 //Add new task to ToDos Task
 function todo(taskMark, taskInput, delTask) {								//keywords refer reservation object
@@ -30,7 +30,7 @@ function addTask() {
         delTask = "✖";
         //allTask();
         //console.log(taskList);
-        selectTask('all');
+        selectTask(currentTable);
     }
 
 }

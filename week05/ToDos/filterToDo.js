@@ -45,16 +45,16 @@ function filterTask(st, la) {
 
             if (st == "all") {
                 r += "<td hidden>" + i + "</td>";
-                r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                r += "<td id='l" + i + "c0' class='check' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                 r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
-                r += "<td id='l" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                r += "<td id='l" + i + "c2' class='check' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
                 console.log(counts);
                 counts++;
             } else if (taskList[i].taskMark == st) {
                 r += "<td hidden>" + i + "</td>";
-                r += "<td id='l" + i + "c0' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
+                r += "<td id='l" + i + "c0' class='check' onclick = getval(this)>" + taskList[i].taskMark + "</td>";
                 r += "<td id='l" + i + "c1' " + crossMark + ">" + taskList[i].taskInput + "</td>";
-                r += "<td id='l" + i + "c2' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
+                r += "<td id='l" + i + "c2' class='check' onclick = getval(this)>" + taskList[i].delTask + "</td><tr>";
                 console.log(counts);
                 counts++;
             }
@@ -64,7 +64,7 @@ function filterTask(st, la) {
 
 
     var filteredTable = r;
-    //console.log(taskList);
+    currentTable = st;
     document.getElementById("fullTask").innerHTML = filteredTable;
     document.getElementById("taskStatus").innerHTML = la + counts;
 
@@ -85,5 +85,5 @@ function getval(cell) {
         taskList[rowIdx].taskMark = "☐";
     }
     localStorage.setItem("taskList", JSON.stringify(taskList));
-    selectTask("all");
+    selectTask(currentTable);
 }

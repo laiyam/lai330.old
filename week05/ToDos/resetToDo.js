@@ -2,5 +2,5 @@
 //localStorage.clear();																//**clear the local storage**
 function clearStg() {
     localStorage.clear();
-    selectTask('all');
+    selectTask(currentTable);
 }

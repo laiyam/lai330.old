@@ -16,14 +16,14 @@ h2, h3, h4, p	{
 }
 
 form {
-	height:350px;
-	font-size:15px;
+	height: 350px;
+
 }
 
 #fullTask {
 	border-collapse: collapse;
-	border: 1px solid black;
-	width: 350px;
+	font-size: 25px;
+	width: 100%;
 	background-color: white;
 }
 
@@ -41,8 +41,31 @@ form {
 
 #toDoDiv {
 	height: 280px;
-	width: 400px;
+	width: 50%;
 	overflow: scroll;
+	border: 3px solid black;
+}
+
+
+
+
+table, div {
+	margin: auto;
+}
+
+tr {
+	padding-left: 0px;
+	margin-left: 0px;
+	border-bottom: 1px solid black;
+	height: 20px;
+}
+
+td {
+	padding: 5px 5px 5px 12px;
+}
+
+.check {
+	font-size:30px;
 }
 
 #inputDiv {
@@ -63,26 +86,8 @@ form {
 }
 
 
-
-
-
-table, div {
-	margin: auto;
-}
-
-tr {
-
-	border: 1px solid black;
-	height: 20px;
-
-}
-
-td {
-	padding: 5px 5px 5px 12px;
-}
-
 button, label {
-	border-radius: 0px;
+	border-radius: 5px;
 	font-size: 14px;
 	margin: auto;
 }
