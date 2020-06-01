@@ -1,7 +1,6 @@
 //<script src="addToDo.js">
 var taskList = JSON.parse(localStorage.getItem("taskList"));
-//allTask();
-//selectTask('');
+
 
 //Add new task to ToDos Task
 function todo(taskMark, taskInput, delTask) {								//keywords refer reservation object
@@ -9,10 +8,6 @@ function todo(taskMark, taskInput, delTask) {								//keywords refer reservatio
     this.taskInput = taskInput;
     this.delTask = delTask;
 }
-
-//var taskMarkE; // = "☐"; //"&#9746"
-//var taskInputE; // = document.getElementById("taskInput").value;
-//var delTaskE; // = "✖";
 
 //add new task
 function addTask() {
@@ -34,8 +29,8 @@ function addTask() {
         taskInput.value = "";
         delTask = "✖";
         //allTask();
-        console.log(taskList);
-        selectTask('');
+        //console.log(taskList);
+        selectTask('all');
     }
 
 }
