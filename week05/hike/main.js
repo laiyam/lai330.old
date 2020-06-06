@@ -1,8 +1,5 @@
 //import Hikes from './hike.js';
 //on load grab the array and insert it into the page
-//const myHikes = new Hikes('hikes');
-
-
 /*const myHikes = new Hikes('hikes');
 window.addEventListener('load', () => {
     myHikes.showHikeList();
@@ -48,7 +45,7 @@ const hikeList = [
 ];
 
 //const imgBasePath = "images/";
-const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/"
+const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/";
 
 
 //on load grab the array and insert it into the page

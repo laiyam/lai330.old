@@ -42,7 +42,7 @@ export default {
 
 /*
 const imgBasePath = "img/";
-//const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/"
+//const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/";
 
 
 
