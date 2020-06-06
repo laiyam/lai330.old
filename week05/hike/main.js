@@ -45,7 +45,8 @@ const hikeList = [
 ];
 
 //const imgBasePath = "images/";
-const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/";
+const imgBasePath = '/images/';
+//const imgBasePath = '//byui-cit.github.io/cit261/examples/';
 
 
 //on load grab the array and insert it into the page
