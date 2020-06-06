@@ -58,7 +58,6 @@ function showHikeList(hikeId) {
     hikeListElement.innerHTML = "";
 	console.log(hikeId);
     renderHikeList(hikeId, hikeList, hikeListElement);
-	
 }
 
 function renderHikeList(hikeId, hikes, parent) {
