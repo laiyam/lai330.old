@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\css",
     "\\week05",
-    "\\week05\\ToDos"
+    "\\week05\\hike",
+    "\\week07",
+    "\\week07\\hike"
   ],
-  "SelectedNode": "\\week05\\ToDos\\allTodo.js",
+  "SelectedNode": "\\week05\\hike\\index.html",
   "PreviewInSolutionExplorer": false
 }

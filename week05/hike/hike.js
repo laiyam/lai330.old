@@ -31,12 +31,18 @@ const hikeList = [
         difficulty: "Difficult",
         description:
             "The hike is a total of 13-15 miles roundtrip with an elevation gain of approximately 4,400-4,900 feet depending on which trailhead you take. While most people tackle this trail in one long day, we decided to break it up into two.Our plan was to hike up the Timpooneke Trail to the Timpanogos Basin and spend a night camping below the peak.Then we would rise early the next day and hike to the summit for sunrise.",
-    directions:
-        "Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead."
+        directions:
+            "Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead."
   }
 ];
 
+export default {
+	hikeList
+}
+
+/*
 const imgBasePath = "img/";
+//const imgBasePath = "//laiyam.github.io/lai330/week05/hike/images/"
 
 
 
@@ -83,7 +89,7 @@ export default class Hikes {
   // in order to show the details of a hike ontouchend we will need to attach a listener AFTER the list of hikes has been built. The function below does that.
   addHikeListener() {
     // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
-    // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
+   
     const childrenArray = Array.from(this.parentElement.children);
     childrenArray.forEach(child => {
       child.addEventListener('touchend', e => {
@@ -107,25 +113,25 @@ export default class Hikes {
 // methods responsible for building HTML.  Why aren't these in the class?  They don't really need to be, and by moving them outside of the exported class, they cannot be called outside the module...they become private.
 function renderHikeList(parent, hikes) {
     hikes.forEach(hike => {
-    parent.appendChild(renderOneHikeLight(hike));
-  });
+        parent.appendChild(renderOneHikeLight(hike));
+    });
 }
 
 function renderOneHikeLight(hike) {
-  const item = document.createElement("li");
-  item.innerHTML = ` <h2>${hike.name}</h2>
-<div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-<div>
+    const item = document.createElement("li");
+    item.innerHTML = ` <h2>${hike.name}</h2>
+    <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
     <div>
-        <h3>Distance</h3>
-        <p>${hike.distance}</p>
-    </div>
-    <div>
-        <h3>Difficulty</h3>
-        <p>${hike.difficulty}</p>
-    </div>
-</div>`;
-  return item;
+        <div>
+            <h3>Distance</h3>
+            <p>${hike.distance}</p>
+        </div>
+        <div>
+            <h3>Difficulty</h3>
+            <p>${hike.difficulty}</p>
+        </div>
+    </div>`;
+    return item;
 }
 
 function renderOneHikeFull(hike) {
@@ -153,3 +159,4 @@ function renderOneHikeFull(hike) {
 
     `;
   return item;
+}*/

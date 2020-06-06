@@ -4,7 +4,7 @@ html, .main {
 	width:680px;
 }
 
-body	{
+body {
 	margin:auto;
 	font-size: 20px;
 }
@@ -27,3 +27,9 @@ table, th, td {
 	border: 1px solid black;
 	padding: 5px;
 	}
+
+.js {
+	color: blue;
+	font-family: arial;
+	font-size: 14px;
+}

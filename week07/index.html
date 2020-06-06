@@ -17,335 +17,997 @@
     <h1>WDD 330 Lai Yam Portfolio</h1>
     <h2>Week 07</h2>
     <ul>
-        <li>Week 7 Notes</li>
+        <li>
+            Week 7 Notes
+        </li>
         <ol>
             <b>Sitepoint Note: </b>
-            <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read">
-                Read Javascript:
-                Novice to Ninja
-            </a>
+            <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read"></a>
+            <dt>Read Javascript:</dt>
+            <dd>- Novice to Ninja</dd>
+            <dd>- Ch11, Ch13</dd></a>
         </ol>
-        <li>
+        <hr>
+        <ul>
             <b>Ch11: Further Functions</b>
-            <li>
-                Errors, Exceptions, and Warnings
+            <ul>
+                <h5>
+                    Function Properties and Methods
+                </h5>
+                <dt>
+                    All functions have a length property that
+                    returns the number of parameters the function has.
+                </dt>
                 <ul>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
+                    <dt>
+                        First-class objects means they can have properties and
+                        methods themselves.
+                    </dt>
+                    <dd class="js">
+                        function square(x) {<br>
+                        return x*x;<br>
+                        }
+                    </dd>
                 </ul>
-            </li>
-            <li>
-                Exceptions
+                <h5>
+                    Call and Apply Methods
+                </h5>
                 <ul>
+                    <dt>
+
+                        The call() method can be used to set the value of this inside a function to an
+                        object that is provided as the first argument.
+                    </dt>
+                    <dd class="js">
+                        function sayHello(){<br>
+                        return `Hello, my name is ${ this.name }`;<br>
+                        }
+                    </dd>
+                    <br>
                     <li>
-                        An exception is an error that produces a return value that can then be used by the
-                        program to deal with the error.
+                        Use the call() method to invoke the sayHello() function
                     </li>
+                    <dd class="js">
+                        const clark = { name: 'Clark' };<br>
+                        const bruce = { name: 'Bruce' };<br>
+                        sayHello.call(clark);<br>
+                        << 'Hello, my name is Clarke'<br>
+                        sayHello.call(bruce);<br>
+                        << 'Hello, my name is Bruce'
+                    </dd>
+                    <br>
+                    <dd class="js">
+                        function sayHello(greeting='Hello'){<br>
+                        return `${ greeting }, my name is ${ this.name }`;<br>
+                        }<br>
+                        sayHello.call(clark, 'How do you do');<br>
+                        << 'How do you do, my name is Clark'<br>
+                        sayHello.call(bruce);<br>
+                        << 'Hello, my name is Bruce'
+                    </dd>
+                    <br>
+                    <li>
+                        The call() method
+                    </li>
+                    <dd class="js">
+                        square.call(null, 4)<br>
+                        << 16
+                    </dd>
+                    <br>
+                    <li>
+                        The apply() method works in the same way, except the arguments of the
+                        function are provided as an array, even if there is only one argument:
+                    </li>
+                    <dd class="js">
+                        square.apply(null, [4])<br>
+                        << 16
+                    </dd>
+                    <br>
+
+                    <li>
+                        Custom Properties
+                    </li>
+                    <dt>
+                        Add a description property to a function:
+                    </dt>
+                    <dd class="js">
+                        square.description = 'Squares a number that is provided as an argument'<br>
+                        << 'Squares a number that is provided as an argument'
+                    </dd>
+                    <br>
+                    <li>
+                        Memoization
+                    </li>
+                    <dt>
+                        It provides result caching, or memoization
+                    </dt>
+                    <dt>
+                        Save the result in a cache property
+                    </dt>
+                    <dd class="js">
+                        function square(x){<br>
+                        square.cache = square.cache || {};<br>
+                        if (!square.cache[x]) {<br>
+                        square.cache[x] = x*x;<br>
+                        }<br>
+                        return square.cache[x]<br>
+                        }
+                    </dd>
+                    <br>
+                    <dd class="js">
+                        << 9<br>
+                        square(-11);<br>
+                        << 121<br>
+                        square.cache;<br>
+                        << {"3": 9, "-11": 121}
+                    </dd>
                 </ul>
-                
+
+                <h5>
+                    Immediately Invoked Function Expressions
+                </h5>
                 <ul>
-                    Stack Traces
+                    <dt>
+                        An Immediately Invoked Function Expression – or IIFE (pronounced “iffy”) – is
+                        an anonymous function that, as the name suggests, is invoked as soon as it’s
+                        defined.
+                    </dt>
+                    <dd class="js">
+                        (function(){<br>
+                        const temp = 'World';<br>
+                        console.log(`Hello ${temp}`);<br>
+                        })();<br>
+                        << 'Hello World'
+                    </dd>
+                    <br>
+                    <dt>
+                        IIFEs are a useful way of performing a task while keeping any variables wrapped
+                        up within the scope of the function. This means the global namespace is not
+                        polluted with lots of variable names.
+                    </dt>
                     <li>
-                        An exception is an error that produces a return value that can then be used by the
-                        program to deal with the error.
+                        Temporary Variables
                     </li>
+                    <dd class="js">
+                        const clark = { name: 'Clark' };<br>
+                        const bruce = { name: 'Bruce' };<br>
+                        sayHello.call(clark);<br>
+                        << 'Hello, my name is Clarke'<br>
+                        sayHello.call(bruce);<br>
+                        << 'Hello, my name is Bruce'
+                    </dd>
+                    <dt>
+                        Placing any code that uses the temporary variable inside an IIFE will ensure it’s
+                        only available while the IIFE is invoked, then it will disappear.
+                    </dt>
+                    <br>
+                    <dd class="js">
+                        let a = 1;<br>
+                        let b = 2;<br>
+                        (()=>{<br>
+                        Further Functions 391<br>
+                        const temp = a;<br>
+                        a = b;<br>
+                        b = temp;<br>
+                        })();<br>
+                        a;<br>
+                        << 2<br>
+                        b;<br>
+                        << 1<br>
+                        console.log(temp);<br>
+                        << Error: "temp is not defined"
+                    </dd>
+                    <br>
+                    <li>
+                        Initialization Code
+                    </li>
+                    <dt>
+                        An IIFE can be used to set up any initialization code that there’ll be no need for
+                        again. Because the code is only run once, there’s no need to create any reusable,
+                        named functions, and all the variables will also be temporary. An IIFE will be
+                        invoked once, and can set up any variables, objects and event handlers when the
+                        page loads.
+                    </dt>
+                    <dd class="js">
+                        (function() {<br>
+                        const name = 'Peter Parker'; // This might be obtained from a cookie in reality<br>
+                        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];<br>
+                        const date = new Date(),today = days[date.getDay()];<br>
+                        console.log(`Welcome back ${name}. Today is ${today}`);<br>
+                        })();<br>
+                        << 'Welcome back Peter Parker. Today is Tuesday'
+                    </dd>
+                    <br>
+                    <li>
+                        Safe Use of Strict Mode
+                    </li>
+                    <dt>
+                        To use strict mode is to place all your code
+                        inside an IIFE
+                    </dt>
+                    <dd class="js">
+                        (function() {<br>
+                        'use strict';<br>
+                        // All your code would go inside this function<br>
+                        })();
+                    </dd>
+                    <br>
+                    <dt>
+                        This ensures that only your code inside the IIFE is forced to use strict mode.
+                    </dt>
+                    <li>
+                        Creating Self-contained Code Blocks
+                    </li>
+                    <dt>
+                        An IIFE can be used to enclose a block of code inside its own private scope so it
+                        doesn’t interfere with any other part of the program. Using IIFEs in this way
+                        means code can be added or removed separately.
+                    </dt>
+                    <dd class="js">
+                        (function() {<br>
+                        // block A<br>
+                        const name = 'Block A';<br>
+                        console.log(`Hello from ${name}`);<br>
+                        }());<br>
+                        (function() {<br>
+                        // block B<br>
+                        const name = 'Block B';<br>
+                        console.log(`Hello from ${name}`);<br>
+                        }());<br>
+                        << Hello from Block A<br>
+                        Hello from Block B
+                    </dd>
                 </ul>
-            </li>
-            <li>
-                Stack Traces
+
+                <h5>
+                    Functions that Define and Rewrite Themselves
+                </h5>
                 <ul>
-                    <li>
-                        A stack trace will work
-                        backwards from the point at which the error occurred to identify the original
-                        function or method that started the sequence.
-                    </li>
-                    <li>
-                        The stacks trace to work backwards and see that this error was caused by invoking the
-                        function one() in the first place.
-                    </li>
+                    <dt>
+                        The dynamic nature of JavaScript means that a function is able to not only call
+                        itself, but define itself, and even redefine itself.
+                    </dt>
+                    <dd class="js">
+                        function party(){<br>
+                        console.log('Wow this is amazing!');<br>
+                        party = function(){<br>
+                        console.log('Been there, got the T-Shirt');<br>
+                        }<br>
+                        }
+                    </dd>
+                </ur>
+
+                    <h5>
+                        Recursive Functions
+                    </h5>
+                    <ur>
+                        <dt>
+                            A recursive function is one that invokes itself until a certain condition is met.
+                        </dt>
+
+                        <dd class="js">
+                            function factorial(n) {<br>
+                            if (n === 0) {<br>
+                            return 1;<br>
+                            } else {<br>
+                            return n * factorial(n - 1);<br>
+                            }<br>
+                            }
+                        </dd>
+                        <br>
+
                 </ul>
-            </li>
-            <li>
-                Warnings
+
+                <h5>
+                    Callbacks
+                </h5>
                 <ul>
+                    <dt>
+                        Functions passed to
+                        other functions as arguments and then invoked inside the function they are
+                        passed to.
+                    </dt>
                     <li>
-                        A warning can occur if there’s an error in the code that isn’t enough to cause the
-                        program to crash. This means the program will continue to run after a warning.
-                        This might sound good, but it can be problematic.
+                        Event-driven Asynchronous Programming
                     </li>
+                    <dt>
+                        Callbacks can be used to facilitate event-driven asynchronous programming.
+                        JavaScript is a single-threaded environment, which means only one piece of code
+                        will ever be processed at a time.
+                        Instead of waiting for an event to occur, a callback can be created that’s invoked
+                        when the event happens. This means that the code is able to run out of order, or
+                        asynchronously. By using callbacks, we ensure that waiting for these tasks to complete
+                        doesn’t hold up the execution of other parts of the program. Once the task has
+                        been completed, the callback will be invoked before returning to the rest of the
+                        program.
+                    </dt>
+                    <dt>
+                        A function called wait() that accepts a callback. To simulate
+                        an operation that takes some time to happen, we can use the setTimeout()
+                        function to call the callback after a given number of seconds:
+                    </dt>
+                    <dd class="js">
+                        function wait(message, callback, seconds){<br>
+                        setTimeout(callback,seconds * 1000);<br>
+                        console.log(message);<br>
+                        }
+                    </dd>
+                    <br>
+
+                    <li>
+                        Callback Hell
+                    </li>
+
+                    <dt>
+                        Callback hell is the term used to refer to this tangled mess of code.
+                    </dt>
+                    <dd class="js">
+                        login(userName, function(error,user) {<br>
+                        if(error){<br>
+                        throw error;<br>
+                        } else {<br>
+                        getPlayerInfo(user.id, function(error,info){<br>
+                        if(error){<br>
+                        throw error;<br>
+                        } else {<br>
+                        loadGame(info, function(error,game) {<br>
+                        if(error){<br>
+                        throw error;<br>
+                        } else {<br>
+                        // code to run game<br>
+                        }<br>
+                        });<br>
+                        }<br>
+                        });<br>
+                        }<br>
+                        });
+                    </dd>
+                    <br>
+                    <li>
+                        Promises
+                    </li>
+                    <dt>
+                        A promise represents the future result of an asynchronous operation. Promises
+                        don’t do anything that can’t already be achieved using callbacks, but they help
+                        simplify the process, and avoid the convoluted code that can result from using
+                        multiple callbacks.
+                    </dt>
+                    <li>
+                        The Promise Life Cycle
+                    </li>
+                    <dt>
+                        When a promise is created, it calls an asynchronous operation and is then said to
+                        be pending. It remains in this state while the operation is taking place. At this
+                        stage, the promise is said to be unsettled. Once the operation has completed, the
+                        promise is said to have been settled. A settled promise can result in two different
+                        outcomes:
+                    </dt>
+                    <dd>
+                        Resolved ― the asynchronous operation was completed successfully.
+                    </dd>
+                    <dd>
+                        Rejected ― the asynchronous operation didn’t work as expected, wasn’t
+                        successfully completed or resulted in an error.
+                    </dd>
+                    <li>
+                        A Super Promise
+                    </li>
+                    <dt>
+                        Once the promise is settled, you deal with the results in an appropriate way
+                    </dt>
+                    <li>
+                        Creating A Promise
+                    </li>
+                    <dt>
+                        A promise is created using a constructor function. This takes a function called an
+                        executor as an argument. The executor initializes the promise and starts the
+                        asynchronous operation. It also accepts two functions as arguments: the
+                        resolve() function is called if the operation is successful, and the reject()
+                        function is called if the operation fails.
+                    </dt>
+                    <dd class="js">
+                        const promise = new Promise( (resolve, reject) => {<br>
+                        // initialization code goes here<br>
+                        if (success) {<br>
+                        resolve(value);<br>
+                        } else {<br>
+                        reject(error);<br>
+                        }<br>
+                        });
+                    </dd>
+                    <br>
+                    <li>
+                        A Dicey Example
+                    </li>
+                    <dd class="js">
+                        const dice = {<br>
+                        sides: 6,<br>
+                        roll() {<br>
+                        return Math.floor(this.sides * Math.random()) + 1;<br>
+                        3. http://kosamari.com/notes/the-promise-of-a-burger-party<br>
+                        406 JavaScript: Novice to Ninja, 2nd Edition<br>
+                        }<br>
+                        }
+                    </dd>
+                    <br>
+                    <li>
+                        Dealing With A Settled Promise
+                    </li>
+                    <dt>
+                        Once a promise has been settled, the then() method can be used to deal with the
+                        outcome. This method accepts two arguments. The first is a fulfilment function
+                        that’s called when the promise is resolved.
+                    </dt>
+                    <dd class="js">
+                        promise.then( result => console.log(`Yes! I rolled a <br>
+                        ${result}`), result => console.log(`Drat! ... I rolled a<br>
+                        ${result}`) );
+                    </dd>
+                    <br>
+                    <dt>
+                        A catch() method can be used to specify what to do if the
+                        operation fails instead:
+                    </dt>
+                    <dd class="js">
+                        promise.catch( result => console.log(`Drat! ... I rolled<br>
+                        a ${result}`));
+                    </dd>
+                    <br>
+                    <dt>
+                        The then() and catch() methods can be chained together to form a succinct
+                        description of how to deal with the outcome of the promise:
+                    </dt>
+                    <dd class="js">
+                        promise.then( result => console.log(`I rolled a ${result}`) )<br>
+                        .catch( result => console.log(`Drat! ... I rolled a ${result}`) );
+                    </dd>
+                    <br>
+                    <li>
+                        Chaining Multiple Promises
+                    </li>
+                    <dt>
+                        If each function that performs an asynchronous
+                        operation returns a promise, we can chain the then() methods together to form a
+                        sequential piece of code that’s easy to read. Each promise will only begin once
+                        the previous promise has been settled.
+                    </dt>
+                    <li>
+                        Async Functions
+                    </li>
+                    <dt>
+                        These functions are
+                        preceded by the async keyword and allow you to write asynchronous code as if it
+                        was synchronous. This is achieved by using the await operator before an
+                        asynchronous function.
+                    </dt>
+                    <dd class="js">
+                        async function loadGame(userName) {<br>
+                        try {<br>
+                        410 JavaScript: Novice to Ninja, 2nd Edition<br>
+                        const user = await login(userName);<br>
+                        const info = await getPlayerInfo (user.id);<br>
+                        // load the game using the returned info<br>
+                        }<br>
+                        catch (error){<br>
+                        throw error;<br>
+                        }<br>
+                        }
+                    </dd>
+                    <br>
+                    <li>
+                        Generalized Functions
+                    </li>
+                    <dt>
+                        Callbacks can be used to build more generalized functions. Instead of having lots
+                        of specific functions, one function can be written that accepts a callback.
+                    </dt>
+                    <li>
+                        Functions That Return Functions
+                    </li>
+                    <dt>
+                        Functions can accept another function as an argument (a
+                        callback), but they can also return a function.
+                    </dt>
                 </ul>
-            </li>
-            <li>
-                The Importance of Testing and Debugging
+
+                <h5>
+                    Closures
+                </h5>
                 <ul>
+                    <dt>
+                        Closures are one of JavaScript’s most powerful features, but they can be difficult
+                        to get your head around initially.
+                    </dt>
                     <li>
-                        JavaScript implements exceptions at all until ECMAScript version 3.
+                        Returning Functions
                     </li>
+                    <dt>
+                        A closure is formed when the inner function is returned by the outer function,
+                        maintaining access to any variables declared inside the enclosing function.
+                    </dt>
+
                     <li>
-                        The stacks trace to work backwards and see that this error was caused by invoking the function one() in the first place.
+                        A Practical Example
                     </li>
+
+                    <dd class="js">
+                        function closure() {<br>
+                        const a = 1.8;<br>
+                        const b = 32;<br>
+                        return c => c * a + b;<br>
+                        }
+                    </dd>
+                    <br>
                     <li>
-                        A programmer should try to make the code fail gracefully.
+                        A Counter Example
                     </li>
+                    <dd class="js">
+                        function counter(start){<br>
+                        let i = start;<br>
+                        return function() {<br>
+                        return i++;<br>
+                        }<br>
+                        }
+                    </dd>
                 </ul>
-            </li>
-            <li>
-                Strict Mode
+
+                <h5>
+                    Functional Programming
+                </h5>
                 <ul>
+                    <dt>
+                        Functional programming is a programming paradigm. Other examples of
+                        programming paradigms include object oriented programming and procedural
+                        programming.
+                    </dt>
                     <li>
-                        ECMAScript 5 introduced a strict mode that produces more exceptions and warnings and prohibits the use of some deprecated features.
+                        Pure Functions
                     </li>
+                    <dt>
+                        A pure
+                        function is a function that adheres to the following rules:
+                    </dt>
+                    <ol>
+                        <li>
+                            The return value of a pure function should only depend on the values
+                            provided as arguments.
+                        </li>
+                        <li>
+                            There are no side-effects.
+                        </li>
+                        <li>
+                            Referential transparency.
+                        </li>
+                    </ol>
                     <li>
-                        Strict mode encourages a better quality of JavaScript to be written that befits a ninja programmer.
+                        Higher-Order Functions
                     </li>
+                    <dt>
+                        Higher-order functions are functions that accept another function as an argument,
+                        or return another function as a result, or both.
+                    </dt>
                     <li>
-                        Strict mode simply requires the following string to be added to the first line of a JavaScript file:
+                        Currying
                     </li>
-                    <li>
-                        'use strict';
-                    </li>
+                    <dt>
+                        A function is said to be curried when not all arguments have been supplied to the
+                        function, so it returns another function that retains the arguments already
+                        provided, and expects the remaining arguments that were omitted when the
+                        original function was called. A final result is only returned once all the expected
+                        arguments have eventually been provided.<br>
+                        Currying relies on higher-order functions that are able to return partially applied
+                        functions. All curried functions are higher-order functions because they return a
+                        function, but not all higher-order functions are curried.
+                    </dt>
+                    <dd class="js">
+                        function multiplier(x,y) {<br>
+                        if (y === undefined) {<br>
+                        return function(z) {<br>
+                        return x * z;<br>
+                        }<br>
+                        } else {<br>
+                        return x * y;<br>
+                        }<<br>
+                        }
+                    </dd>
+                    <br>
                 </ul>
-            </li>
-            <li>
-                Linting Tools
+                <hr>
+            </ul>
+            <ul>
+                <b>Ch13: Ajax</b>
+                <h5>
+                    Ajax
+                </h5>
                 <ul>
-                    <li>
-                        Linting tools are also useful for enforcing a programming style guide.
-                    </li>
+                    <dt>
+                        Ajax is a technique that allows web pages to communicate asynchronously with a
+                        server, and it dynamically updates web pages without reloading. This enables
+                        data to be sent and received in the background, as well as portions of a page to be
+                        updated in response to user events, while the rest of the program continues to
+                        run.
+                    </dt>
                 </ul>
-            </li>
-            <li>
-                Feature Detection
+                <h5>
+                    Clients and Servers
+                </h5>
                 <ul>
+                    <dt>
+                        A client, such as a web browser, will request a resource
+                        (usually a web page) from a server, which processes the request and sends back a
+                        response to the client.
+                    </dt>
+                    <dt>
+                        Ajax allows JavaScript to request resources from a
+                        server on behalf of the client. The resources requested are usually JSON data or
+                        small fragments of text or HTML rather than a whole web page.
+                    </dt>
+                    <dt>
+                        Cross-origin resource sharing (CORS)1 is a solution to this problem as it allows
+                        resources to be requested from another website outside the original domain. The
+                        CORS standard works by using HTTP headers to indicate which domains can
+                        receive data.
+                    </dt>
                     <li>
-                        The recommended way to determine browser support for a feature is to use
-                        feature detection. This is done using an if statement to check whether an
-                        object or method exists before trying to actually call the method.
+                        APIs
                     </li>
-                    <li>
-                        browser
-                        sniffing. This involves using the string returned by window.navigator.userAgent
-                        property
-                    </li>
+                    <dt>
+                        An application programming interface (API) is a collection of methods that allows
+                        external access to another program or service.
+                    </dt>
                 </ul>
-            </li>
-            <li>
-                Debugging in the Browser
+                <h5>
+                    The Fetch API
+                </h5>
                 <ul>
+                    <dt>
+                        The XMLHttpRequest object was finally standardized by the WHATWG and W3C
+                        as part of the HTML5 specification.
+                    </dt>
                     <li>
-                        Debugging is the process of finding out where bugs occur in the code and then
-                        dealing with them.
+                        Basic Usage
                     </li>
+                    <dd class="js">
+                        fetch('https://example.com/data')<br>
+                        .then( // code that handles the response )<br>
+                        .catch( // code that runs if the server returns an error )
+                    </dd>
+                    <br>
+
+                    <il>
+                    Response Interface
+                    </il>
+                    <dt>
+                        The Fetch API introduced the Response interface that deals with the object that’s
+                        returned when the promise is fulfilled. Response objects have a number of
+                        properties and methods that allow us to process the response effectively.
+                    </dt>
+                    <dd class="js">
+                        const url = 'https:example.com/data';<br>
+                        fetch(url)<br>
+                        .then((response) => {<br>
+                        if(response.ok) {<br>
+                        return response;<br>
+                        }<br>
+                        throw Error(response.statusText);<br>
+                        })<br>
+                        .then( response => // do something with response )<br>
+                        .catch( error => console.log('There was an error!') )
+                    </dd>
+                    <br>
+                    <li>
+                        Use the call() method to invoke the sayHello() function
+                    </li>
+                    <dd class="js">
+                        const clark = { name: 'Clark' };<br>
+                        const bruce = { name: 'Bruce' };<br>
+                        sayHello.call(clark);<br>
+                        << 'Hello, my name is Clarke'<br>
+                        sayHello.call(bruce);<br>
+                        << 'Hello, my name is Bruce'
+                    </dd>
+                    <br>
+
+                    <dt>
+                        Notice that the error thrown refers to the statusText property of the response
+                        object and specifies the status message that corresponds to the code returned, for
+                        example it might be “Forbidden” for a status code of 403.
+                    </dt>
+                    <dt>
+                        Save the result in a cache property
+                    </dt>
+                    <dd>
+                        headers – A Headers object (see later section) containing any headers
+                        associated with the response
+                    </dd>
+                    <dd>
+                        url – A string containing the URL of response
+                    </dd>
+                    <dd>
+                        redirected – A boolean value that specifies if the response is the result of a
+                        redirect
+                    </dd>
+                    <dd>
+                        type – A string value of “basic”, “cors”, “error” or “opaque”. A value of
+                        “basic” is used for a response from the same domain. A
+                    </dd>
+                    <li>
+                        Redirects
+                    </li>
+                    <dt>
+                        The redirect() method can be used to redirect to another URL. It creates a new
+                        promise that resolves to the response from the redirected URL.
+                    </dt>
+
+                    <li>
+                        Text Responses
+                    </li>
+                    <dt>
+                        The text() method takes a stream of text from the response, reads it to
+                        completion and then returns a promise that resolves to a USVSting object that can
+                        be treated as a string in JavaScript.
+                    </dt>
+                    <dd class="js">
+                        fetch(url)<br>
+                        .then( response => response.text() ); // transforms the text stream into a JavaScript string<br>
+                        .then( text => console.log(text) )<br>
+                        .catch( error => console.log('There was an error: ', error))
+                    </dd>
+                    <br>
+                    <li>
+                        File Responses
+                    </li>
+                    <dt>
+                        The blob() method is used to read a file of raw data, such as an image or a
+                        spreadsheet.
+                    </dt>
+                    <dd class="js">
+                        fetch(url)<br>
+                        Ajax 513<br>
+                        .then( response => response.blob() ); // transforms the data into a blob object<br>
+                        .then( blob => console.log(blob.type) )<br>
+                        .catch( error => console.log('There was an error: ', error))
+                    </dd>
+                    <br>
+                    <li>
+                        JSON Responses
+                    </li>
+                    <dt>
+                        JSON is probably the most common format for AJAX responses. The json()
+                        method is used to deal with these by transforming a stream of JSON data into a
+                        promise that resolves to a JavaScript object.
+                    </dt>
+                    <dd class="js">
+                        fetch(url)<br>
+                        .then( response => response.json() ); // transforms the JSON data into a JavaScript object<br>
+                        .then( data => console.log(Object.entries(data)) )<br>
+                        .catch( error => console.log('There was an error: ', error))
+                    </dd>
+                    <br>
+                    <li>
+                        Creating Response Objects
+                    </li>
+                    <dd class="js">
+                        const response = new Response( 'Hello!', {<br>
+                        ok: true,<br>
+                        status: 200,<br>
+                        statusText: 'OK',<br>
+                        type: 'cors',<br>
+                        url: '/api'<br>
+                        });
+                    </dd>
+                    <br>
+                    <li>
+                        Request Interface
+                    </li>
+                    <ul>
+                        <li>
+                            url – The URL of the requested resource (the only property that is required).
+                        </li>
+                        <li>
+                            method – a string that specifies which HTTP method should be used for the
+                            request. By default, this is GET.
+                        </li>
+                        <li>
+                            headers – This is a Headers object (see later section) that provides details of
+                            the request’s headers.
+                        </li>
+                        <li>
+                            mode – Allows you to specify if CORS is used or not. CORS is enabled by
+                            default.
+                        </li>
+                        <li>
+                            cache – Allows you to specify how the request will use the browser’s cache.
+                            For example, you can force it to request a resource and update the cache with
+                            the result, or you can force it to only look in the cache for the resource.
+                        </li>
+                        <li>
+                            credentials – Lets you specify if cookies should be allowed with the request.
+                            Ajax 515
+                        <li>
+                            redirect – Specifies what to do if the response returns a redirect. There’s
+                        </li>
+                    </ul>
+                    <li>
+                        Hypertext Transfer Protocol
+                    </li>
+                    <ul>
+                        <li>
+                            GET requests to retrieve resources
+                        </li>
+                        <li>
+                            POST requests, usually used to create a resource but can actually perform any
+                            task
+                        </li>
+                        <li>
+                            PUT requests to upsert, which means insert a resource or update it entirely
+                        </li>
+                        <li>
+                            PATCH requests to make partial updates to a resource
+                            DELETE requests to delete a resources.
+                        </li>
+                        <dd class="js">
+                            const request = new Request('https://example.com/data', {<br>
+                            method: 'GET',<br>
+                            mode: 'cors',<br>
+                            redirect: 'follow',<br>
+                            cache: 'no-cache'<br>
+                            });
+                        </dd>
+                        <br>
+                        <dt>
+                            The Request object is assigned to a variable, it can then be used as the
+                            parameter of the fetch() method:
+                        </dt>
+                        <dd class="js">
+                            fetch(request)<br>
+                            .then( // do something with the response )<br>
+                            .catch( // handle any errors)
+                        </dd>
+                        <br>
+                        <dt>
+                            Enter the URL and object directly as arguments of the
+                            fetch() method, without having to create a Request object:
+                        </dt>
+                        <dd class="js">
+                            fetch('https://example.com/data', {<br>
+                            method: 'GET',<br>
+                            mode: 'cors',<br>
+                            redirect: 'follow',<br>
+                            cache: 'no-cache'<br>
+                            })<br>
+                            .then( // do something with the response )<br>
+                            .catch( // handle any errors)
+                        </dd>
+                    </ul>
+                    <li>
+                        Headers Interface
+                    </li>
+                    <dt>
+                        HTTP headers are used to pass on any additional information about a request or
+                        response. Typical information contained in headers includes the file-type of the
+                        resource, cookie information, authentication information and when the resource
+                        was last modified.<br>
+                        The Fetch API introduced a Headers interface, which can be used to create a
+                        Headers object, which can then be added as a property of Request and Response
+                        objects.
+                    </dt>
+                    <dd class="js">
+                        const headers = new Headers();
+                    </dd>
+                    <br>
+                    <dd class="js">
+                        const headers = new Headers({ 'Content-Type': 'text/plain',<br>
+                        'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate'<br>
+                        })
+                    </dd>
+                    <br>
                 </ul>
-            </li>
-            <li>
-                The Trusty Alert
+                <h5>
+                    Receiving Information
+                </h5>
                 <ul>
-                    <li>
-                        The most basic form of debugging is to use the alert() method to show a dialog
-                        at certain points in the code.
-                    </li>
-                    <li>
-					alert() stops a program from running until
-                    OK is clicked, it allows us to effectively put breakpoints in the code that let us
-                    check the value of variables at that point to see if they’re what we expect them to
-                    be.
-                    </li>
+                <li>
+                    The Chuck Norris Fact button:
+                </li>
+                <dd class="js">
+                    apiButton.addEventListener('click', () => {<br>
+                    fetch(apiURL)<br>
+                    .then( response => {<br>
+                    outputDiv.innerHTML = 'Waiting for response...';<br>
+                    if(response.ok) {<br>
+                    return response;<br>
+                    }<br>
+                    throw Error(response.statusText);<br>
+                    })<br>
+                    .then( response => response.json() )<br>
+                    .then( data => outputDiv.innerText = data.value )<br>
+                    .catch( error => console.log('There was an error:',<br>
+                    Ajax 523 error))<br>
+                    },false);
+                </dd>
+                <br>
                 </ul>
-            </li>
-            <li>
-                Using the Console
+                <h5>
+                    Sending Information
+                </h5>
                 <ul>
-                    <li>
-                        Most modern JavaScript environments have a console object that provides a
-                        360 JavaScript: Novice to Ninja, 2nd Edition
-                        number of methods for logging information and debugging.
-                    </li>
-                    <li>
-                        The console.log() method can be used to
-                        log the value of variables at different stages of the program
-                    </li>
+                <dd class="js">
+                    const form = document.forms['todo'];<br>
+                    form.addEventListener('submit', addTask, false);<br>
+                    function addTask(event) {<br>
+                    event.preventDefault();<br>
+                    const number = form.task.value;<br>
+                    const task = {<br>
+                    userId: 1,<br>
+                    title: form.task.value,<br>
+                    completed: false<br>
+                    }<br>
+                    const data = JSON.stringify(task);<br>
+                    const url = 'https://jsonplaceholder.typicode.com/todos';<br>
+                    const headers = new Headers({<br>
+                    'Accept': 'application/json',<br>
+                    'Content-Type': 'application/json'<br>
+                    });<br>
+                    const request = new Request(url,<br>
+                    {<br>
+                    method: 'POST',<br>
+                    header: headers,<br>
+                    body: data<br>
+                    }<br>
+                    )<br>
+                    fetch(request)<br>
+                    .then( response => response.json() )<br>
+                    .then( task => console.log(`Task saved with an id of<br>
+                    526 JavaScript: Novice to Ninja, 2nd Edition ${task.id}`) )<br>
+                    .catch( error => console.log('There was an error:', error))<br>
+                    }
+                </dd>
+                <br>
                 </ul>
-            </li>
-            <li>
-                Debugging Tools
+                <h5>
+                    FormData
+                </h5>
                 <ul>
-                    <li>
-                        Most modern browsers also have a debugging tool that allows you to set
-                        breakpoints in your code that will pause it at certain points.
-                    </li>
-                    <li>
-                        One of the most useful commands is the debugger keyword.
-                    </li>
-                    <li>
-                        Remove Debugging Code Prior to Shipping
-                    </li>
+                <dd class="js">
+                    const form = document.forms['todo'];<br>
+                    form.addEventListener('submit', addTask, false);<br>
+                    function addTask(event) {<br>
+                    event.preventDefault();<br>
+                    const task = new FormData(form);<br>
+                    const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;<br>
+                    const headers = new Headers({<br>
+                    'Accept': 'application/json',<br>
+                    'Content-Type': 'application/json'<br>
+                    });<br>
+                    const request = new Request(url,<br>
+                    {<br>
+                    method: 'POST',<br>
+                    mode: 'cors',<br>
+                    header: headers,<br>
+                    body: JSON.stringify(task)<br>
+                    }<br>
+                    )<br>
+                    fetch(request)<br>
+                    .then( response => response.json() )<br>
+                    .then( data => console.log(`${data.title} saved with an id of ${data.id}`) )<br>
+                    .catch( error => console.log('There was an error:', error))<br>
+                    }
+                </dd>
+                <br>
                 </ul>
-            </li>
-            <li>
-                Error Objects
+                <h5>
+                    A Living Standard
+                </h5>
                 <ul>
-                    <li>
-                        const error = new Error();
-                    </li>
-                    <li>
-                        EvalError is not used in the current ECMAScript specification and only
-                        retained for backwards compatibility. It was used to identify errors when
-                        using the global eval() function.
-                    </li>
-                    <li>
-                        RangeError is thrown when a number is outside an allowable range of values.
-                    </li>
-                    <li>
-                        ReferenceError is thrown when a reference is made to an item that doesn’t
-                        exist. For example, calling a function that hasn’t been defined.
-                    </li>
-                    <li>
-                        SyntaxError is thrown when there’s an error in the code’s syntax.
-                    </li>
-                    <li>
-                        TypeError is thrown when there’s an error in the type of value used; for
-                        example, a string is used when a number is expected.
-                    </li>
-                    <li>
-                        URIError is thrown when there’s a problem encoding or decoding the URI.
-                    </li>
-                    <li>
-                        InternalError is a non-standard error that is thrown when an error occurs in
-                        the JavaScript engine.
-                    </li>
-                    <li>
-                        The name property returns the name of the error constructor function used as a
-                        string, such as “Error” or “ReferenceError”.
-                    </li>
-                    <li>
-                        The message property returns a description of the error and should be
-                        provided as an argument to the Error constructor function.
-                    </li>
-                    <li>
-                        The stack property will return a stack trace for that error.
-                    </li>
-                    <li>
-                        Throwing Exceptions
-                    </li>
-                    <li>
-                        <ul>
-                            <li>
-                                It’s possible to throw your own exceptions using the
-                                364 JavaScript: Novice to Ninja, 2nd Edition
-                                throw statement.
-                            </li>
-                            <li>
-                                To throw an error object. This can then be caught in a
-                                catch block.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Exception Handling
-                        <ul>
-                            <li>
-                                When an exception occurs, the program terminates with an error message.
-                            </li>
-                            try, catch, and finally
-                            <li>
-                                The code inside the catch block will only run if an exception is thrown inside
-                                the try block. The error object is automatically passed as a parameter to the
-                                366 JavaScript: Novice to Ninja, 2nd Edition
-                                catch block.
-                            </li> 
-                            <li>
-                                actually return a string representation of an imaginary number
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Tests
-                        <ul>
-                            <li>
-                                A test can simply be a function that tests a piece of code runs as it should.
-                            </li>
-                            <li>
-                                The squareRoot() function that we wrote earlier returns the correct answer
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Test-driven Development
-                        <ul>
-                            <li>
-                                Test-driven development(TDD) is the process of writing tests before any actual code.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Exception Handling
-                    </li>
-                    <li>
-                        The code is continually tested at each stage to make sure it continues to work. This process
-                        should be followed in small piecemeal chunks every time a new feature is
-                        implemented, resulting in the following workflow:
-                        <ol>
-                            <li>
-                                Write tests (that initially fail)
-                            </li>
-                            <li>
-                                Write code to pass the tests
-                            </li>
-                            <li>
-                                Refactor the code
-                            </li>
-                            <li>
-                                Test refactored code
-                            </li>
-                            <li>
-                                Write more tests for new features
-                            </li>
-                        </ol>
-                    </li>
-                </ul>
-            <li>
-                Testing Frameworks
-                <ul>
-                    <li>
-                        Testing frameworks provide a structure to write meaningful tests and then run them.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    Jest
-                    <li>
-                        npm install -g jest
-                    </li>
-                    <li>
-                        Jest11 is a TDD framework, created by Facebook, that has gained a lot of
-                        popularity recently. It makes it easy to create and run tests by providing helper
-                        methods for common test assertions.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Crunching Some Numbers
-                <ul>
-                    <li>
-                        “Number Cruncher” that will contain some functions that operate on numbers.
-                    </li>
-                    Use of toEqual() -- he toEqual() match in this test. This is because we are testing an
-                    array
-                    <li>
-                        (see examples in page. 372)
-                    </li>
-                </ul>
-            </li>
-        </li>
+                <dt>
+                    The Fetch API is, at the time of writing, what is known as a “living standard”,
+                    which means that the specification is being developed in the wild .
+                </dt>
+            </ul>
+            </ul>
+            <hr>
+        </ul>
     </ul>
 </body>
 </html>
