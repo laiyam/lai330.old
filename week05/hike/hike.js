@@ -2,8 +2,8 @@
 const hikeList = [
   {
       name: "Alpine Lookout",
-  //imgSrc: "Alpine.jpg",
-  imgSrc: "falls.jpg",
+      //imgSrc: "Alpine.jpg",
+      imgSrc: "falls.jpg",
       imgAlt: "Alpine Lookout Hudson River",
       distance: "4.8 miles",
       difficulty: "Moderate",
@@ -14,8 +14,8 @@ const hikeList = [
   },
   {
       name: "Prospect Park Trail",
-  //imgSrc: "Prospect Park.jpg",
-  imgSrc: "falls.jpg",
+      //imgSrc: "Prospect Park.jpg",
+      imgSrc: "falls.jpg",
       imgAlt: "Prospect Park Lake",
       distance: "1.5 miles",
       difficulty: "Easy",
@@ -25,8 +25,8 @@ const hikeList = [
   },
   {
       name: "Mt Timpanogos Hike",
-  //imgSrc: "Timpanogos.jpg",
-  imgSrc: "falls.jpg",
+      //imgSrc: "Timpanogos.jpg",
+      imgSrc: "falls.jpg",
       imgAlt: "Timpanogos Tail",
       distance: "14 miles miles",
       difficulty: "Difficult",
@@ -37,6 +37,8 @@ const hikeList = [
 }
 ];
 
+
+/*
 //const imgBasePath = "images/";
 //const imgBasePath = '//laiyam.github.io/lai330/week05/hike/images/';
 const imgBasePath = '//byui-cit.github.io/cit261/examples/';
@@ -129,3 +131,5 @@ export default {
   renderOneHike,
   renderOneHikeFull
 }
+
+*/
