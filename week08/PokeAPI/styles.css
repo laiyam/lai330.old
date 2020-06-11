@@ -1,0 +1,30 @@
+.container {
+	width: 20%;
+}
+
+.btn {
+	float: right;
+}
+
+li > span {
+	font-size: 15px;
+	font-weight: bolder;
+	text-transform: capitalize;
+}
+
+ul > li > div > div {
+	float: right;
+	clear:both;
+}
+
+/* ul > li > div {
+	display: block;
+} */
+
+ul > div > li{
+	height: auto;
+}
+
+#pokemonPreBtn {
+	display:none;
+}
