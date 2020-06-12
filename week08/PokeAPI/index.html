@@ -20,15 +20,38 @@
             <h2>Pokemon List</h2>
             <ul id="pokemonList" class="list-group">
             </ul>
+            <button id="startBtn" class="btn-default btn-lg" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon')">List Pokemon</button>
             
-            <button id="pokemonNextBtn" class="btn-default btn-lg" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon')">List Pokemon</button>
-            <button id="pokemonPreBtn" class="btn-default btn-lg" ontouchend="getPokemon('')" onclick="getPokemon('')">Prev</button>
+            <ul class="pagination">
+                <li class="page-item"><a id="pokemonPreBtn" style="display:block" class="page-link" ontouchend="getPokemon('')" onclick="getPokemon('')">Previous</a></li>
+                <li class="page-item"><a class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')">1</a></li>
+                <li class="page-item"><a class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20')">2</a></li>
+                <li class="page-item"><a class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')">3</a></li>
+                <li class="page-item"><a class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=80&limit=20')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=80&limit=20')">4</a></li>
+                <li class="page-item"><a class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=100&limit=20')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?offset=100&limit=20')">5</a></li>
+                <li class="page-item"><a id="pokemonNextBtn" class="page-link" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon')">Next</a></li>
+              </ul>
+            
+              <!-- <button id="pokemonNextBtn" class="btn-default btn-lg" ontouchend="getPokemon('https://pokeapi.co/api/v2/pokemon')" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon')">List Pokemon</button>
+              <button id="pokemonPreBtn" class="btn-default btn-lg" ontouchend="getPokemon('')" onclick="getPokemon('')">Prev</button> -->
+            
         </div>
 
-        <script src="pokeapi.js"></script>
-        <script>
+        <!-- <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+          </div> -->
 
-            /* const pBtn = document.querySelector('#pokemonPreBtn');
+        <script src="pokeapi.js"></script>
+        <!--script>
+
+             const pBtn = document.querySelector('#pokemonPreBtn');
             const nBtn = document.querySelector('#pokemonNextBtn');
             async function getPokemon(url) {
                 if (url != "" || null) {
@@ -107,9 +130,9 @@
                         li.lastElementChild.remove();                       //remove button
                         li.appendChild(div);                                //append Child again
                     })
-            } */
+            } 
 
-        </script>
+        </script-->
         </div>
     </body>
 </html >
