@@ -25,7 +25,7 @@ async function getPokemon(url) {
 
 function renderPokemon(data) {
     sBtn.setAttribute("style", "display:none");
-    //document.getElementByClassName("pagination").style.display="block";
+    //document.getElementByClassName("page-link").style.display="block";
     const pokemonContainer = document.querySelector('#pokemonList');
     console.log(pokemonContainer);
     //button.lastElementChild.remove();  
@@ -49,7 +49,7 @@ function renderPokemon(data) {
         
 
         nBtn.textContent = "Next";
-        nBtn.setAttribute("style", "float:right");
+        //nBtn.setAttribute("style", "float:right");
         nBtn.setAttribute('ontouchend', `getPokemon('${data.next}')`);
         nBtn.setAttribute('onclick', `getPokemon('${data.next}')`);
     }
