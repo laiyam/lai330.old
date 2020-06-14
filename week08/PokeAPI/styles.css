@@ -1,7 +1,7 @@
 
 .container {
 	width: 50%;
-	max-width: 350px;
+	max-width: 360px;
 }
 
 .btn-primary {
@@ -24,7 +24,7 @@ li > span {
 }
 
 ul > li > div > div {
-	display:inline;
+	display: inline;
 	
 	clear:both;
 }
@@ -32,6 +32,10 @@ ul > li > div > div {
 /* ul > li > div {
 	display: block;
 } */
+
+img {
+	margin: auto;
+}
 
 ul > div > li{
 	height: auto;

@@ -83,10 +83,7 @@ function getDetails(id, url) {                                  //id=pokemon.nam
                 <p>Height: ${json.height}</p>
                 <p>Weight: ${json.weight}</p>
                 </div>
-
             `
-            //li.lastElementChild.textContent = "Close";
-            //li.setAttribute('onclick', li.setAttribute("style", "display:none"));
             li.lastElementChild.remove();                       //remove button
             li.appendChild(div);                                //append Child again
         })
