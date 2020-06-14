@@ -1,0 +1,32 @@
+
+.container {
+	width: 50%;
+	max-width: 360px;
+}
+
+
+.btn-primary {
+	float: right;
+}
+
+li > span {
+	font-size: 15px;
+	font-weight: bolder;
+	text-transform: capitalize;
+}
+
+ul > li > div > div {
+	display: inline;
+	clear:both;
+}
+
+
+img {
+	margin: auto;
+	float: left
+}
+
+ul > div > li{
+	height: auto;
+}
+

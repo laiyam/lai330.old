@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
+    "",
     "\\css",
     "\\week05",
-    "\\week07"
+    "\\week07",
+    "\\week08",
+    "\\week08\\PokeAPI"
   ],
+  "SelectedNode": "\\week08\\PokeAPI\\index.html",
   "PreviewInSolutionExplorer": false
 }
