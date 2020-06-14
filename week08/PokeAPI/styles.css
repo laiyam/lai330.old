@@ -4,44 +4,29 @@
 	max-width: 360px;
 }
 
-.btn-primary {
-	
-	
-}
 
-li {
-	text-align: justify;
-	text-align-last: justify;
+.btn-primary {
+	float: right;
 }
 
 li > span {
 	font-size: 15px;
 	font-weight: bolder;
 	text-transform: capitalize;
-	
-
-	
 }
 
 ul > li > div > div {
 	display: inline;
-	
 	clear:both;
 }
 
-/* ul > li > div {
-	display: block;
-} */
 
 img {
 	margin: auto;
+	float: left
 }
 
 ul > div > li{
 	height: auto;
 }
-
-/* .pagination {
-	display:none;
-} */
 
