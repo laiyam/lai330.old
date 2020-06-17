@@ -10,781 +10,1016 @@
 <body>
     <nav>
         <a href="../index.html">Portfolio</a> |
-        <a href="PokeAPI/index.html">Team Exercise: PokeAPI</a>|
-        <a href="../week07/index.html">Back</a> |
-        <a href="../week09/index.html">Next</a>
+        <a href="drums/index.html">Team Exercise: Drums</a>|
+        <a href="../week08/index.html">Back</a> |
+        <a href="../week10/index.html">Next</a>
     </nav>
     <h1>WDD 330 Lai Yam Portfolio</h1>
-    <h2>Week 08</h2>
+    <h2>Week 09</h2>
     <ul>
         <li>
-            Week 8 Notes
+            Week 9 Notes
         </li>
         <ol>
             <b>Sitepoint Note: </b>
-            <a href="https://www.sitepoint.com/premium/books/html5-css3-for-the-real-world-2nd-edition">HTML5 and CSS3 for the Real world </a>
-            <dt>Read HTML5 and CSS3 for the Real World</dt>
-            <dd>- Ch8 Transforms and Transitions and Ch12 Canvas, SVG and Drag and Drop</dd></a>
+            <a href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read"> Javascript: Novice to ninja</a>
+            <dt>Ch9 The Window Object and Ch14 HTML5 APIs</dt></a>
         </ol>
         <hr>
         <ul>
-            <b href="https://www.sitepoint.com/premium/books/html5-css3-for-the-real-world-2nd-edition">Ch8: Transforms and Transitions</b>
-            <ul>
-            <h4>
-                Chapter 8 CSS3 Transforms and Transitions
-            </h4>
+            
+            
+            <h2>
+                Chapter 9 The Window Object
+            </h2>
                 <dd>
-                    Alter a form’s appearance based on its state with the :invalid and :valid pseudo-classes. Enter CSS3: without a line of JavaScript or
-                    a single JPEG, you can tilt, scale, move, and even flip your elements with ease.
+                    In a browser environment the global object is the window object,
+                    which represents the browser window that contains a web page.
                 </dd>
                 
                 <h3>
-                    Transforms
+                    The Browser Object Model
                 </h3>
                     <dd>
-                        The CSS3 transform property lets you lets you translate, rotate, scale, and/or skew any element on the page.
-                    </dd>
-                    <dd>
-                        Manipulate an element’s appearance using transform functions. The value
-                        of the transform property is one or more transform functions
+                        The Browser Object Model (or BOM for short) is a collection of properties and
+                        tain information about the browser and computer screen. Every browser window, tab, 
+                        popup, frame, and iframe
+                        has a window object.
                     </dd><br>
 
                     <dt>
-                        Translation
+                        Going Global
                     </dt>
                         <dd>
-                            Translation functions allow you to move elements left, right, up, or down. These
-                            functions are similar to the behavior of position: relative; when declaring top
-                            and left, moving elements up and down or left and right along the x and y axes. 
-                            Unlike position: relative, which allows you to position
-                            an element either against its current position or against a parent or other ancestor,
-                            a translated element can only be moved relative to its current position.
+                            Global variables are actual properties of a global object. In a browser
+                            environment, the global object is the window object.
                         </dd>
-                        <dd>
-                            To move 45px to the right along the x axis, include:
-                        </dd>
-                        <dd class="js">
-                            transform: translateX(45px);
-                        </dd>
-                        <dd>
-                            To move up along the y axis by 30px, include:
-                        </dd>
-                        <dd class="js">
-                            transform: translateY(-30px);
-                        </dd>
-                        <dd>
-                            To move the word “dukes” over to the right when the user hovers over it:
-                        </dd>
-                        <dd class="js">
-                            <!--h1>>Put your <span>dukes</span> up, sire</h1-->
-                        </dd><br>
-                        <dd>
-                            Triggered by hovering over the span itself:
-                        </dd>
-                        <dd class="js">
-                            .ad-ad2 h1:hover span {<br>
-                                color: #484848;<br
-                                transform: translateX(40px);<br>
-                                }
-                        </dd><br>
-
-                        <dd>
-                            Transforms don’t work on inline elements. But that’s easy enough to fix. We’ll just add display: inline-block; to our span:
-                        </dd>
-                        <dd class="js">
-                            .ad-ad2 h1 span {<br>
-                                font-size: 30px;<br>
-                                color: #999999;<br>
-                                display: inline-block;<br>
-                                ⋮
-                        </dd><br>
+                        <br>
 
                     <dt>
-                        Scaling
+                        Dialogs
                     </dt>
                         <dd>
-                            The scale(x,y) function scales an element by the defined factors horizontally then
-                            vertically. For example, scale(1) would leave the element the same size, scale(2)
-                            would double its proportions, scale(0.5).
+                            Three functions that produced dialogs in the browsers: alert(), confirm() and prompt(). 
+                            The <b>window.alert()</b> method will pause the execution of the program and display
+                            a message in a dialog box.
                         </dd>
                         <dd class="js"><br>
-                            transform: scale(1.5, 0.25);
+                            window.alert('Hello');<br>
+                            << undefined
                         </dd>
                         <dd>
-                            To change this default behavior, you can include the transform-origin
-                            property. Add a scale transform to our span:
+                            The <b>window.confirm()</b> method will stop the execution of the program and
+                            display a confirmation dialog that shows the message provided as an argument,
+                            and giving the options of OK or Cancel.
                         </dd>
                         <dd class="js"><br>
-                            .ad-ad2 h1:hover span {<br>
-                                color: #484848;<br>
-                                transform: translateX(40px) scale(1.5);<br>
-                                }
+                            window.confirm('Do you wish to continue?');<br>
+                            << undefined
                         </dd><br>
-
-                    <dt>
-                        Rotation
-                    </dt>
                         <dd>
-                            The rotate() function rotates an element around the point of origin by a specified
-                            angle value. As with scale, by default the point of origin is the element’s center.
-                        </dd>
-                        <dd>
-                            Add a rotate transform:
+                            The <b>window.prompt()</b> method will stop the execution of the program. It displays
+                            a dialog that shows a message provided as an argument, as well as an input field
+                            that allows the user to enter text. This text is then returned as a string when the
+                            user clicks OK. If the user clicks Cancel, null is returned:
                         </dd>
                         <dd class="js"><br>
-                            .ad-ad2 h1:hover span {<br>
-                                color: #484848;<br>
-                                transform: rotate(10deg) translateX(40px) scale(1.5);<br>
-                                }
-                        </dd><br>
-
-                    <dt>
-                        Skew
-                    </dt>
-                        <dd>
-                            The skew(x,y) function specifies a skew along the x and y axes.
-                        </dd>
-                        <dd class="js"><br>
-                            transform: skew(15deg, 4deg);
-                        </dd><br>
-
-                    <dt>
-                        Changing the Origin of the Transform
-                    </dt>
-                        <dd>
-                            Using the transform-origin property, the default transform-origin
-                            is the center of the circle, applying a rotate() transform to a circle would have no
-                            visible effect—a circle rotated 90 degrees still looks exactly the same.
-                        </dd>
-
-                    <dt>
-                        Support for Internet Explorer 8 and Earlier
-                    </dt>
-                        <dd>
-                            To mimic translation use position: relative;, and top and left values:
-                        </dd>
-                        <dd class="js">
-                            .translate {<br>
-                                position: relative;<br>
-                                top: 200px;<br>
-                                left: 200px;<br>
-                                }
+                            window.prompt('Please enter your name:');
                         </dd><br>
 
                 <h3>
-                    Transitions
+                    Browser Information
+                </h3>
+                    <dt>
+                        Which Browser?
+                    </dt>
+                        <dd>
+                            The window object has a navigator property that returns a reference to the
+                            Navigator object. The Navigator object contains information about the browser
+                            being used. Its userAgent property will return information about the browser and
+                            operating system being used.
+                        </dd>
+                        <dd class="js"><br>
+                            window.navigator.userAgent<br>
+                            << "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3)<br>
+                            ➥ AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3<br>
+                            ➥ Safari/602.4.8"
+                        </dd><br>
+
+                    <dt>
+                        Location, Location, Location
+                    </dt>
+                        <dd>
+                            The window.location property is an object that contains information about the
+                            URL of the current page. The href property returns the full URL as a string:
+                        </dd>
+                        <dd class="js"><br>
+                            window.location.href<br>
+                            << "https://www.sitepoint.com/premium/books/<br>
+                            javascript-novice-to-ninja"
+                        </dd><br>
+                        <dd>
+                            Entering the
+                            following line into the browser console will redirect the page to the SitePoint
+                            JavaScript channel:
+                        </dd>
+                            <li class="js"><br>
+                                window.location.href =<br>
+                                ➥ 'https://www.sitepoint.com/javascript/'<br>
+                                << "https://www.sitepoint.com/javascript/"
+                            </li>
+                            <li class="js"><br>
+                                window.location.protocol<br>
+                                << "https:"
+                            </li>
+                            <li class="js"><br>
+                                window.location.host<br>
+                                << "www.sitepoint.com"
+                            </li>
+                            <li class="js"><br>
+                                window.location.hostname<br>
+                                << "www.sitepoint.com"
+                            </li>
+                            <li class="js"><br>
+                                window.location.port<br>
+                                << ""
+                            </li>
+                            <li class="js"><br>
+                                window.location.pathname<br>
+                                << "/premium/books/javascript-novice-to-ninja"
+                            </li>
+                            <li class="js"><br>
+                                window.location.search<br>
+                                << "?q=javascript&limit=24&offset=0&page=1&<br>
+                                content_types[]=All&slugs[]=all&states[]=available&am<br>
+                                ➥ p;order="
+                            </li>
+                            <li class="js"><br>
+                                window.location.hash<br>
+                                << ""
+                            </li>
+                            <li class="js"><br>
+                                window.location.origin<br>
+                                << "https://www.sitepoint.com"
+                            </li>
+                        <dd>
+                            The <b>reload()</b> method can be used to force a reload of the current page.
+                        </dd>
+                        <dd>
+                            The <b>assign()</b> method can be used to load another resource from a URL
+                            provided as a parameter.
+                        </dd>
+                        <dd class="js"><br>
+                            window.location.assign('https://www.sitepoint.com/')
+                        </dd><br>
+                        <dd>
+                            The <b>replace()</b> method is almost the same as the assign() method, except the
+                            current page will not be stored in the session history, so the user will be
+                            unable to navigate back to it using the back button.
+                        </dd>
+                        <dd>
+                            The <b>toString()</b> method returns a string containing the whole URL:
+                        </dd>
+                        <dd class="js"><br>
+                            window.location.toString();<br>
+                            << "https://www.sitepoint.com/javascript/"
+                        </dd><br>
+
+
+
+                    <dt>
+                        The Browser History
+                    </dt>
+                        <dd>
+                            The window.history property can be used to access information about any
+                            previously visited pages in the current browser session.
+                        </dd>
+                        <dd>
+                            The window.history.length property shows how many pages have been visited
+                            before arriving at the current page.
+                        </dd>
+                        <dd>
+                            The window.history.go() method can be used to go to a specific page, where 0
+                            is the current page:
+                        </dd>
+                        <dd class="js"><br>
+                            window.history.go(1); // goes forward 1 page<br>
+                            window.history.go(0); // reloads the current page<br>
+                            window.history.go(-1); // goes back 1 page
+                        </dd><br>
+                        <dd>
+                            Also the window.history.forward() and window.history.back()
+                            methods that can be used to navigate forwards and backwards by one page respectively
+                        </dd><br>
+
+
+                    <dt>
+                        Controlling Windows
+                    </dt>
+                        <dd>
+                            The <b>window.open()</b> method. This takes the
+                            URL of the page to be opened as its first parameter, the window title as its second
+                            parameter, and a list of attributes as the third parameter. This can also be assigned
+                            to a variable, so the window can then be referenced later in the code:
+                        </dd>
+                        <dd class="js"><br>
+                            const popup = window.open('https://sitepoint.com','<br>
+                            SitePoint','width=400,height=400,resizable=yes');
+                        </dd><br>
+                        <dd>
+                            The <b>close()</b> method can be used to close a window, assuming you have a
+                            reference to it:
+                        </dd>
+                        <dd class="js"><br>
+                            popup.close();
+                        </dd><br>
+                        <dd>
+                            To move a window using the window.moveTo() method. This
+                            takes two parameters that are the X and Y coordinates of the screen that the
+                        </dd>
+                        <dd class="js"><br>
+                            window.moveTo(0,0); // will move the window to the top-left<br>
+                            ➥ corner of the screen
+                        </dd><br>
+                        <dd>
+                            The <b>window.resizeTo()</b> method specifies the width and height of the resized window’s dimensions:
+                        </dd>
+                        <dd class="js"><br>
+                            window.resizeTo(600,400);
+                        </dd><br>
+
+                <h3>
+                    Screen Information
                 </h3>
                     <dd>
-                        Animation has certainly been possible for some time with JavaScript, but native
-                        CSS transitions generally require less client-side processing. 
-                        Transitions allow the values of CSS properties to change over time, essentially providing simple animations.
+                        The <b>window.screen</b> object contains information about the screen the browser is
+                        displayed on. You can find out the height and width of the screen in pixels using
+                        the height and width properties respectively:
                     </dd>
-                    <dd>The steps to create a simple transition using only CSS:
-                        <li>
-                            1. Declare the original state of the element in the default style declaration.
-                        </li>
-                        <li>
-                            2. Declare the final state of your transitioned element; for example, a :hover state.
-                        </li>
-                        <li>
-                            3. Include the transition functions in your default style declaration using the
-                            transition properties, including: transition-property, transition-duration,
-                            transition-timing-function, and transition-delay. We’ll look at each of
-                            these and how they work shortly.
-                        </li>
+                    <dd class="js"><br>
+                        window.screen.height<br>
+                        << 1024<br>
+                        window.screen.width<br>
+                        << 1280
                     </dd><br>
-
-                    <dt>
-                        transition-property
-                    </dt>
-                        <dd>
-                            The transition-property property defines the CSS properties of the element that
-                            should be transitioned, with all for all properties being the default.
-                            Any property changing from one value to another for which you can find a valid
-                            midpoint can be transitioned.
-                        <dd>
-                            The transition to the transform property:
-                        </dd>
-                        <dd class="js"><br>
-                            .ad-ad2 h1 span {<br>
-                            transition-property: transform;<br>
-                            }
-                        </dd><br>
-
-                    <dt>
-                        The transition-duration Property
-                    </dt>
-                        <dd>
-                            The either in seconds (s) or milliseconds (ms). We’d like our animation
-                            to be fairly quick, so we’ll specify 0.2 seconds (0.2s), or 200 milliseconds (200ms):
-                        </dd>
-                        <dd class="js"><br>
-                            transition-duration: 0.2s;
-                        </dd><br>
-
-                    <dt>
-                        The transition-timing-function Property
-                    </dt>
-                        <dd>
-                            The transition-timing-function lets you control the pace of the transition in
-                            even more granular detail. 
-                            The most common timing functions include the key terms ease, linear, ease-in,
-                            ease-out, or ease-in-out. The default ease has a slow start, then it speeds up, and
-                            ends slowly. ease-in-out is similar to ease. linear creates a transition that animates at a constant speed. The
-                            opposite, ease-out, starts at full speed, then slows progressively as it reaches the
-                            conclusion of the transition.
-                        </dd>
-                        <dd>
-                            Linear is the same as cubic-bezier(0, 0, 1, 1). 
-                            At online tools that let you play with different values, such as
-                            http://cubic-bezier.com/
-                            http://estelle.github.io/animation/files/cubicbezierprint.html
-                        </dd><br>
-
-                    <dt>
-                        The transition-delay Property
-                    </dt>
-                        <dd>
-                            Using the transition-delay property to introduce a delay
-                            before the transition begins. The default is 0.
-                        </dd>
-                        <dd class="js"><br>
-                            -webkit-transition-delay: 50ms;<br>
-                            transition-delay: 50ms;
-                        </dd><br>
-
-                    <dt>
-                        The transition Shorthand Property
-                    </dt>
-                        <dd class="js"><br>
-                            .ad-ad2 h1 span {<br>
-                                transition-property: transform;<br>
-                                transition-duration: 0.2s;<br>
-                                transition-timing-function: ease-out;<br>
-                                transition-delay: 50ms;<br>
-                            }
-                        </dd><br>
-                        <dd class="js"><br>
-                            .ad-ad2 h1 span {<br>
-                                transition: transform 0.2s ease-out 50ms;<br>
-                            }<br>
-                        </dd><br>
-
-                    <dt>
-                        Multiple Transitions
-                    </dt>
-                        <dd>
-                            A transition effect, include them as a comma-separated list containing, 
-                            at minimum, the transition-property and transition-duration for each.
-                        </dd>
-                        <dd class="js"><br>
-                            transition-property: transform, color;<br>
-                            transition-duration: 0.2s, 0.1s;<br>
-                            transition-timing-function: ease-out, linear;<br>
-                            transition-delay: 50ms;
-                        </dd><br>
-                        <dd>
-                            The shorthand to specify multiple transitions at different durations,
-                            delays, and timing functions.
-                        </dd>
-                        <dd class="js"><br>
-                            transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;
-                        </dd><br>
-                        <dd>
-                            Using the all keyword, all the properties transition at the same rate, speed, and delay:
-                        </dd>
-                        <dd class="js"><br>
-                            transition: all 0.2s ease-out 50ms;
-                        </dd><br>
-
-
-                    <dt>
-                        Animations
-                    </dt>
-                        <dd>
-                            CSS animations, unlike transitions, allow you to
-                            control each step of an animation via keyframes.
-                            A keyframe is a snapshot
-                            that defines a starting or end point of any smooth transition. With CSS transitions,
-                            we’re essentially limited to defining a first and a last keyframe. CSS animations allow
-                            us to add any number of keyframes in between, to guide our animation in more
-                            complex ways.
-                        </dd>
-                        <dd>
-                            For an animation called myAnimation, the @keyframes rule would look like this:
-                        </dd>
-                        <dd class="js"><br>
-                            @-webkit-keyframes myAnimation {<br>
-                                /* put animation keyframes here */<br>
-                                }<br>
-                                @keyframes myAnimation {<br>
-                                /* put animation keyframes here */<br>
-                                }
-                        </dd>
-                        <dd>
-                            Each keyframe looks like its own nested CSS declaration block. Instead of a traditional
-                            selector, though, you use a percentage value, or a comma-separated list of
-                            percentage values. There are two keyterms―from and to―which evaluate to 0%
-                            and 100% respectively. These values specify how far along the animation each
-                            keyframe is located.
-                        </dd>
-                        <dd class="js"><br>
-                            @keyframes moveRight {<br>
-                                from {<br>
-                                transform: translateX(-50%);<br>
-                                }<br>
-                                to {<br>
-                                transform: translateX(50%);<br>
-                                }<br>
-                                }<br>
-                                @keyframes appearDisappear {<br>
-                                0%, 100% {<br>
-                                opacity: 0;<br>
-                                }<br>
-                                20%, 80% {<br>
-                                    opacity: 1;<br>
-                                    }<br>
-                                    }<br>
-                                    @keyframes bgMove {<br>
-                                    100% {<br>
-                                    background-position: 120% 0;<br>
-                                    }<br>
-                                    }
-                        </dd>
-                        <dd>
-                            The second animation is worth paying extra attention to: we’ve applied the same
-                            styles to 0% and 100%, and to 20% and 80%.
-                        </dd><br>
-
-                    <dt>
-                        Animation Properties
-                    </dt>
-
-                    <dt>
-                        animation-name
-                    </dt>
-                        <dd class="js"><br>
-                            animation-name: appearDisappear;
-                        </dd>
-
-                    <dt>
-                        animation-duration
-                    </dt>
-                        <dd>
-                            The animation-duration property defines the length of time (in seconds or milliseconds) 
-                            an animation takes to complete one iteration (all the way through, from
-                            0% to 100%):
-                        </dd>
-                        <dd class="js"><br>
-                            animation-duration: 300ms;
-                        </dd>
-                        <dd>
-                            While animation-name is the only required animation property to create an animation,
-                            the animation-duration should be considered required to animate an element.
-                        </dd>
-
-                    <dt>
-                        animation-timing-function
-                    </dt>
-                        <dd>
-                            The animation-timing-function
-                            determines how the animation will progress over its duration. The options are the
-                            same as for transition-timing-function: ease, linear, ease-in, ease-out, easein-out.
-                        </dd>
-                        <dd class="js"><br>
-                            animation-timing-function: linear;
-                        </dd>
-                        <dd>
-                            The bicycle in the advertisement on the right is animated:
-                        </dd>
-                        <dd class="js"><br>
-                            .ad-ad3 :after {<br>
-                                content: '';<br>
-                                width: 90px;<br>
-                                height: 92px;<br>
-                                background-image: url(../images/bike_sprite.png);<br>
-                                display: block;<br>
-                                margin: auto;<br>
-                                }<br>
-                                @keyframes bike {<br>
-                                0% {<br>
-                                background-position: 0 0;<br>
-                                }<br>
-                                100% {<br>
-                                background-position: -360px 0;<br>
-                                }<br>
-                                }
-                        </dd>
-
-                    <dt>
-                        animation-direction
-                    </dt>
-                        <dd>
-                            When the animation iterates, it normally goes from the 0% to the 100% keyframe,
-                            jumping back to the 0% when it starts a new iteration.
-                            The value of reverse will cause the animation to start at the 100% keyframe and
-                            work its way to the 0% keyframe for every iteration. The alternate-reverse animation-
-                            direction value causes the animation to alternate direction at every iteration.
-                        </dd>
-                        <dd class="js"><br>
-                            animation-timing-function: linear;
-                        </dd>
-
-                    <dt>
-                        animation-delay
-                    </dt>
-                        <dd>
-                            The animation-delay property is used to define how many milliseconds or seconds
-                            to wait before the browser begins the animation:
-                        </dd>
-                        <dd class="js"><br>
-                            animation-delay: 50ms;
-                        </dd>
-
-                    <dt>
-                        animation-fill-mode
-                    </dt>
-                        <dd>
-                            The animation-fill-mode property defines what happens before the first animation
-                            iteration begins and after the last animation iteration concludes. 
-                            The default behavior of animation-fill-mode: none.
-                        </dd>
-
-                    <dt>
-                        animation-play-state
-                    </dt>
-                        <dd>
-                            The animation-play-state property defines whether the animation is running or paused.
-                        </dd><br>
+                    <dd>The <b>availHeight</b> and <b>availWidth</b> can be used to find the height and width of the
+                        screen.
+                    </dd>
+                    <dd class="js"><br>
+                        window.screen.availWidth<br>
+                        << 1280<br>
+                        window.screen.availHeight<br>
+                        << 995
+                    </dd><br>
+                    <dd>
+                        The colorDepth property
+                    </dd>
+                    <dd class="js"><br>
+                        window.screen.colorDepth;<br>
+                        << 24
+                    </dd><br>
                     
+
                     <dt>
-                        The Shorthand animation Property
+                        The Document Object
+                    </dt>
+                        <dd>
+                            Each window object contains a document object. This object has properties and
+                            methods that deal with the page that has been loaded into the window.
+                        <dd>
+                            The <b>write(</b>) method simply writes a string of text to the page.
+                        </dd>
+                        <dd class="js"><br>
+                            document.write('Hello, world!');
+                        </dd><br>
+
+                    <dt>
+                        Cookies
+                    </dt>
+                        <dd>
+                            Cookies are small files that are saved locally on a user’s computer 
+                            as a way of getting round HTTP being a stateless protocol.
+                        </dd>
+                        <dd>
+                            Cookies can be used to sidestep this problem by storing information
+                            that can then be retrieved between requests.
+                        </dd>
+                        <dd>
+                            A restriction of cookies is that they can only be read by a web page from the same
+                            domain that set them. Cookies are also limited to storing up
+                            to 4KB of data, although 20 cookies are allowed per domain, which can add up to
+                            quite a lot of data.
+                        </dd>
+                        <dd>
+                            Cookies can be used for personalizing a user’s browsing experience, storing user
+                            preferences, keeping track of user choices (such as a shopping cart),
+                            authentication and tracking users. Cookies are still useful for
+                            retaining state information (such as if a user is logged in) because they’re passed
+                            between the client and server on every HTTP request.
+                        </dd>
+                        <dd>
+                            Cookies take the form of a text file that contain a list of name/value pairs
+                            separated by semicolons:
+                        </dd>
+                        <dd class="js"><br>
+                            "name=Superman; hero=true; city=Metropolis"
+                        </dd><br>
+
+                    <dt>
+                        Creating Cookies
                     </dt>
                         <dd class="js"><br>
-                            .verbose {<br>
-                                animation-name: appearDisappear;<br>
-                                animation-duration: 300ms;<br>
-                                animation-timing-function: ease-in;<br>
-                                animation-iteration-count: 1;<br>
-                                animation-direction: alternate;<br>
-                                animation-delay: 5s;<br>
-                                animation-fill-mode: backwards;<br>
-                                animation-play-state: running;<br>
-                                }<br>
-                                /* shorthand */<br>
-                                .concise {<br>
-                                animation: 300ms ease-in alternate 5s backwards appearDisappear;<br>
+                            document.cookie = 'name=Superman';<br>
+                            << "name=Superman"
+                        </dd><br>
+                        <dd class="js"><br>
+                            document.cookie = 'hero=true';<br>
+                            << "hero=true"<br>
+                            document.cookie = 'city=Metropolis';<br>
+                            << "city=Metropolis"
+                        </dd><br>
+
+                    <dt>
+                        Changing Cookie Values
+                    </dt>
+                        <dd class="js"><br>
+                            document.cookie = 'name=Batman'<br>
+                            << "name=Batman"<br>
+                            document.cookie = 'city=Gotham'<br>
+                            << "city=Gotham"
+                        </dd><br>
+
+                    <dt>
+                        Reading Cookies
+                    </dt>
+                        <dd class="js"><br>
+                            document.cookie:<br>
+                            << "name=Batman; hero=true; city=Gotham"
+                        </dd>
+                        <dd class="js"><br>
+                            const cookies = document.cookie.split("; ");<br>
+                            for (crumb of cookies){<br>
+                            const [key,value] = crumb.split("=");<br>
+                            console.log(`The value of ${key} is ${value}`);<br>
+                            }<br>
+                            << The value of name is Batman<br>
+                            The value of hero is true<br>
+                            The value of city is Gotham
+                        </dd><br>
+
+                    <dt>
+                        Cookie Expiry Dates
+                    </dt>
+                        <dd>
+                            Cookies are session cookies by default. This means they are deleted once a
+                            browser session is finished (when the user closes the browser tab or window).
+                            Cookies can be made persistent ― that is, lasting beyond the browser session ―
+                            by adding "; expires=date"
+                        </dd>
+                        <dd class="js"><br>
+                            const expiryDate = new Date();<br>
+                            const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;<br>
+                            expiryDate.setTime(tomorrow);<br>
+                            document.cookie = `name=Batman; expires=${<br>
+                            ➥ expiryDate.toUTCString()}`;
+                        </dd><br>
+                        <dd>
+                            To set the max-age value:
+                        </dd>
+                        <dd class="js"><br>
+                            document.cookie = 'name=Batman; max-age=86400' // 86400 secs<br>
+                            ➥ = 1 day
+                        </dd><br>
+
+                    <dt>
+                        The Path and Domain of Cookies
+                    </dt>
+                        <dd>
+                            By default, cookies can only be read by pages inside the same directory and
+                            domain as the file was set. The path can be changed so that any page in 
+                            the root directory can read the  cookie.
+                        </dd>
+                        <dd class="js"><br>
+                            document.cookie = 'name=Batman; path=/'
+                        </dd><br>
+                        <dd class="js"><br>
+                            document.cookie = 'name=Batman; domain=sitepoint.com';
+                        </dd><br>
+
+                    <dt>
+                        Secure Cookies
+                    </dt>
+                        <dd>
+                            Adding the string '; secure' to the end of a cookie will ensure it’s only transmitted
+                            over a secure HTTPS network:
+                        </dd>
+                        <dd class="js"><br>
+                            document.cookie = 'name=Batman; secure';
+                        </dd><br>
+
+                    <dt>
+                        Timing Functions
+                    </dt>
+                        <dd>
+                            <b>setTimeout()</b>: The window.setTimeout() method accepts a callback to a function as its first
+                            parameter and a number of milliseconds as its second parameter.
+                        </dd>
+                        <dd class="js"><br>
+                            window.setTimeout( () => alert("Time's Up!"), 3000);<br>
+                            << 4
+                        </dd><br>
+                        <dd>
+                            Cancel the timeout
+                        </dd>
+                        <dd class="js"><br>
+                            window.setTimeout( () => alert("Time's Up!"), 3000);<br>
+                            << 5
+                        </dd><br>
+                        <dd>
+                            setInterval()
+                        </dd>
+                        <dd>
+                            The window.setInterval() method works in a similar way to
+                            window.setTimeout(), except that it will repeatedly invoke the callback function
+                            after every given number of milliseconds.
+                        </dd>
+                        <dd class="js"><br>
+                            function chant(){ console.log('Beetlejuice'); }
+                        </dd><br>
+                        <dd>
+                            Set up the interval and assign it to a variable:
+                        </dd>
+                        <dd class="js"><br>
+                            const summon = window.setInterval(chant,1000);<br>
+                            << 6
+                        </dd><br>
+                        <dd>
+                            The window.clearInterval() method and the variable
+                            repeat as an argument (this is because the window.setInterval() method
+                            returns its ID.
+                        </dd>
+                        <dd class="js"><br>
+                            window.clearInterval(summon);
+                        </dd><br>
+
+                    <dt>
+                        Animation
+                    </dt>
+                        <dd>
+                            The setTimeout() and setInterval() methods can be used to animate elements
+                            on a web page.
+                        </dd>
+                        <dd class="js"><br>
+                            &lt;!doctype html&gt;<br>
+                            &lt;html lang='en'&gt;<br>
+                            &lt;head&gt;<br>
+                            &lt;meta charset='utf-8'&gt;<br>
+                            &lt;title&gt;Animation Example&lt;/title>&gt;<br>
+                            &lt;link rel='stylesheet' href='styles.css'&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &lt;div id='square'&gt;&lt;/div&gt;<br>
+                            &lt;script src='main.js'&gt;&lt;/script&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&lt;
+                        </dd><br>
+                        <dd>
+                            styles.css:
+                        </dd>
+                        <dd class="js"><br>
+                            #square {<br>
+                                margin: 100px;<br>
+                                width: 100px;<br>
+                                height: 100px;<br>
+                                background: #d16;<br>
                                 }
                         </dd>
                         <dd>
-                            To declare multiple animations on an element, include a grouping for each animation
-                            name, with each shorthand grouping separated by a comma.
+                            main.js::
                         </dd>
                         <dd class="js"><br>
-                            .target {<br>
-                                animation:<br>
-                                animationOne 300ms ease-in backwards,<br>
-                                animationTwo 600ms ease-out 1s forwards;<br>
-                                }
+                            const squareElement = document.getElementById('square');<br>
+                            let angle = 0;<br>
+                            setInterval( () => {<br>
+                            angle = (angle + 2) % 360;<br>
+                            squareElement.style.transform = `rotate(${angle}deg)`<br>
+                            }, 1000/60);
+                        </dd>
+                        <dd>
+                            This code receives a reference to our square div, then sets a variable called angle
+                            to 0. We then use the setInterval() method to increase the value of angle by 2
+                            (we also use the % operator so that it resets to 0 at 360), then set the transform
+                            CSS3 property to rotate that number of degrees. The second argument is 1000/60,
+                            which equates to a frame speed of 60 frames per second.
+                        </dd>
+                        <dd>
+                            Open animation.html in your browser and you should see a rotating square,
+                            although it will probably be quite slow and not very smooth. This was the only
+                            way to achieve animation using JavaScript until the
+                            window.requestAnimationFrame() method was developed.
+                        </dd>
+
+                    <dt>
+                        requestAnimationFrame
+                    </dt>
+                        <dd>
+                            The window.setInterval() method, although it has a number of improvements to
+                            optimize its performance.
+                        </dd>
+                        <dd class="js"><br>
+                            const squareElement = document.getElementById('square');<br>
+                            let angle = 0;<br>
+                            function rotate() {<br>
+                            angle = (angle + 2)%360;<br>
+                            squareElement.style.transform = `rotate(${angle}deg)`<br>
+                            window.requestAnimationFrame(rotate);<br>
+                            }<br>
+                            const id = requestAnimationFrame(rotate);
+                        </dd><br>
+
+                        <dd>
+                            Place the rotation code inside a function called rotate. The
+                            window.requestAnimationFrame() method and takes the rotate() function as
+                            an argument. Return a unique ID that
+                            can be employed to stop the animation using the
+                            window.cancelAnimationFrame() method:
+                        </dd>
+                        <dd class="js"><br>
+                            cancelAnimationFrame(id);
                         </dd><br><br>
 
+                    
+
 <hr>                        
-            <h4>
-                Chapter 12 Canvas, SVG, and Drag and Drop
-            </h4>
-                <h5>
-                    Canvas
-                </h5>
+            <h2>
+                Chapter 14 HTML5 APIs
+            </h2>
+                <h3>
+                    HTML5 APIs
+                </h3>
                     <dd>
-                        With canvas, we can draw shapes and lines, arcs and text, gradients and patterns.
-                        The basic drawing features of canvas, but then move on to using its power to transform
-                        our video—taking our modern-looking color video and converting it into conventional
-                        black and white to match the overall look and feel of The HTML5 Herald.
+                        HTML5 was for HTML what ES6 was for JavaScript – it added a large number of
+                        new features to the specification. It also went beyond the actual markup language
+                        and brought together a number of related technologies such as CSS and
+                        JavaScript.
                     </dd><br>
 
                     <dt>
-                        Creating a canvas Element
+                        HTML5
                     </dt>
                         <dd>
-                            The first step to using canvas is to add a canvas element to the page:
+                            The HTML5 specification is separated into modules that allow different features
+                            to be developed at different paces then implemented without having to wait for
+                            other features to be completed.
                         </dd>
+                    <dt>
+                        The data- Attribute
+                    </dt>
+                        <dd>
+                            The data- attribute is a way of embedding data in a web page using custom
+                            attributes that are ignored by the browser. This means they’re perfect for 
+                            adding data that can be
+                            used as a hook that the program utilizes to access information about a particular
+                            element on the page.
+                        </dd>
+                        <dd>
+                            The names of these attributes:
+                        </dd>
+                            <li>
+                                Start with data-.
+                            </li>
+                            <li>
+                                Contain only lowercase letters, numbers, hyphens, dots, colons or
+                                underscores.
+                            </li>
+                            <li>
+                                Include an optional string value.
+                            </li>
+                        <dd class="js"><br>
+                            data-powers = 'flight superSpeed'<br>
+                            data-rating = '5'<br>
+                            data-dropdown<br>
+                            data-user = 'DAZ'<br>
+                            data-max-length = '32'
+                        </dd><br>
+                        <dd>
+                            The information contained in the attributes can be used to identify particular
+                            elements. For example, all the elements with an attribute of data-dropdown could
+                            be identified as dropdown menu. The values of the attributes can also be used to
+                            filter different elements.
+                        </dd>
+                        <dd class="js"><br>
+                            &lt;div id='hero' data-powers='flight superSpeed'&gt;<br>
+                            Superman<br>
+                            &lt;/div&gt;<br>
+                            const superman = document.getElementById('hero');<br>
+                            const powers = superman.dataset.powers;<br>
+                            << 'flight superSpeed'
+                        </dd><br>
+                        <dd>
+                            Notice that the data- prefix is dropped. To access the attribute, powers is used as
+                            if it’s a property of the dataset object.
+                        </dd><br>
+
+                <h3>
+                    HTML5 APIs
+                </h3>
+                    <dt>
+                        HTML5 Web Storage
+                    </dt>
+                    <dd>
+                        The Web Storage API provides a key-value store on the client’s computer that is
+                        similar to using cookies but has fewer restrictions, more storage capacity, and is
+                        generally easier to use.
+                    </dd>
+                    <dd>
+                        The Web Storage API has some crucial differences with cookies:
+                    </dd>
+                        <li>
+                            Information stored is not shared with the server on every request.
+                        </li>
+                        <li>
+                            Information is available in multiple windows of the browser.
+                        </li>
+                        <li>
+                            Storage capacity limit is much larger than the 4KB limit for cookies.
+                        </li>
+                        <li>
+                            Any data stored does not automatically expire as it does with cookies.
+                        </li>
+                    <dd>
+                        If a browser supports the Web Storage API, the window object will have a property
+                        called localStorage,
+                    </dd>
+                    <dd>
+                        To save a value locally:
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.setItem('name', 'Walter White');
+                    </dd><br>
+                    <dd>
+                        Reopening
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.getItem('name');<br>
+                        << "Walter White"
+                    </dd><br>
+                    <dd>
+                        Assignment with localStorage.name
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.name = 'Heisenberg';<br>
+                        console.log(localStorage.name);<br>
+                        << "Heisenberg";
+                    </dd><br>
+                    <dd>
+                        To remove an entry from local storage, use the removeItem method:
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.removeItem('name');
+                    </dd><br>
+                    <dd>
+                        The delete operator:
+                    </dd>
+                    <dd class="js"><br>
+                        delete localStorage.name;
+                    </dd><br>
+                    <dd>
+                        To completely remove everything stored in local storage, use the clear()
+                        method:
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.clear();
+                    </dd><br>
+                    <dd>
+                        Every time a value is saved to local storage, a storage event is fired. 
+                        The event object sent by the
+                        event listener to the callback has a number of properties that provide information
+                        about the updated item:
+                    </dd>
+                        <li>
+                            key tells us the key of the item that changed
+                        </li>
+                        <li>
+                            newValue tells us the new value to which it has been changed
+                        </li>
+                        <li>
+                            oldValue tells us the previous value before it was changed
+                        </li>
+                        <li>
+                            storageArea tells us if it is stored in local or session storage.
+                        </li><br>
+
+                    <dd>
+                        Web Storage
+                    </dd>
+                    <dd class="js"><br>
+                        addEventListener('storage', (event) => {<br>
+                        console.log(`The ${event.key} was updated from<br>
+                        ➥ ${event.oldValue} to ${event.newValue} and saved in<br>
+                        ${event.storageArea}`) }, false);<br>
+                        addEventListener('storage', (event) => {<br>
+                        console.log(`The ${event.key} was updated from<br>
+                        ➥ ${event.oldValue} to ${event.newValue} and saved in<br>
+                        ${event.storageArea}`) }, false);
+                    </dd><br>
+                    <dd>
+                        To store any JavaScript object in local storage. For example, we
+                        could save the hero object that we created using a form:
+                    </dd>
+                    <dd class="js"><br>
+                        localStorage.setItem('superman', JSON.stringify(hero);
+                    </dd><br>
+                    <dd>
+                        To retrieve the superhero as a JavaScript object:
+                    </dd>
+                    <dd class="js"><br>
+                        superman = JSON.parse(localStorage.getItem('superman'));
+                    </dd><br>
                         
-                        <dd class="js"><br>
-                            &lt;canvas&gt;<br>
-                                Sorry! Your browser doesn’t support Canvas.<br>
-                                &lt;/canvas&gt;<br>
-                        </dd>
+
+                    <dt>
+                        Geolocation
+                    </dt>
                         <dd>
-                            To grab the element from the DOM:
+                            The Geolocation API is used to obtain the geographical position of the device.
+                            This means it can be used to find the user’s exact location, then link to nearby
+                            places or measure the speed at which the user is moving. This information can
+                            then be used to filter data based on the user’s location or speed and direction of
+                            travel.
                         </dd>
                         <dd class="js"><br>
-                            &lt;canvas id="myCanvas" class="myCanvas"&gt;<br>
-                                Sorry! Your browser doesn’t support Canvas.<br>
-                            &lt;/canvasp&gt;
+                            navigator.geolocation.getCurrentPosition(youAreHere);
                         </dd><br>
                         <dd>
-                            Add a width and height attribute to the canvas element:
+                            The position object passed to the youAreHere() function has a coords property
+                            with a latitude and longitude property, which together give the coordinates of
+                            the device.
                         </dd>
                         <dd class="js"><br>
-                            &lt;canvas id="myCanvas" class="myCanvas" width="200" height="200"&gt;<br>
-                                Sorry! Your browser doesn’t support Canvas.<br>
-                                &lt;/canvas&gt;
-                        </dd><br>
-                        <dd>
-                            Canvas has no default styling, unless you give it some kind of border:
-                        </dd>
-                        <dd class="js"><br>
-                            .myCanvas {<br>
-                                border: dotted 2px black;<br>
+                            function youAreHere(position) {<br>
+                                console.log(`Latitude: ${position.coords.latitude},<br>
+                                ➥ Longitude: ${position.coords.longitude}`);<br>
                             }
+                        </dd><br>
+                        <dd>
+                            The position object has several other properties:
+                        </dd>
+                            <li>
+                                position.speed property returns the ground speed of the device in meters per
+                                second.
+                            </li>
+                            <li>
+                                position.altitude property returns an estimate of the device’s altitude in
+                                meters above the WGS845 ellipsoid.
+                            </li>
+                            <li>
+                                position.heading property returns the direction the device is moving in.
+                                This is measured as a bearing in degrees, clockwise from North.
+                            </li>
+                            <li>
+                                position.timestamp property returns the time that the position information
+                                was recorded.
+                            </li><br>
+                        
+                        <dd>
+                            The position object also has properties that calculate the accuracy of the
+                            measurements. 
+                        </dd>
+                        <dd>
+                            The position object passed to the youAreHere() function has a coords property
+                            with a latitude and longitude property, which together give the coordinates of
+                            the device. The geolocation object has a watchPosition() method that will call
+                            a callback function every time the position of the device is updated. This method
+                            returns an ID that can be used to reference the position being watched:
+                        </dd>
+                        <dd class="js"><br>
+                            const id = navigator.geolocation.watchPosition(youAreHere);
+                        </dd><br>
+                        <dd>
+                            The clearWatch() method can be used to stop the callback being called:
+                        </dd>
+                        <dd class="js"><br>
+                            navigator.geolocation.clearWatch(id);
+                        </dd><br>
+                        <dd>
+                            Adding location-based information to a website or application.
                         </dd><br>
                         
-
                     <dt>
-                        Drawing on the Canvas
+                        Web Workers
                     </dt>
                         <dd>
-                            The user can draw onto the canvas element. To
-                            grab hold of the canvas element on our page:
+                            Web workers allow processes to be run
+                            in the background, adding support for concurrency in JavaScript.
                         </dd>
-                        <dd class="js"><br>
-                            var canvas = document.getElementById("myCanvas");<br>
-                        </dd>
-                    <dt>
-                        Getting the Context
-                    </dt>
                         <dd>
-                            Drawing context by calling the getContext method and passing it the string "2d":
+                            task.js. If this file exists, it will be downloaded
+                            asynchronously. The worker will only start once the file has finished
+                            downloading completely. If the file doesn’t exist, an error is thrown.
                         </dd>
-                        <dd class="js"><br>
-                            var canvas = document.getElementById("myCanvas");<br>
-                            var context = canvas.getContext("2d");<br>
-                        </dd>
-
-                    <dt>
-                        Filling Our Brush with Color
-                    </dt>
                         <dd>
-                            Change our blue fill to blue with a 50% opacity:
+                            The postMessage() method can be
+                            used to send a message and start the worker working. The argument to this
+                            method can send any data to the web worker.
                         </dd>
                         <dd class="js"><br>
-                            var canvas = document.getElementById("myCanvas");<br>
-                            var context = canvas.getContext("2d");<br>
-                            context.strokeStyle = "red";<br>
-                            context.fillStyle = "rgba(0, 0, 255, 0.5)";
+                            worker.postMessage('Hello');
+                        </dd><br>
+                        <dd>
+                            To post a message from the worker, the following is used in the worker script:
+                        </dd>
+                        <dd class="js"><br>
+                            self.postMessage('Finished');
+                        </dd><br>
+                        <dd>
+                            When a message is posted, a message event is fired, so they can be dealt with
+                            using an event listener. The following example would log any data returned from 
+                            the worker to the console:
+                        </dd>
+                        <dd class="js"><br>
+                            worker.addEventListener('message', (event) => {<br>
+                            console.log(event.data);<br>
+                            }, false);
+                        </dd><br>
+                        <dd>
+                            To stop using the terminate()method from within the main script:
+                        </dd>
+                        <dd class="js"><br>
+                            worker.terminate();
+                        </dd><br>
+                        <dd>
+                            Or using the close() method from inside the worker script:
+                        </dd>
+                        <dd class="js"><br>
+                            self.close();
                         </dd><br>
 
-                    <dt>
-                        Drawing a Rectangle to the Canvas
-                    </dt>
-                        <dd class="js"><br>
-                            var canvas = document.getElementById("myCanvas");<br>
-                            var context = canvas.getContext("2d");<br>
-                            context.strokeStyle = "red";<br>
-                            context.fillStyle = "rgba(0, 0, 255, 0.5)";<br>
-                            context.fillRect(10, 10, 100, 100);<br>
-                            context.strokeRect(10, 10, 100, 100);
-                        </dd><br>
 
                     <dt>
-                        Variations on fillStyle
+                        A Factorizing Example (refer to text book page 545)
+                    </dt>
+
+                    <dt>
+                        Shared Web Workers
                     </dt>
                         <dd>
-                            Instead of a color as our fillStyle, we could have used a CanvasGradient or a
-                            CanvasPattern object. The repeat value is a string, and the valid values are the same
-                            as those in CSS: repeat, repeat-x, repeat-y, and no-repeat.
+                            To create shared web workers that allow lots of different
+                            scripts on the same domain to access the same worker object.
+                            Web workers allow computationally complex operations to be performed in a
+                            separate thread.
+                        </dd><br>
+                    <dt>
+                        Service Workers
+                    </dt>
+                        <dd>
+                            The Service Worker API allows a worker script to run in the background with the
+                            added benefit of being able to intercept network requests.
+                        </dd>
+                    <dt>
+                        Websockets
+                    </dt>
+                        <dd>
+                            Websocket is a new protocol that allows two-way communication with a server –
+                            also known as push messaging. This means that a connection is kept open and
+                            responses are ‘pushed’ to the client as soon as they are received. 
+                            Create a file called websocket.html and add the following HTML code:
+                        </dd>
+                        <dd>
+                            (Follow the example websocket.html in text book page 551)
+                        </dd><br>
+
+
+                    <dt>
+                        Notifications
+                    </dt>
+                        <dd>
+                            The Notification API allows you to show messages using the system’s
+                            notifications. Before you can send notifications, you need to get permission granted by the user.
+                            This can be achieved using the requestPermission() method of a Notification
+                            global object.
                         </dd>
                         <dd class="js"><br>
-                            function drawPattern() {<br>
-                                var canvas = document.getElementById("demo2");<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.strokeStyle = "red";<br>
-                                var img = new Image();<br>
-                                img.src = "../images/bg-bike.png";<br>
+                            if(window.Notification) {<br>
+                                Notification.requestPermission();<br>
                                 }
                         </dd><br>
                         <dd>
-                            The image’s onload property
-                            to create our pattern once the image has been fully loaded by the browser:
+                            To create a new notification using a constructor function:
                         </dd>
                         <dd class="js"><br>
-                            function drawPattern() {<br>
-                                var canvas = document.getElementById("demo2");<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.strokeStyle = "red";<br>
-                                var img = new Image();<br>
-                                img.src = "../images/bg-bike.png";<br>
-                                img.onload = function() {<br>
-                                };<br>
-                                }
-                        </dd><br>
-                        <dd>
-                            Store the results of createPattern in the variable pattern, and set the fillStyle
-                            to that variable:
-                        </dd>
-                        <dd class="js"><br>
-                            function drawPattern() {<br>
-                                ⋮<br>
-                                var img = new Image();<br>
-                                img.src = "../images/bg-bike.png";<br>
-                                img.onload = function() {<br>
-                                var pattern = context.createPattern(img, "repeat");<br>
-                                context.fillStyle = pattern;<br>
-                                context.fillRect(10, 10, 100, 100);<br>
-                                context.strokeRect(10, 10, 100, 100);<br>
-                                };<br>
-                                }
-                        </dd><br>
-                        <dd>
-                            Create a CanvasGradient object to use as our fillStyle, 
-                            call one of two methods: createLinearGradient() or createRadialGradient();
-                            then we add one or more color stops to the gradient.
-                        </dd>
-                        <dd class="js"><br>
-                            function drawGradient() {<br>
-                                var canvas = document.getElementById("demo3");<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.strokeStyle = "red";<br>
-                                var gradient = context.createLinearGradient(0, 0, 0, 200);<br>
-                                }
-                        </dd><br>
-                        <dd>
-                            Specify our color stops. The color stop method is simply addColorStop().
-                            The offset is a value between 0 and 1.
-                        </dd>
-                        <dd class="js"><br>
-                            function drawGradient() {<br>
-                                ⋮<br>
-                                var gradient = context.createLinearGradient(0, 0, 0, 200);<br>
-                                gradient.addColorStop(0, "blue");<br>
-                                gradient.addColorStop(1, "white");<br>
-                                context.fillStyle = gradient;<br>
-                                context.fillRect(10, 10, 100, 100);<br>
-                                context.strokeRect(10, 10, 100, 100);<br>
-                                }
-                        </dd><br>
-
-                    <dt>
-                        Drawing Other Shapes by Creating Paths
-                    </dt>
-                        <dd>
-                            Using the transform-origin property, the default transform-origin
-                            is the center of the circle, applying a rotate() transform to a circle would have no
-                            visible effect—a circle rotated 90 degrees still looks exactly the same.
-                        </dd>
-
-                    <dt>
-                        Support for Internet Explorer 8 and Earlier
-                    </dt>
-                        <dd>
-                            Paths create a blueprint for your lines, arcs, and shapes, but paths are invisible
-                            until you give them a stroke! Draw a circle on the fourth canvas element at canvas.html:
-                        </dd>
-                        <dd class="js"><br>
-                            function drawCircle(canvas) {<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.beginPath();<br>
-                                }
-                        </dd><br>
-                        <dd>
-                            An arc is a segment of a circle, but as there’s no 
-                            method for creating a circle, we can draw a 360° arc.
-                        </dd>
-                        <dd class="js"><br>
-                            function drawCircle(canvas) {<br>
-                                var canvas = document.getElementById("myCanvas");<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.beginPath();<br>
-                                context.arc(50, 50, 30, 0, Math.PI*2, true);<br>
+                            if(window.Notification) {<br>
+                            Notification.requestPermission()<br>
+                            .then((permission) => {<br>
+                            if(Notification.permission === 'granted') {<br>
+                            new Notification('Hello JavaScript!');<br>
+                            }<br>
+                            });<br>
                             }
                         </dd><br>
                         <dd>
-                            The signature for the arc method is: arc(x, y, radius, startAngle, endAngle,
-                            anticlockwise).
+                            The function also accepts a second parameter, which is an object of
+                            options. These include body that specifies any text that you want to appear below
+                            the title, and icon where you can specify a link to an image that will be displayed
+                            as part of the notification:
+                        </dd><br>
+                        <dd class="js"><br>
+                            const notification = new Notification('JavaScript: Novice to
+                            ➥ Ninja',{
+                            body: 'The new book from SitePoint',
+                            icon: 'sitepointlogo.png'
+                            });
                         </dd><br>
                         <dd>
-                            The closePath method:
+                            To close the notification programmatically using
+                            the close() method:
                         </dd>
                         <dd class="js"><br>
-                            function drawCircle(canvas) {<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.beginPath();<br>
-                                context.arc(100, 100, 50, 0, Math.PI*2, true);<br>
-                                context.closePath();<br>
-                                }
+                            notification.close();
+                        </dd><br>
+
+                    <dt>
+                        Multimedia
+                    </dt>
+                        <dd>
+                            HTML5 introduced the &lt;audio&gt; and &lt;video&gt; tags used to insert 
+                            audio and video clips into a web page. It
+                            also introduced a Media API for controlling the playback of the clips using
+                            JavaScript.
+                        </dd>
+                        <dd>
+                            An audio clip can be inserted into a page with the &lt;audio&gt; tag, using the src
+                            attribute to point to the audio file:
+                        </dd>
+                        <dd class="js"><br>
+                            &lt;audio src='/song.mp3' controls&gt;<br>
+                            Your browser does not support the audio element.<br>
+                            &lt;/audio&gt;
                         </dd><br>
                         <dd>
-                            To fill and stroke the path. Note that this time, the method names are different
-                            from those we used with our rectangle. To fill a path you simply call fill, and to
-                            stroke it you call stroke:
+                            A video clip can be inserted with the &lt;video&gt; tag, using the src attribute to point
+                            to the movie file:
                         </dd>
                         <dd class="js"><br>
-                            function drawCircle(canvas) {<br>
-                                var context = canvas.getContext("2d");<br>
-                                context.beginPath();<br>
-                                context.arc(100, 100, 50, 0, Math.PI*2, true);<br>
-                                context.closePath();<br>
-                                context.strokeStyle = "red";<br>
-                                context.fillStyle = "blue";<br>
-                                context.lineWidth = 3;<br>
-                                context.fill();<br>
-                                context.stroke();<br>
-                            }
+                            &lt;video src='http://movie.mp4' controls&gt;<br>
+                            Your browser does not support the video element.<br>
+                            &lt;/video&gt;
                         </dd><br>
-                    <dt>
-                        transition-property
-                    </dt>
+
                         <dd>
-                            The transition-property property defines the CSS properties of the element that
-                            should be transitioned, with all for all properties being the default.
-                            Any property changing from one value to another for which you can find a valid
-                            midpoint can be transitioned.
-                        <dd>
-                            The transition to the transform property:
+                            The audio or video element can be referenced by a variable using one of the DOM
+                            methods:
                         </dd>
                         <dd class="js"><br>
-                            .ad-ad2 h1 span {<br>
-                            transition-property: transform;<br>
-                            }
+                            const video = document.getElementsByTagName('video')[0];
                         </dd>
-
-                    <dt>
-                        The transition-duration Property
-                    </dt>
                         <dd>
-                            The either in seconds (s) or milliseconds (ms). We’d like our animation
-                            to be fairly quick, so we’ll specify 0.2 seconds (0.2s), or 200 milliseconds (200ms):
+                            Audio and video elements have a number of properties and methods to control
+                            the playback of the clip.
                         </dd>
                         <dd class="js"><br>
-                            transition-duration: 0.2s;
-                        </dd>
+                            video.play();
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.pause();
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.volume = 0.9;
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.muted = true;
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.currentTime += 10; // jumps forward 10 seconds
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.playbackRate = 8; // fast-forward at 8 times as fast
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.loop = true;
+                        </dd><br>
+                        <dd class="js"><br>
+                            video.duration;<br>
+                            << 52.209
+                        </dd><br>
+
+
 
                     <dt>
-                        The transition-timing-function Property
+                        Other APIs
                     </dt>
                         <dd>
-                            The transition-timing-function lets you control the pace of the transition in
-                            even more granular detail. 
-                            The most common timing functions include the key terms ease, linear, ease-in,
-                            ease-out, or ease-in-out. The default ease has a slow start, then it speeds up, and
-                            ends slowly. ease-in-out is similar to ease. linear creates a transition that animates at a constant speed. The
-                            opposite, ease-out, starts at full speed, then slows progressively as it reaches the
-                            conclusion of the transition.
+                            A comprehensive list of HTML5 APIs can be found at the Mozilla
+                            Developer Network10.
                         </dd>
-                        <dd>
-                            Linear is the same as cubic-bezier(0, 0, 1, 1). 
-                            At online tools that let you play with different values, such as
-                            http://cubic-bezier.com/
-                            http://estelle.github.io/animation/files/cubicbezierprint.html
-                        </dd>
-
-
-
                     <dt>
-                        Saving Canvas Drawings
+                        Drawing with Canvas
                     </dt>
                         <dd>
-                            Use the API’s toDataURL method to save our drawing
+                            A canvas element is a rectangular element on
+                            the web page. It has a coordinate system that starts at (0,0) in the top-left corner.
+                            To add a canvas element to a page, the &lt;canvas&gt; tag is used specifying a height
+                            and width. Anything
                         </dd>
                         <dd class="js"><br>
                             &lt;h2&gt;Demo 5: Saving canvas drawings&lt;/h2&gt;<br>
@@ -814,550 +1049,120 @@
                         Drawing an Image to the Canvas
                     </dt>
                         <dd>
-                            Draw images onto the canvas element:
+                            A canvas element is a rectangular element on
+                            the web page. It has a coordinate system that starts at (0,0) in the top-left corner.
+                            To add a canvas element to a page, the &lt;canvas&gt; tag is used specifying a height
+                            and width.
                         </dd>
                         <dd class="js"><br>
-                            &lt;h2&gt;Demo 6: Drawing an image to the canvas&lt;/h2&gt;<br>
-                            &lt;canvas width="200" height="200" id="demo6" class="myCanvas"&gt;<br>
-                            Sorry! Your browser doesn't support Canvas.<br>
-                            &lt;/canvas&gt;<br>
-                            &lt;img src="images/html5-logo.png" id="myImageElem"--&gt;
+                            &lt;canvas id='canvas' width='400' height='400'&gt;Sorry,
+                                ➥ but your browser does not support the canvas
+                                ➥ element&lt;/canvas&gt;
                         </dd><br>
                         <dd>
-                            The canvas.js file, we’ll create a new function called drawImageToCanvas
-                            in order to redraw the HTML img element onto the canvas.
-                            Before we attempt to redraw an HTML img element on the page, we must ensure
-                            that the element has loaded.
+                            This canvas can now be accessed in a JavaScript program using the 
+                            document.getElementById() method:
                         </dd>
                         
                         <dd class="js"><br>
-                            window.addEventListener("load", drawImageToCanvas, false);
+                            const canvasElement = document.getElementById('canvas');
                         </dd><br>
                         <dd>
-                            Grab an image from our page via document.getElementById:
+                            The getContext() method is used to access the context:
                         </dd>
                         <dd class="js"><br>
-                            function drawImageToCanvas() {<br>
-                                var canvas = document.getElementById("demo6");<br>
-                                var context = canvas.getContext("2d");<br>
-                                var image = document.getElementById("myImageElem");<br>
-                                }
+                            const context = canvasElement.getContext('2d');
                         </dd><br>
                         <dd>
-                            Slightly to space out our canvas and our image:
+                            The fill and stroke colors can be changed by assigning a CSS color to
+                            the fillStyle and strokeStyle properties respectively:
                         </dd>
                             
                         </dd>
                         <dd class="js"><br>
-                            .myCanvas {<br>
-                                border: dotted 2px black;<br>
-                                margin: 0 20px;<br>
-                            }
+                            context.fillStyle = "#0000cc"; // a blue fill color
+                            context.strokeStyle = "#ccc"; // a gray stroke color
                         </dd><br>
                         <dd>
-                            Canvas’s drawImage method to redraw the image from our page into the canvas:
+                            The lineWidth property can be used to set the width of any line strokes drawn
+                            onto the canvas.
                         </dd>
-                            
+        
+                        <dd class="js"><br>
+                            context.lineWidth = 4;
+                        </dd><br>
+                        <dd>
+                            The fillRect() method can draw a filled-in rectangle. The first two parameters
+                            are the coordinates of the top-left corner, the third parameter is the width, and the
+                            last parameter is the height.
                         </dd>
                         <dd class="js"><br>
-                            function drawImageToCanvas() {<br>
-                                var canvas = document.getElementById("demo6");<br>
-                                var context = canvas.getContext("2d");<br>
-                                var image = document.getElementById("myImageElem");<br>
-                                context.drawImage(image, 0, 0);<br>
-                                }
+                            context.fillRect(10,10,100,50);
+                        </dd><br>
+                        <dd>
+                            The strokeRect() method works in the same way, but produces a rectangle that
+                            is not filled in.
+                        </dd>
+        
+                        <dd class="js"><br>
+                            context.strokeRect(10,100,100,50);
+                        </dd><br>
+                        <dd>
+                            Straight lines can be drawn employing the moveTo() and lineTo() methods.
+                            These methods can be used together to produce a path. Nothing will actually be
+                            drawn onto the canvas until the stroke() method is called.
+                        </dd>
+                        <dd class="js"><br>
+                            context.beginPath();
+                            context.moveTo(130, 50);
+                            context.lineTo(180, 50);
+                            context.moveTo(155, 50);
+                            context.lineTo(155, 90);
+                            context.strokeStyle = '#c00';
+                            context.lineWidth = 15;
+                            context.stroke();
+                        </dd><br>
+                        <dd>
+                            The arc() method
+                        </dd>
+        
+                        <dd class="js"><br>
+                            context.beginPath();
+                            context.arc(200, 200, 30, 0, Math.PI * 2, false);
+                            context.strokeStyle = '#ff0';
+                            context.lineWidth = 4;
+                            context.stroke();
+                        </dd><br>
+                        <dd>
+                            The fillText() method is used to write text onto the canvas.
+                        </dd>
+                        <dd class="js"><br>
+                            context.fillStyle = '#0c0'; // a blue fill color
+                            context.font = 'bold 26px sans-serif';
+                            context.fillText('Hello', 20, 200);
                         </dd><br>
 
 
 
                     <dt>
-                        Manipulating Images
+                        Shims and Polyfills
                     </dt>
                         <dd>
-                            Once we’ve drawn an image on the canvas, we can use the getImageData method 
-                            from the Canvas API to manipulate the pixels of that image. getImageData will return 
-                            an ImageData object, which contains three properties:
-                            width, height, and data. The getImageData method allows us to examine a small section of a canvas.
+                            This is where a shim or a polyfill
+                            comes in handy. These are libraries of code that allow you to use the APIs as
+                            usual. They then fill in the necessary code that’s not provided natively by the
+                            user’s browser.
                         </dd>
-                        <dd class="js"><br>
-                            var canvas = document.getElementById("myCanvas");<br>
-                            var context = canvas.getContext("2d");<br>
-                            var image = document.getElementById("myImageElem");<br>
-                            // draw the image at x=0 and y=0 on the canvas<br>
-                            context.drawImage(image, 68, 68);<br>
-                            var imageData = context.getImageData(0, 0, 1, 1);<br>
-                            var pixelData = imageData.data;<br>
-                            console.log(pixelData.length);
-                        </dd><br>
-                    <dt>
-                        Security Errors with getImageData
-                    </dt>
                         <dd>
-                            The true security issue that Chrome and Firefox are attempting to prohibit is a user
-                            on one domain manipulating images on another domain.<br>
-                            This origin-clean flag will be set to false if the image you want to manipulate is
-                            on a different domain from the JavaScript doing the manipulating. Unfortunately,
-                            in Chrome and Firefox, this origin-clean flag is also set to false while you’re testing
-                            from files on your hard drive, as they’re seen as being files that live on different
-                            domains.
-                        </dd><br>
-
-                    <dt>
-                        Converting an Image from Color to Black and White
-                    </dt>
-                        <dd>
-                            Using getImageData to convert a full color image into black and white on a canvas.
-                        </dd>
-                            
-                        <dd class="js"><br>
-                            function manipulateImage() {<br>
-                                var canvas = document.getElementById("demo7");<br>
-                                var context = canvas.getContext("2d");<br>
-                                var image = document.getElementById("secondImage");<br>
-                                context.drawImage(image, 68, 68);<br>
-                                var imageData = context.getImageData(0, 0, 200, 200);<br>
-                                var red, green, blue, greyscale;<br>
-                                for (var i = 0; i < imageData.data.length; i += 4) {<br>
-                                red = imageData.data[i];<br>
-                                green = imageData.data[i + 1];<br>
-                                blue = imageData.data[i + 2];<br>
-                                }<br>
-                            }      
+                            The main difference
+                            between them is that a shim is a piece of code that adds some missing
+                            functionality to a browser, although the implementation method may differ
+                            slightly from the standard API. A polyfill is a shim that achieves the same
+                            functionality, while also using the API commands that would be used if the
+                            feature was supported natively.
                         </dd><br>
                 
-                        <dd>
-                            Takes an image's data and writes it onto the canvas
-                        </dd>
-                        <dd class="js"><br>
-                            function manipulateImage() {<br>
-                                var canvas = document.getElementById("demo7");<br>
-                                var context = canvas.getContext("2d");<br>
-                                var image = document.getElementById("secondImage");<br>
-                                context.drawImage(image, 60, 60);<br>
-                                var imageData = context.getImageData(0, 0, 200, 200);<br>
-                                for (var i = 0; i < imageData.data.length; i += 4) {<br>
-                                var red = imageData.data[i];<br>
-                                var green = imageData.data[i + 1];<br>
-                                var blue = imageData.data[i + 2];<br>
-                                var grayscale = red * 0.3 + green * 0.59 + blue * 0.11;<br>
-                                imageData.data[i] = grayscale;<br>
-                                imageData.data[i + 1] = grayscale;<br>
-                                imageData.data[i + 2] = grayscale;<br>
-                                }<br>
-                                context.putImageData(imageData, 0, 0);<br>
-                                }
-                        </dd><br>
-                    <dt>
-                        Manipulating Video with Canvas
-                    </dt>
-                        <dd>
-                            A new separate JavaScript file called videoToBW.js
-                        </dd>
-                        <dd class="js"><br>
-                            function makeVideoOldTimey() {<br>
-                                var video = document.getElementById("video");<br>
-                                var canvas = document.getElementById("canvasOverlay");<br>
-                                var context = canvas.getContext("2d");<br>
-                                }
-                        </dd><br>
-                        <dd>
-                            Drawing the video element onto the canvas instead of a static image:
-                        </dd>
-                        <dd class="js"><br>
-                            function drawOneFrame(video, context, canvas){<br>
-                                // draw the video onto the canvas<br>
-                                context.drawImage(video, 0, 0, canvas.width, canvas.height);<br>
-                                var imageData = context.getImageData(0, 0, canvas.width,<br>
-                                ➥canvas.height);<br>
-                                var pixelData = imageData.data;<br>
-                                // Loop through the red, green and blue pixels,<br>
-                                // turning them grayscale<br>
-                                var red, green, blue, greyscale;<br>
-                                for (var i = 0; i < pixelData.length; i += 4) {<br>
-                                red = pixelData[i];<br>
-                                green = pixelData[i + 1];<br>
-                                blue = pixelData[i + 2];<br>
-                                //we'll ignore the alpha value, which is in position i+3<br>
-                                grayscale = red * 0.3 + green * 0.59 + blue * 0.11;<br>
-                                pixelData[i] = grayscale;<br>
-                                pixelData[i + 1] = grayscale;<br>
-                                pixelData[i + 2] = grayscale;<br>
-                                }<br>
-                                context.putImageData(imageData, 0, 0);<br>
-                                }
-                            </dd><br>
-                            <dd>
-                                The setTimeout method allows us to keep calling the draw function over and over
-                                again, without pause. The final parameter is the value for delay, which tells the
-                                browser how long, in milliseconds, to wait before calling the function.
-                            </dd>
-                            <dd class="js"><br>
-                                function draw(video, context, canvas) {<br>
-                                    if (video.paused || video.ended) return false;<br>
-                                    drawOneFrame(video, context, canvas);<br>
-                                    // Start over!<br>
-                                    setTimeout(function(){ draw(video, context, canvas); }, 0);<br>
-                                    }
-                            </dd><br>
-                        <dt>
-                            Displaying Text on the Canvas
-                        </dt>
-                            <dd>
-                                The fillStyle and textAlign methods:
-                            </dd>
-                            <dd class="js"><br>
-                                function drawOneFrame(video, context, canvas){<br>
-                                    context.drawImage(video, 0, 0, canvas.width, canvas.height);<br>
-                                    try {(review code style)<br>
-                                    ⋮
-                                    } catch (err) {<br>
-                                    // clear the canvas<br>
-                                    context.clearRect(0,0,canvas.width,canvas.height);<br>
-                                    canvas.style.backgroundColor = "transparent";<br>
-                                    context.fillStyle = "white";<br>
-                                    context.textAlign = "left";<br>
-                                    context.font = "18px LeagueGothic, Tahoma, Geneva, sans-serif";<br>
-                                    }<br>
-                                }
-                            </dd><br>
-                <h3>
-                    SVG
-                </h3>
-                    <dd>
-                        SVG stands for Scalable Vector Graphics, a specific file format that allows 
-                        you to describe vector graphics using XML.
-                    </dd><br>              
-                    <dt>
-                        Drawing in SVG
-                    </dt>
-                        <dd>
-                            Drawing a circle in SVG is arguably easier than drawing a circle with canvas.
-                        </dd>                       
-                        <dd class="js"><br>
-                            &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"&gt;<br>
-                            &lt;circle cx="50" cy="50" r="25" fill="red"/><br>
-                            &lt;/svg&gt;
-                        </dd><br>
-                        <dd>
-                            Draw rectangles in SVG
-                        </dd>
-                        <dd class="js"><br>
-                            &lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">&gt;<br>
-                            &lt;desc&gt;Drawing a rectangle&lt;/desc><br>
-                            &lt;/svg&gt;
-                        </dd><br>
-                        <dd>
-                            Populate the <rect> tag with a number of attributes that describe the
-                            rectangle.
-                        </dd>                  
-                        
-                        <dd class="js"><br>
-                            &lt;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400"&gt;<br>
-                                &lt;desc&gt;Drawing a rectangle&lt;/desc&gt;<br>
-                                &lt;rect x="10" y="10" width="100" height="100"<br>
-                                fill="blue" stroke="red" stroke-width="3" /&gt;<br>
-                            &lt;/svg&gt;
-                        </dd><br>
-                    <dt>
-                        SVG Filters
-                    </dt>
-                        <dd>
-                            To make our progress spinner match our page a bit better, we can use a filter in
-                            Inkscape to make it black and white. Start by opening the file in Inkscape, then
-                            choose Filters > Color > Moonarize.
-                        </dd>
-                        
-                    <dt>
-                        Using the Raphaël Library
-                    </dt><br>
-                    <dt>
-                        Drawing an Image to Raphaël’s Container
-                    </dt>
-                        <dd>
-                            Draw images into a container that you create using Raphaël.
-                        </dd>
-                        <dd class="js"><br>
-                            &lt;article class="ad-ad4"&gt;<br>
-                            &lt;div id="mapDiv"&gt;<br>
-                            &lt;h1 id="geoHeading"&gt;Where in the world are you?&lt;/h1&gt;<br>
-                            &lt;form id="geoForm"&gt;<br>
-                            &lt;input type="button" id="geobutton" value="Tell us!"&gt;<br>
-                            &lt;/form&gt;<br>
-                            &lt;div class="spin" id="spinner"&gt;&lt;/div&gt;<br>
-                            &lt;/div&gt;<br>
-                            &lt;/article&gt;<br>
-                        </dd><br>
-                    <dt>
-                        The parent mapDiv using the following CSS.
-                    </dt>
-                        <dd class="js"><br>
-                            .spin {<br>
-                                position: absolute;<br>
-                                top: 8px;<br>
-                                left: 55px;<br>
-                                }
-                        </dd><br>
-                    <dt>
-                        Rotating a Spinner with Raphaël
-                    </dt>
-                        <dd>
-                            A container and the spinner SVG image drawn into it, we want
-                            to animate the image to make it spin. Raphaël has animation features built in with
-                            the animate method.
-                        </dd>
-                        <dd class="js"><br>
-                            var container = Raphael(document.getElementById("spinner"),125,125);<br>
-                            var spinner = container.image("images/spinnerBW.png",0,0,125,125);<br>
-                            var attrsToAnimate = { transform: "r720" };
-                        </dd><br>
-                        <dd>
-                            Call the animate method, and specify how long the animation should last. In our case
-                        </dd>
-                        <dd class="js"><br>
-                            var container = Raphael(document.getElementById("spinner"),125,125);<br>
-                            var spinner = container.image("images/spinnerBW.png",0,0,125,125);<br>
-                            var attrsToAnimate = { transform: "r720" };<br>
-                            spinner.animate(attrsToAnimate, 60000);
-                        </dd><br>                    
-
-                        <dt>
-                            Rotating a Spi
-                        </dt><br>
-                            <dd>
-                                A container.
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Rapha
-                            </dd><br>
-                            <dd>
-                                Call the animate method, and s
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Raphael(doc
-                            </dd><br>
-                        <dt>
-                            Rotating a Spi
-                        </dt>
-                            <dd>
-                                A container.
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Rapha
-                            </dd><br>
-                            <dd>
-                                Call the animate method, and s
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Raphael(doc
-                            </dd><br>
-                        <dt>
-                            Rotating a Spi
-                        </dt>
-                            <dd>
-                                A container.
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Rapha
-                            </dd><br>
-                            <dd>
-                                Call the animate method, and s
-                            </dd>
-                            <dd class="js"><br>
-                                var container = Raphael(doc
-                            </dd><br>
-
-
-                <h3>
-                    Drag and Drop
-                </h3>
-                    <dd>
-                        The Drag and Drop API. This API allows us to specify that certain
-                        elements are draggable, and then specify what should happen when these draggable
-                        elements are dragged over or dropped onto other elements on the page.
-                    </dd><br>
-                    <dd>
-                        There are several steps to adding drag and drop to your page:
-                    </dd>
-                        <li>
-                            1. Set the draggable attribute on any HTML elements you’d like to be draggable
-                        </li>
-                        <li>
-                            2. Add an event listener for the dragstart event on any draggable HTML elements.
-                        </li>
-                        <li>
-                            3. Add an event listener for the dragover and drop events on any elements that you
-                            want to have accept dropped items.
-                        </li><br>
-
-                    <dt>
-                        Feeding the WAI-ARIA Cat
-                    </dt>
-                        <dd>
-                            Add new images to our index.html file.We’ll give each mouse image an ID as well:
-                        </dd>
-                        <dd>
-                            The transition to the transform property:
-                        </dd>
-                        <dd class="js"><br>
-                            <article id="ac3"><br>
-                                &lt;h1&gt;Wai-Aria? HAHA!&lt;/h1&gt;<br>
-                                &lt;h2&gt;Form Accessibility<&lt;h2&gt;<br>
-                                &lt;img src="images/cat.png" alt="WAI-ARIA Cat"&gt;<br>
-                                &lt;div class="content"&gt;<br>
-                                &lt;p id="mouseContainer" class="mc"&gt;<br>
-                                &lt;img src="images/computer-mouse-pic.svg"<br>
-                                alt="mouse treat" id="mouse1" draggable="true"&gt;<br>
-                                &lt;img src="images/computer-mouse-pic.svg"<br>
-                                alt="mouse treat" id="mouse2" draggable="true"&gt;<br>
-                                &lt;img src="images/computer-mouse-pic.svg"<br>
-                                alt="mouse treat" id="mouse3" draggable="true"&gt;<br>
-                                &lt;/p&gt;<br>
-                                ⋮
-                        </dd>
-                        <dd>
-                            Style the "mouseContainer" div to have its text center aligned (assuming drag
-                            and drop is supported, which is what the .draganddrop class is checking for):
-                        </dd>
-                        <dd class="js"><br>
-                            .draganddrop .mc {<br>
-                                text-align: center;<br>
-                                }
-                        </dd><br>
-
-                    <dt>
-                        Making Elements Draggable
-                    </dt>
-                        <dd>
-                            Make our images draggable. Add the draggable attribute to them, and set the value to true:
-                        </dd>
-                        <dd class="js"><br>
-                            &lt;img src="images/computer-mouse-pic.svg" width="30"<br>
-                            alt="mouse treat" id="mouse1" draggable="true"&gt;<br>
-                            &lt;img src="images/computer-mouse-pic.svg" width="30"<br>
-                            alt="mouse treat" id="mouse2" draggable="true"&gt;<br>
-                            &lt;img src="images/computer-mouse-pic.svg" width="30"<br>
-                            alt="mouse treat" id="mouse3" draggable="true"&gt;
-                        </dd><br>
-                        <dd>
-                            By using querySelectorAll to grab all the img elements whose parent element 
-                            has the ID set to mouseContainer:
-                        </dd>
-                        <dd class="js"><br>
-                            var mice = document.querySelectorAll("#mouseContainer img");
-                        </dd><br>
-                        <dd>
-                            Loop through all the img elements contained in the mice variable, and 
-                            add an event listener for the dragstart event on each computer mouse:
-                        </dd>
-                        <dd class="js"><br>
-                            var mouse = null;<br>
-                            for (var i=0; i < mice.length; i++) {<br>
-                            mouse = mice[i];<br>
-                            mouse.addEventListener('dragstart', function (event) {<br>
-                            // handle the dragstart event<br>
-                            });<br>
-                            }
-                        </dd><br>
-
-                    <dt>
-                        The DataTransfer Object
-                    </dt>
-                        <dd>
-                            DataTransfer objects are one type of object outlined in the Drag and Drop API. These
-                            objects allow us to set and get data about the elements that are being dragged.
-                        </dd><br>
-                        <dd>
-                            Linear is the same as cubic-bezier(0, 0, 1, 1). 
-                            At online tools that let you play with different values, such as
-                            http://cubic-bezier.com/, 
-                            http://estelle.github.io/animation/files/cubicbezierprint.html
-                        </dd>
-                        <li>
-                            the type of data we’re saving of the draggable element
-                        </li>    
-                        <li>
-                            the value of the data itself
-                        </li><br>
-
-                    <dt>
-                        Accepting Dropped Elements
-                    </dt>
-                        <dd>
-                            By creating two more event listeners to monitor for are dragover and drop.
-                        </dd>
-                        <dd class="js"><br>
-                            <article id="ac3">
-                                &lt;h1&gt;Wai-Aria? HAHA!&lt;/h1&gt;<br>
-                                &lt;h2 id="catHeading">Form Accessibility&lt;/h2&gt;<br>
-                                &lt;img src="images/cat.png" id="cat" alt="WAI-ARIA Cat"&gt;
-                        </dd><br>
-
-                    <dt>
-                        Handle the dragover event:
-                    </dt>
-                        <dd class="js"><br>
-                            var cat = document.getElementById("cat");<br>
-                            cat.addEventListener("dragover", function(event) {<br>
-                            event.preventDefault();<br>
-                            });
-                        </dd><br>
-                        <dd>
-                            Store these options inside an object called mouseHash
-                        </dd>
-                        <dd class="js"><br>
-                            cat.addEventListener("drop", function(event) {<br>
-                                var mouseHash = {};<br>
-                            }
-                        </dd><br>
-                        <dd>
-                            Take advantage of JavaScript’s objects allowing us to store
-                            key/value pairs inside them, as well as storing each response in the mouseHash object,
-                            associating each response with the ID of one of the mouse images.
-                        </dd>
-                        <dd class="js"><br>
-                            cat.addEventListener("drop", function(event) {<br>
-                                var mouseHash = {<br>
-                                mouse1: 'NOMNOMNOM',<br>
-                                mouse2: 'Meow',<br>
-                                mouse3: 'Purrrrrr ...'<br>
-                                };<br>
-                            }
-                        </dd><br>
-                        <dd>
-                            Grab the h2 element that we’ll change to reflect the cat’s response:
-                        </dd>
-                        <dd class="js"><br>
-                            var catHeading = document.getElementById('catHeading');
-                        </dd>
-                        <br>
-
-                        <dd>
-                            Saved the ID of the dragged element to the DataTransfer object using setData
-                        </dd>
-                        <dd class="js"><br>
-                            var mouseID = event.originalEvent.dataTransfer.getData("text/plain");
-                        </dd><br>
-                        <dd>
-                            Stored the mouse’s ID in a variable called mouseID.
-                        </dd>
-                        <dd class="js"><br>
-                            catHeading.innerHTML = mouseHash[mouseID];
-                        </dd><br>
-                        <dd>
-                            use the information stored in the item variable (the dragged mouse’s ID) to retrieve
-                            the correct message for the h2 element. Remove it from the page:
-                        </dd>
-                        <dd class="js"><br>
-                            var mousey = document.getElementById(item); mousey.parentNode.removeChild(mousey);
-                        </dd><br>
-                        <dd>
-                            Prevent the default behavior of not allowing elements to be dropped on our cat image, as we did before:
-                        </dd>
-                        <dd class="js"><br>
-                            event.preventDefault();
-                        </dd><br>
-                
-            </ul>            
+                       
         </ul>
     </ul>
 </body>

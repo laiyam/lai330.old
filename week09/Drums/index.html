@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div id="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div id="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div id="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div id="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div id="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div id="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div id="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div id="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div id="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+<audio id="audio65" src="sounds/clap.wav" type="audio/wav">
+  Audio element not supported
+</audio>
+
+<audio id="audio83" src="sounds/hihat.wav" type="audio/wav">
+  Audio element not supported
+</audio>
+
+<audio id="audio68" src="sounds/kick.wav" type="audio/wav">
+  Audio element not supported
+</audio>
+
+<audio id="audio70" src="sounds/openhat.wav" type="audio/wav">
+  Audio element not supported
+</audio>
+
+<audio id="audio71" src="sounds/boom.wav" type="audio/wav">//limitation of plnkr.co
+  Audio element not supported 
+</audio>
+
+<audio id="audio72" src="sounds/ride.wav" type="audio/wav">//changed all wave after
+  Audio element not supported 
+</audio>
+
+<audio id="audio74" src="sounds/snare.wav" type="audio/wav">//boom to boom.wave
+  Audio element not supported 
+</audio>
+
+<audio id="audio75" src="sounds/tom.wav" type="audio/wav">
+  Audio element not supported 
+</audio>
+
+<audio id="audio76" src="sounds/tink.wav" type="audio/wav">
+  Audio element not supported 
+</audio>
+
+  <script>
+    window.addEventListener('keydown', playSound);
+    function playSound(e) {
+    var keys = [65,83,68,70,71,72,74,75,76];
+      console.log(keys.includes(e.keyCode));
+      //If the key is a valid one
+      if (keys.includes(e.keyCode)){
+        let audio = document.querySelector('#audio'+e.keyCode);
+        //let keyHit = document.querySelector('#'+e.keyCode);
+        let keyHit = document.querySelector(`div[id="${e.keyCode}"]`);
+        console.dir(audio);
+        console.dir(keyHit);
+        //add new class to change key style
+        keyHit.classList.add('playing');
+        //audio playback time remains                       
+        console.log(audio.currentTime);
+        //set the audio playback time to zero and let the next play immediately
+        audio.currentTime = 0;  
+        audio.play();
+      }
+    }
+
+    window.addEventListener('keyup', resetKeyStyle);
+
+    function resetKeyStyle(e) {
+    var key2s = [65,83,68,70,71,72,74,75,76];
+      console.log(key2s.includes(e.keyCode));
+      //If the key is a valid one
+      if (key2s.includes(e.keyCode)){
+        console.log(e.keyCode);
+        let keyRelease = document.querySelector(`div[id="${e.keyCode}"]`);
+        keyRelease.classList.remove('playing');
+      }
+    }
+  </script>
+
+</body>
+</html>
