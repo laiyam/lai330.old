@@ -1,0 +1,12 @@
+To Do list:
+1. The two first methods to complete should be the initPos method from the controller, then the getEarthQuakesByRadius method from the model, test each method as you finish them.
+  
+  - Rui16002: The model seems to be completed although I haven't tested it yet. I get an error on initPos due two a Plunker limitation it seems, the promise gets rejected. See console.
+    We may have to work on this on a local server and then upload the results.
+
+2. After that work on the rest of the controller or View methods as it makes sense. I would recommend following the same order...finish a method, then test. It will keep your errors under control and make your code easier to troubleshoot.
+
+  - Rui16002: renderQuakeList and renderQuake need to be completed, information about how to do so is available as comments.
+
+3. Styles: Once we have it working, we can make it pretty.
+

@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 Lai Yam Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Portfolio</a> |
+        <a href="EarthquakeWatchTeam/index.html">Earthquake Watch</a>|
+        <a href="../week09/index.html">Back</a> |
+        <a href="../week11/index.html">Next</a>
+    </nav>
+    <h1>WDD 330 Lai Yam Portfolio</h1>
+    <h2>Week 10</h2>
+    <ul>
+        <li>
+            Week 9 Notes
+        </li>
+        <ol>
+            <b>MDN Note: </b>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation"> MDN: Validating Forms</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"> MDN: Using Fetch</a>
+            <dt>MDN: Validating Forms and Using Fetch</dt></a>
+        </ol>
+        <hr>
+        <ul>
+            
+            
+            <h2>
+                MDN: Validating Forms
+            </h2>
+                <dd>
+                    In a browser environment the global object is the window object,
+                    which represents the browser window that contains a web page.
+                </dd>
+                
+                <h3>
+                    Client-side form validation
+                </h3>
+                    <dd>
+                        Client-side validation is an initial check and an important feature of good 
+                        user experience; by catching invalid data on the client-side, the user can 
+                        fix it straight away.
+                    </dd>
+                    <dd>
+                        App should always perform security checks on any form-submitted data on 
+                        the server-side as well as the client-side, because client-side validation is 
+                        too easy to bypass, so malicious users can still easily send bad data through 
+                        to your server. e
+                    </dd>
+                    <dd>
+                        Three main reasons:
+                        <li>
+                            To get the right data, in the right format
+                        </li>
+                        <li>
+                            To protect our users' data
+                        </li>
+                        <li>
+                            To protect ourselves
+                        </li>
+                    </dd><br>
+                    <dd>
+                        Two different types of client-side validation: (see examples from website)
+                        <li>
+                            <b>Built-in form validation </b>uses HTML5 form validation features, which 
+                            we've discussed in many places throughout this module.
+                        </li>
+                        <li>
+                            <b>JavaScript </b>validation is coded using JavaScript.
+                        </li>
+                    </dd><br>
+
+                    <dt>
+                        Using built-in form validation
+                    </dt>
+                        <dd>
+                            Using validation attributes on form elements:
+                            <li>
+                                required: Specifies whether a form field needs to be filled in before the form can be submitted.
+                            </li>
+                            <li>
+                                minlength and maxlength: Specifies the minimum and maximum length of textual data (strings)
+                            </li>
+                            <li>
+                                min and max: Specifies the minimum and maximum values of numerical input types
+                            </li>
+                            <li>
+                                type: Specifies whether the data needs to be a number, an email address, or some other specific preset type.
+                            </li>
+                            <li>
+                                pattern: Specifies a regular expression that defines a pattern the entered data needs to follow.
+                            </li>
+                            <li>
+                                To protect ourselves
+                            </li>
+                        </dd><br>
+                        <dd>
+                            When an element is valid:
+                            <li>
+                                The element matches the :valid CSS pseudo-class, which lets you apply a specific style to valid elements.
+                            </li>
+                            <li>
+                                If the user tries to send the data, the browser will submit the form, provided there is nothing else 
+                                stopping it from doing so (e.g., JavaScript).
+                            </li>
+                        </dd>
+                        <dd>When an element is invalid:
+                            <li>
+                                The element matches the :invalid CSS pseudo-class, and sometimes other UI pseudo-classes (e.g., :out-of-range) 
+                                depending on the error, which lets you apply a specific style to invalid elements.
+                            </li>
+                            <li>
+                                If the user tries to send the data, the browser will block the form and display an error message.
+                            </li>
+                        </dd>
+                        <dd>
+                            The Constraint Validation API: Constraint validation API makes the following properties:
+                            <li>
+                                validationMessage
+                            </li>
+                            <li>
+                                validity
+                            </li>
+                            <li>
+                                o	patternMismatch
+                            </li>
+                            <li>
+                                o	tooLong
+                            </li>
+                            <li>
+                                o	tooShort
+                            </li>
+                            <li>
+                                o	rangeOverflow
+                            </li>
+                            <li>
+                                o	rangeUnderflow
+                            </li>
+                            <li>
+                                o	typeMismatch
+                            </li>
+                            <li>
+                                o	valid
+                            </li>
+                            <li>
+                                o	valueMissing
+                            </li>
+                            <li>
+                                validity
+                            </li>
+                            <li>
+                                o	patternMismatch
+                            </li>
+                            <li>
+                                willValidate
+                            </li>
+                        </dd>
+                            The Constraint Validation API:  Methods 
+                        <dd>
+                            <li>
+                                checkValidity()
+                            </li>
+                            <li>
+                                setCustomValidity(message)
+                            </li>
+                        </dd><br>
+                    <dt>
+                        Validating forms without a built-in API (see examples on website)
+                    </dt>
+                        <dd>
+                            To validate a form in three areas:
+                            <li>
+                                Type of validations
+                            </li>
+                            <li>
+                                Reactions of validations
+                            </li>
+                            <li>
+                                Reactions of invalidations
+                            </li>
+                        </dd><br><br>
+                    
+
+
+<hr>                        
+            <h2>
+                Using Fetch
+            </h2>
+                <dd>
+                    The Fetch API provides a JavaScript interface 
+                    for accessing and manipulating parts of the HTTP pipeline to 
+                    provides a global fetch() method that provides an easy, 
+                    logical way to fetch resources asynchronously across the network.
+                </dd>
+                    Using XMLHttpRequest: Fetch provides a better alternative that can be 
+                    easily used by other technologies such as Service Workers. Fetch also 
+                    provides a single logical place to define other HTTP-related concepts 
+                    such as CORS and extensions to HTTP.
+                <dd>
+                    The fetch specification differs from jQuery.ajax() in three main Promise ways:
+                    <li>
+                        fetch() won’t reject on HTTP error status 
+                    </li>
+                    <li>
+                        fetch() won't receive cross-site cookies
+                    </li>
+                    <li>
+                        fetch won’t send cookies
+                    </li>
+                </dd><br>
+
+                <dt>
+                    Supplying request options
+                </dt>
+                <dd>
+                    The fetch() method can optionally accept a second parameter, 
+                    an init object that allows you to control a number of different settings:
+                    <li>
+                        Accept
+                    </li>
+                    <li>
+                        Accept-Language
+                    </li>
+                    <li>
+                        Content-Language
+                    </li>
+                    <li>
+                        Content-Type with a value of application/x-www-form-urlencoded, multipart/form-data, or text/plain
+                    </li>
+                </dd><br>
+
+                <dt>
+                    Sending a request with credentials included
+                </dt>
+                <dd>
+                    To send a request with credentials included, even for a cross-origin call, add credentials: 
+                    'include' to the init object you pass to the fetch() method.
+                </dd><br>
+
+                <dt>
+                    Uploading JSON data
+                </dt>
+                <dd>
+                    Use fetch() to POST JSON-encoded data
+                </dd><br>
+
+                <dt>
+                    Uploading a file
+                </dt>
+                <dd>
+                    Use an HTML <input type="file" /> input element, FormData() and fetch()
+                </dd><br>
+
+                <dt>
+                    Uploading multiple files
+                </dt>
+                <dd>
+                    Use an HTML <input type="file" multiple /> input element, FormData() and fetch()
+                </dd><br>
+
+                <dt>
+                    Processing a text file line by line
+                </dt>
+                <dd>
+                    The chunks that are read from a response are not broken neatly at line 
+                    boundaries and are Uint8Arrays, not strings. 
+                </dd><br>
+
+                <dt>
+                    Checking that the fetch was successful
+                </dt>
+                <dd>
+                    Use an HTML <input type="file" multiple /> input element, FormData() and fetch()
+                </dd><br>
+
+                <dt>
+                    Supplying your own request object
+                </dt>
+                <dd>
+                    To request into the fetch() call, you can create a request object using the 
+                    Request() constructor, and pass that in as a fetch() method argument. 
+                    e.g. Request() accepts exactly the same parameters as the fetch() method
+                </dd><br><br>
+
+
+        <h3>
+            Headers
+        </h3>
+            <dd>
+                The Headers interface allows you to create your own headers object via the Headers() 
+                constructor. A headers object is a simple multi-map of names to values. (see example on website)
+            </dd>
+            <dt>
+                Guard
+            </dt>
+            <dd>
+                Since headers can be sent in requests and received in responses, and have various limitations about 
+                what information can and should be mutable, headers objects have a guard property. Guard Values:
+                <li>
+                    none: default
+                </li>
+                <li>
+                    request: guard for a headers object obtained from a request (Request.headers).
+                </li>
+                <li>
+                    request-no-cors: guard for a headers object obtained from a request created with Request.mode no-cors.
+                </li>
+                <li>
+                    response: guard for a Headers obtained from a response (Response.headers).
+                </li>
+                <li>
+                    immutable: Mostly used for ServiceWorkers; renders a headers object read-only.
+                </li>
+            </dd><br>
+
+            <h3>
+                Response objects
+            </h3>
+                <dd>
+                    Response instances are returned when fetch() promises are resolved. 
+                </dd>
+                <dd>
+                    The most common response properties you'll use are:
+                    <li>
+                        Response.status — An integer (default value 200) containing the response status code.
+                    </li>
+                    <li>
+                        Response.statusText — A string (default value "OK"), which corresponds to the HTTP status code message.
+                    </li>
+                    <li>
+                        Response.ok — seen in use above, this is a shorthand for checking that status is 
+                        in the range 200-299 inclusive. This returns a Boolean.
+                    </li>
+                </dd><br>
+
+            <h3>
+                Body
+            </h3>
+                <dd>
+                    Both requests and responses may contain body data. A body is an instance of 
+                    any of the following types:
+                    <li>
+                        ArrayBuffer
+                    </li>
+                    <li>
+                        ArrayBufferView (Uint8Array and friends)
+                    </li>
+                    <li>
+                        Blob/File
+                    </li>
+                    <li>
+                        string
+                    </li>
+                    <li>
+                        URLSearchParams
+                    </li>
+                    <li>
+                        FormData
+                    </li>
+                    <li>
+                        arrayBuffer()
+                    </li>
+                    <li>
+                        blob()
+                    </li>
+                    <li>
+                        json()
+                    </li>
+                    <li>
+                        text()
+                    </li>
+                    <li>
+                        formData()
+                    </li>
+                </dd><br>
+
+                <dt>
+                    Feature detection
+                </dt>
+                <dd>
+                    Fetch API support can be detected by checking for the existence of Headers, Request, 
+                    Response or fetch() on the Window or Worker scope.
+                </dd><br>
+
+                <dt>
+                    Polyfill
+                </dt>
+                <dd>
+                    To use Fetch in unsupported browsers, there is a Fetch Polyfill available that 
+                    recreates the functionality for non-supporting browsers
+                </dd><br>
+
+                <dt>
+                    Browser compatibility
+                </dt>
+                <dd>
+                    <a href="https://github.com/mdn/browser-compat-data">Update compatibility data on GitHub</a>
+                </dd><br>
+
+                       
+        </ul>
+    </ul>
+</body>
+</html>

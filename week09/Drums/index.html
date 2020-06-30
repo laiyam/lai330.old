@@ -9,39 +9,39 @@
 
 
   <div class="keys">
-    <div id="65" class="key">
+    <div data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
     </div>
-    <div id="83" class="key">
+    <div data-key="83" class="key">
       <kbd>S</kbd>
       <span class="sound">hihat</span>
     </div>
-    <div id="68" class="key">
+    <div data-key="68" class="key">
       <kbd>D</kbd>
       <span class="sound">kick</span>
     </div>
-    <div id="70" class="key">
+    <div data-key="70" class="key">
       <kbd>F</kbd>
       <span class="sound">openhat</span>
     </div>
-    <div id="71" class="key">
+    <div data-key="71" class="key">
       <kbd>G</kbd>
       <span class="sound">boom</span>
     </div>
-    <div id="72" class="key">
+    <div data-key="72" class="key">
       <kbd>H</kbd>
       <span class="sound">ride</span>
     </div>
-    <div id="74" class="key">
+    <div data-key="74" class="key">
       <kbd>J</kbd>
       <span class="sound">snare</span>
     </div>
-    <div id="75" class="key">
+    <div data-key="75" class="key">
       <kbd>K</kbd>
       <span class="sound">tom</span>
     </div>
-    <div id="76" class="key">
+    <div data-key="76" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
     </div>
@@ -84,40 +84,49 @@
 </audio>
 
   <script>
-    window.addEventListener('keydown', playSound);
-    function playSound(e) {
-    var keys = [65,83,68,70,71,72,74,75,76];
-      console.log(keys.includes(e.keyCode));
-      //If the key is a valid one
-      if (keys.includes(e.keyCode)){
-        let audio = document.querySelector('#audio'+e.keyCode);
-        //let keyHit = document.querySelector('#'+e.keyCode);
-        let keyHit = document.querySelector(`div[id="${e.keyCode}"]`);
-        console.dir(audio);
-        console.dir(keyHit);
-        //add new class to change key style
-        keyHit.classList.add('playing');
-        //audio playback time remains                       
-        console.log(audio.currentTime);
-        //set the audio playback time to zero and let the next play immediately
-        audio.currentTime = 0;  
-        audio.play();
-      }
+   var times = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+window.addEventListener('keydown', playSound);
+function playSound(e) {
+  var keys = [65, 83, 68, 70, 71, 72, 74, 75, 76];
+  console.log(keys.includes(e.keyCode));
+  //If the key is a valid one
+  if (keys.includes(e.keyCode)) {
+    index = keys.indexOf(e.keyCode);
+    times[index]++;
+    if (times[index] == 10) {
+      times[index] = 0;
     }
+  
+    let element = document.querySelector(`[data-key="${e.keyCode}"]`);
+    element.style.position = 'relative';
+    element.style.left = '0px';
+    element.style.top = '0px';
+    element.style.top = parseInt(element.style.top) + 10 * times[index] + 'px';
+    console.log(times);
+    let audio = document.querySelector('#audio' + e.keyCode);
+    audio.currentTime = 0;
+    console.dir(audio);
+    audio.play();
+  }
+}
+const audios = Array.from(document.getElementsByTagName('audio'));
+audios.forEach((aud) => {
+  aud.addEventListener('play', (event) => {
+    const id = event.currentTarget.id;
+    const key = id.slice(-2);
+    const container = document.querySelector(`[data-key="${key}"]`);
 
-    window.addEventListener('keyup', resetKeyStyle);
-
-    function resetKeyStyle(e) {
-    var key2s = [65,83,68,70,71,72,74,75,76];
-      console.log(key2s.includes(e.keyCode));
-      //If the key is a valid one
-      if (key2s.includes(e.keyCode)){
-        console.log(e.keyCode);
-        let keyRelease = document.querySelector(`div[id="${e.keyCode}"]`);
-        keyRelease.classList.remove('playing');
-      }
-    }
+    container.classList.add('playing');
+  });
+  aud.addEventListener('ended', (event) => {
+    const id = event.currentTarget.id;
+    const key = id.slice(-2);
+    const container = document.querySelector(`[data-key="${key}"]`);
+    container.classList.remove('playing');
+  });
+});
   </script>
+
 
 </body>
 </html>

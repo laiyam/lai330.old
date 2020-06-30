@@ -1,0 +1,27 @@
+/* Add your styles here */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Annie Use Your Telescope', cursive;
+}
+
+/*ul li {
+    list-style: none;
+    border: 1px solid #000;
+    color: #fff;
+    background-color: #000;
+    margin: 10px auto;
+    padding: 10px;
+    width: 70%;
+}
