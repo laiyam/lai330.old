@@ -32,8 +32,8 @@ const hikeList = [
       difficulty: "Difficult",
       description:
           "The hike is a total of 13-15 miles roundtrip with an elevation gain of approximately 4,400-4,900 feet depending on which trailhead you take. While most people tackle this trail in one long day, we decided to break it up into two.Our plan was to hike up the Timpooneke Trail to the Timpanogos Basin and spend a night camping below the peak.Then we would rise early the next day and hike to the summit for sunrise.",
-  directions:
-      "Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead."
+      directions:
+        "Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to until you see the sign for Bechler Meadows on the left. Turn there. There is a parking area at the trailhead."
 }
 ];
 

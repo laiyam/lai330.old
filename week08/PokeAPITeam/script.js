@@ -60,15 +60,6 @@ const nextAction = () => {
     .catch(err => console.log(err)) 
 }
 
-const pageAction = () => {
-  if (!pageLink) return;
-  fetch(pageLink)
-    .then(response => {
-      response.json().then(parseResponse);
-    })
-    .catch(err => console.log(err)) 
-}
-
 const prevAction = () => {
   if (!prevLink) return;
   fetch(prevLink)
@@ -85,31 +76,6 @@ const addActions = () => {
   prev.innerHTML = 'Prev';
   actions.appendChild(prev);
   
-  const page1 = document.createElement('button');
-  next.onclick = pageAction;
-  next.innerHTML = 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20';
-  actions.appendChild(page1);
-  
-  const page2 = document.createElement('button');
-  next.onclick = pageAction;
-  next.innerHTML = 'https://pokeapi.co/api/v2/pokemon?offset=40&limit=20';
-  actions.appendChild(page2);
-  
-  const page3 = document.createElement('button');
-  next.onclick = pageAction;
-  next.innerHTML = 'https://pokeapi.co/api/v2/pokemon?offset=60&limit=20';
-  actions.appendChild(page3);
-  
-  const page4 = document.createElement('button');
-  next.onclick = pageAction;
-  next.innerHTML = 'https://pokeapi.co/api/v2/pokemon?offset=80&limit=20';
-  actions.appendChild(page4);
-  
-  const page5 = document.createElement('button');
-  next.onclick = pageAction;
-  next.innerHTML = 'https://pokeapi.co/api/v2/pokemon?offset=100&limit=20';
-  actions.appendChild(page5);
-  
   const next = document.createElement('button');
   next.onclick = nextAction;
   next.innerHTML = 'Next';
@@ -120,7 +86,6 @@ const parseResponse = response => {
   cleanList();
   renderList(response.results);
   nextLink = response.next;
-  
   prevLink = response.previous;
 }
 
@@ -135,4 +100,3 @@ const init = () => {
 }
 
 init();
-
