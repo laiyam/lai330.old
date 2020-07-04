@@ -1,6 +1,6 @@
 import {hikeList} from '../data/hikesList.js';
-const imgBasePath = "//byui-cit.github.io/cit261/examples/";
-//const imgBasePath = "../images/";
+//const imgBasePath = "//byui-cit.github.io/cit261/examples/";
+const imgBasePath = "../images/";
 // methods responsible for building HTML.  Why aren't these in the class?  They don't really need to be, and by moving them outside of the exported class, they cannot be called outside the module...they become private.
 function renderHikeList(parent, hikes) {}
 function renderOneHikeLight(hike) {
