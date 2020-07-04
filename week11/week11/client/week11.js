@@ -29,4 +29,4 @@ async function getPosts() {
     }
   }
 
-document.getElementById('submit').onclick = submit;
+//document.getElementById('submit').onclick = submit;
