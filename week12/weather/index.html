@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App - JavaScript</title>
+    <link rel="stylesheet" href="font/Rimouski.css">
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+	<h3>Weather</h3>
+	  <div class="notification"> </div> 
+		<div class="weather-container">
+		  <table class="table">
+			<tbody>
+			  <tr>
+				<td>
+					<div class="temperature-value">
+						<p>- °<span>F</span></p>
+					</div>
+				</td>
+				
+				<td>
+					<div class="weather-icon">
+						<img src="icons/unknown.png" alt="unknown">
+					</div>
+					<div class="temperature-description">
+						<p> - </p>
+					</div>
+					<div class="location">
+						<p>-</p>
+					</div>
+				</td>
+				
+				<td>
+					<div class="forecastName">
+						<p> - </p>
+					</div>
+					<div class="forecastTemperature">
+						<p> - </p>
+					</div>
+					<div class="forecastWindSpeed">
+						<p> - </p>
+					</div>
+					<div class="forecastShort">
+						<p> - </p>
+					</div>
+				</td>
+			  </tr>
+			  
+			  <tr>
+				<td colspan="3">
+					<div class= "forecast-5days icon-bar">
+						<a><i class="#">
+							<div class="#">
+								<p>-</p>
+							</div>
+						</i></a> 
+						<a><i class="#">
+							<div class="#">
+								<p>-</p>
+							</div>
+						</i></a> 
+						<a><i class="#">
+							<div class="#">
+								<p>-</p>
+							</div>
+						</i></a> 
+						<a><i class="#">
+							<div class="#">
+								<p>-</p>
+							</div>
+						</i></a> 
+					</div>
+				</td>			
+			  </tr> 
+			</tbody>
+		  </table>
+		</div>
+		
+		
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
+
+
