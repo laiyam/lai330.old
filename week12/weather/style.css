@@ -1,5 +1,5 @@
-/* Add your styles here */
 
+@import url(https://fonts.googleapis.com/css?family=Dosis:200,400,500,600);
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Dosis&family=Economica&family=Grand+Hotel&family=Muli&family=Open+Sans+Condensed:wght@300&family=Over+the+Rainbow&family=Snowburst+One&family=Sunshiney&display=swap');
@@ -22,19 +22,36 @@
 
 }
 
-h1 {
+h1, h3 {
     text-align: center;
     font-family: 'Sunshiney', cursive;
+    color: white;
 }
 
-
+p {
+    color: white;
+    text-shadow: 2px 2px 8px #494949;
+    
+}
 
 
 
 
 body{
     background-color: #FFF;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*backdrop-filter: blur(50px);
+    backdrop-filter: grayscale(40%);*/
+    -webkit-backdrop-filter: blur(100px) grayscale(80%);
+    backdrop-filter: blur(100px) grayscale(40%);
+    /*-webkit-backdrop-filter: grayscale(40%);
+    backdrop-filter: grayscale(40%);*/
+    /*filter: grayscale(20%);
+    filter: opacity(90%)*/
 }
+
 
 .container {
     width: 600px;    
@@ -42,9 +59,12 @@ body{
     
     display: block;
     margin: 0 auto;
+    color: white;
     
     /*border-radius: 10px;*/
     padding-bottom : 50px;
+    /*-webkit-backdrop-filter: blur(100px);
+    backdrop-filter: blur(100px); */
 }
 
 .app-title{
@@ -58,16 +78,16 @@ body{
     padding: 10px;
     margin: 0 auto;
     font-size: 2.2em;
-    color: #293251;
+    color: white;
 }
 
 .notification{
-    background-color: #f8d7da;
+    background-color: #f5f8d7;
     display: none;
 }
 
 .notification p{
-    color: #721c24;
+    color: white;
     font-size: 1.2em;
     margin: 0;
     text-align: center;
@@ -76,13 +96,13 @@ body{
 
 .weather-container (max-width 300px) {
     width: 300px;
-    height: 260px;
-    background-color: deepskyblue;
+    height: 600px;
+    /*background-color: deepskyblue;*/
 }
 
 .weather-icon{
     width: 100%;
-    height: 5em;
+    height: 10em;
 }
 
 /*.bottom-right {
@@ -99,15 +119,15 @@ body{
 
 
 .temperature-value{
-    width: 300px;
-    height:60px;
+    width: 100px;
+    height: 100%;
     
 }
 
 .temperature-value p{
     padding: 0;
     margin: 0;
-    color: #293251;
+    color: white;
     /*font-size: 4em;*/
     font-size:10vw;
     text-align: center;
@@ -119,7 +139,7 @@ body{
 }
 
 .temperature-value span{
-    color: #293251;
+    color: white;
     font-size: 0.5em;
 }
 
@@ -130,7 +150,7 @@ body{
 .temperature-description p{
     padding: 8px;
     margin: 0;
-    color: #293251;
+    color: white;
     text-align: center;
     font-size: 1.2em;
 }
@@ -142,14 +162,14 @@ body{
 .location p{
     margin: 0;
     padding: 0;
-    color: #293251;
+    color: white;
     text-align: center;
     font-size: 0.8em;
 }
 
 .icon-bar {
   width: 100%;
-  background-color: #555;
+  background-color: white;
   overflow: auto;
 }
 
@@ -162,3 +182,94 @@ body{
   color: white;
   font-size: 36px;
 }
+
+/*
+.compass {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .85);
+    position: relative;
+    font-family: 'Dosis';
+    color: #555;
+    text-shadow: 1px 1px 1px white;
+    &:before {
+      font-weight: bold;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      content: "N";
+      font-size: 14px;
+      top: -2px;
+    }
+    .direction {
+      height: 100%;
+      width: 100%;
+      display: block;
+      background: #f2f6f5;
+      background: -moz-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f6f5), color-stop(100%, #cbd5d6));
+      background: -webkit-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+      background: -o-linear-gradient(top, #f2f6f5 0%, #cbd5d6 100%);
+      border-radius: 100%;
+      p {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 80px;
+        display: block;
+        margin-top: -45px;
+        font-size: 28px;
+        font-weight: bold;
+        span {
+          display: block;
+          line-height: normal;
+          margin-top: -24px;
+          font-size: 11px;
+          text-transform: uppercase;
+          font-weight: normal;
+        }
+      }
+    }
+    .arrow {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid red;
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        margin-left: -5px;
+        z-index: 99;
+      }
+      &.nne { transform: rotate(22.5deg); }
+      &.ne { transform: rotate(45deg); }
+      &.ene { transform: rotate(67.5deg); }
+      &.e { transform: rotate(90deg); }
+      &.ese { transform: rotate(112.5deg); }
+      &.se { transform: rotate(135deg); }
+      &.sse { transform: rotate(157.5deg); }
+      &.s { transform: rotate(180deg); }
+      &.ssw { transform: rotate(202.5deg); }
+      &.sw { transform: rotate(-135deg); }
+      &.wsw { transform: rotate(-114.5deg); }
+      &.w { transform: rotate(-90deg); }
+      &.wnw { transform: rotate(-69.5deg); }
+      &.nw { transform: rotate(-45deg); }
+      &.nnw { transform: rotate(-24.5deg);}
+    }
+  }*/

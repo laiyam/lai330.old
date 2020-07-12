@@ -2,90 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather App - JavaScript</title>
-    <link rel="stylesheet" href="font/Rimouski.css">
+    <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     
     <div class="container">
-	<h3>Weather</h3>
-	  <div class="notification"> </div> 
-		<div class="weather-container">
-		  <table class="table">
-			<tbody>
-			  <tr>
-				<td>
-					<div class="temperature-value">
-						<p>- °<span>F</span></p>
-					</div>
-				</td>
-				
-				<td>
-					<div class="weather-icon">
-						<img src="icons/unknown.png" alt="unknown">
+		<h3>Weather Lai</h3>
+		<div class="notification"> </div> 
+		  <div class="weather-container">
+			<table class="table">
+			  <tbody>
+				<tr>
+				  <td>
+					<div class="location">
+						<p>-</p>
 					</div>
 					<div class="temperature-description">
 						<p> - </p>
 					</div>
-					<div class="location">
-						<p>-</p>
+					<div class="weather-icon">
+						<img src="#" alt="unknown">
 					</div>
-				</td>
+				  </td>
+
+				  <td>
+					<div class="temperature-value">
+						<p>- °<span>F</span></p>
+					</div>
+				  </td>
+				  
+				  <td>
+					<!--div class="compass">
+						<div class="direction">
+							<p>NE <span>10 mph</span></p>
+						</div>
+						<div class="arrow ne"></div>
+					</div-->
+					<div class="wind">
+						<p> - </p>
+					</div>
+					<div class="precipitation">
+						<p> - </p>
+					</div>
+					<div class="humidity">
+						<p> - </p>
+					</div>
+					<div class="heatIndex">
+						<p> - </p>
+					</div>
+					<div class="visibility">
+						<p> - </p>
+					</div>
+				  </td>
+				</tr>
 				
-				<td>
-					<div class="forecastName">
-						<p> - </p>
-					</div>
-					<div class="forecastTemperature">
-						<p> - </p>
-					</div>
-					<div class="forecastWindSpeed">
-						<p> - </p>
-					</div>
-					<div class="forecastShort">
-						<p> - </p>
-					</div>
-				</td>
-			  </tr>
-			  
-			  <tr>
-				<td colspan="3">
-					<div class= "forecast-5days icon-bar">
-						<a><i class="#">
-							<div class="#">
-								<p>-</p>
-							</div>
-						</i></a> 
-						<a><i class="#">
-							<div class="#">
-								<p>-</p>
-							</div>
-						</i></a> 
-						<a><i class="#">
-							<div class="#">
-								<p>-</p>
-							</div>
-						</i></a> 
-						<a><i class="#">
-							<div class="#">
-								<p>-</p>
-							</div>
-						</i></a> 
-					</div>
-				</td>			
-			  </tr> 
-			</tbody>
-		  </table>
-		</div>
-		
-		
-    </div>
+				<tr>
+				  <td colspan="3">
+					  <div class= "forecast-5days icon-bar">
+						  <a><i class="#">
+							  <div class="#">
+								  <p>-</p>
+							  </div>
+						  </i></a> 
+						  <a><i class="#">
+							  <div class="#">
+								  <p>-</p>
+							  </div>
+						  </i></a> 
+						  <a><i class="#">
+							  <div class="#">
+								  <p>-</p>
+							  </div>
+						  </i></a> 
+						  <a><i class="#">
+							  <div class="#">
+								  <p>-</p>
+							  </div>
+						  </i></a> 
+					  </div>
+				  </td>			
+				</tr> 
+			  </tbody>
+			</table>
+		  </div>
+	  </div>
     
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 

@@ -1,39 +1,26 @@
-// Tutorial by http://youtube.com/CodeExplained
-// api key : 82005d27a116c2880c8f0fcb866998a0
-
-// SELECT ELEMENTS
+const weather = {};
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
 const notificationElement = document.querySelector(".notification");
+const humidityElement = document.querySelector(".humidity");
+const windElement = document.querySelector(".wind p");
+const precipitationElement = document.querySelector(".precipitation p");
+const heatIndexElement = document.querySelector(".heatIndex p");
+const visibilityElement = document.querySelector(".visibility p");
 const fcNameElement = document.querySelector(".forecastName p");
 const fcTempElement = document.querySelector(".forecastTemperature p");
 const fcWindElement = document.querySelector(".forecastWindSpeed p");
 const fcShortElement = document.querySelector(".forecastShort p");
 
 
-// App data
-const weather = {};
 
 weather.temperature = {
     unit : "fahrenheit"
 }
-
-
-/*function checkCookie() {
-  var username = getCookie("username");
-  if (username != "") {
-   alert("Welcome again " + username);
-  } else {
-    username = prompt("Please enter your name:", "");
-    if (username != "" && username != null) {
-      setCookie("username", username, 365);
-    }
-  }
-}*/
 	
-// CHECK IF BROWSER SUPPORTS GEOLOCATION
+// Check if browser supports geolocation
 if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError);
 }else{
@@ -41,10 +28,8 @@ if('geolocation' in navigator){
     notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
 }
 
-// SET USER'S POSITION
+// Set coonkies and user location
 function setPosition(position){
-    //let latitude = position.coords.latitude.toFixed(4);
-    //let longitude = position.coords.longitude.toFixed(4);
 	let latitude = position.coords.latitude.toFixed(4);
     let longitude = position.coords.longitude.toFixed(4);
 	document.cookie="latitude";
@@ -54,13 +39,13 @@ function setPosition(position){
 	
 }
 
-// SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
+// Show error on geolocation service 
 function showError(error){
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
-// GET WEATHER FROM API PROVIDER
+// Get API from weather.gov, it is not great but free and no key
 function getWeather(latitude, longitude){
     let api = `https://api.weather.gov/points/${latitude},${longitude}`;
 	 console.log(api);
@@ -80,26 +65,23 @@ function getWeather(latitude, longitude){
 			console.log(forecastHourly);
 			let currLocation = urls.properties.relativeLocation.properties.city+ ", "+urls.properties.relativeLocation.properties.state;
 			console.log(currLocation);
-			
-			//return weather.observationStationsUrl;
-            //weather.temperature.value = Math.floor(data.main.temp - KELVIN);;
-            //weather.description = data.weather[0].description;
-            //weather.iconId = data.weather[0].icon;
-            //weather.city = data.name;
-            //weather.country = data.sys.country;
-        
-		getObservation(observationStationsUrl, currLocation);
-		getforecast(forecastUrl);
-		//let currStation = stationUrl;
-		//	console.log(stationUrl);
 		
-		//getDaysForecast(forecastUrl);
-		//getHoursForecast(forecastHourly);
+		//Get current weather information and forecast server urls
+		getObservation(observationStationsUrl, currLocation);
+		//getforecast(forecastUrl);
+
 		})
-	
-        
+
+		.catch( err => {
+			err.text().then( errorMessage => {
+			  this.props.dispatch(displayTheError(errorMessage))
+			})
+		})
 }
 
+
+
+// Get current weather server url
 function getObservation(observationStationsUrl, currLocation) {
 	console.log(observationStationsUrl);
 	fetch(observationStationsUrl)
@@ -111,15 +93,14 @@ function getObservation(observationStationsUrl, currLocation) {
 		.then(function(stations) {
 			let stationUrl = stations.observationStations[0]+"/observations/current";
 			console.log(stationUrl);
-			//const stationName = stations.properties.name;
-			//console.log(stationName);
-			
+
 			getCurrent(stationUrl, currLocation);
 			return stationUrl, currLocation;
 		})
 	
 }
 
+//Get current weather temperature and icon from near station
 function getCurrent(stationUrl, currLocation) {
 	fetch(stationUrl)
         .then(function(response){
@@ -129,30 +110,81 @@ function getCurrent(stationUrl, currLocation) {
         })
         .then(function(data){
 			console.log(data.properties.temperature.value);
-            //weather.temperature.value = ((data.properties.temperature.value) * 9/5 + 32).toFixed(1);
 			weather.temperature.value = Math.floor((data.properties.temperature.value) * 9/5 + 32);
 			console.log(weather.temperature.value);
             weather.description = data.properties.textDescription;
 			console.log(weather.description);
-            //weather.iconUrl = data.properties.icon;
 			weather.iconUrl = data.properties.icon.replace("medium", "large");
 			console.log(weather.iconUrl);
-			//weather.altName = data.properties.presentWeather[1].weather;
-			//console.log(weather.altName);
+			document.body.style.backgroundImage = `url(${weather.iconUrl})`;
+
+			weather.windDegree = data.properties.windDirection.value;
+			console.log(weather.windDegree);
+			weather.windDirection = getWindDirection(weather.windDegree);
+			console.log(weather.windDirection);
+			weather.wind = "Wind: "+weather.windDirection+", "+((data.properties.windSpeed.value)/1.069).toFixed(2)+" mph";
+			console.log(weather.wind);
+			weather.precipitation = "Last Hour Precipitation: "+((data.properties.precipitationLastHour.value)/39.37).toFixed(2)+" in";
+			console.log(weather.precipitation);
+			weather.humidity = "Humidity: "+Math.floor(data.properties.relativeHumidity.value)+"%";
+			console.log(weather.humidity);
+			weather.heatIndex = "Heat Index: "+Math.floor((data.properties.heatIndex.value) * 9/5 + 32)+ "°F";
+			console.log(weather.heatIndex);
+            weather.visibility = "Visibility: "+((data.properties.visibility.value)/1609).toFixed(2)+" mi";
+			console.log(weather.visibility);
             weather.city = currLocation;
 			console.log(weather.city);
-            //weather.country = data.sys.country;
         })
 	
+	//Call display function
 	.then(function(){
             displayWeather();
     });
 	
 }
 
+//Get wind direction
+function getWindDirection(deg) {
+	
+		if (deg>11.25 && deg<33.75){
+		  return "NNE";
+		}else if (deg>33.75 && deg<56.25){
+		  return "ENE";
+		}else if (deg>56.25 && deg<78.75){
+		  return "E";
+		}else if (deg>78.75 && deg<101.25){
+		  return "ESE";
+		}else if (deg>101.25 && deg<123.75){
+		  return "ESE";
+		}else if (deg>123.75 && deg<146.25){
+		  return "SE";
+		}else if (deg>146.25 && deg<168.75){
+		  return "SSE";
+		}else if (deg>168.75 && deg<191.25){
+		  return "S";
+		}else if (deg>191.25 && deg<213.75){
+		  return "SSW";
+		}else if (deg>213.75 && deg<236.25){
+		  return "SW";
+		}else if (deg>236.25 && deg<258.75){
+		  return "WSW";
+		}else if (deg>258.75 && deg<281.25){
+		  return "W";
+		}else if (deg>281.25 && deg<303.75){
+		  return "WNW";
+		}else if (deg>303.75 && deg<326.25){
+		  return "NW";
+		}else if (deg>326.25 && deg<348.75){
+		  return "NNW";
+		}else{
+		  return "N"; 
+		}
+	  
+}
 
+//Get today's forecast
 function getforecast(forecastUrl) {
-	fetch(forecastUrl)
+	fetch(forecastUrl) 
 		.then(function(response) {
 			let forecast = response.json();
 			console.log(forecast);
@@ -166,7 +198,7 @@ function getforecast(forecastUrl) {
 			console.log(weather.forecastTemperature);
 			//weather.forecastIcon = forecast.properties.periods[0].icon;
 			//console.log(weather.forecastIcon);
-			weather.forecastWindSpeed = forecast.properties.periods[0].windSpeed;
+			weather.forecastWindSpeed = "Wind Speed: "+forecast.properties.periods[0].windSpeed;
 			console.log(weather.forecastWindSpeed);
             weather.forecastShort = forecast.properties.periods[0].shortForecast;
 			console.log(weather.forecastShort);
@@ -177,34 +209,19 @@ function getforecast(forecastUrl) {
 		.then(function(){
             displayToday();
     });
-		
-		
-/*		data = this.responseText;
-			localStorage.setItem("stgData", data);						//Storing data
-			stgjsont = localStorage.getItem("stgData");					//Retrieving data
-			obj = JSON.parse(stgjsont);
-			console.log(obj);
-		
-				
-//Display objects from array using methods
-			msg = "<h2>" + greet + "<br>" + obj.observations[0].neighborhood + "</h2><h3>Temperture: " +
-			obj.observations[0].imperial.temp + " &#8457<br>Humidity: " +
-			obj.observations[0].humidity + " %<br>Wind Speed: " +
-			document.getElementById("weather").innerHTML = msg;
-			};
-		};*/
 
 }
 
+//Display today's forecast to html
 function displayToday(){
-    fcNameElement.innerHTML = weather.forecastName;
-    fcTempElement.innerHTML = `${weather.forecastTemperature}°<span>F</span>`;
-	console.log(weather.forecastWindSpeed);
-	fcWindElement.innerHTML = `${weather.forecastWindSpeed}`;
-    fcShortElement.innerHTML = weather.forecastShort;
+    //fcNameElement.innerHTML = weather.forecastName;
+    //fcTempElement.innerHTML = `${weather.forecastTemperature}°<span>F</span>`;
+	//console.log(weather.forecastWindSpeed);
+	//fcWindElement.innerHTML = `${weather.forecastWindSpeed}`;
+	//fcShortElement.innerHTML = weather.forecastShort;
 }
 
-
+//Display next days forecast
 function getDaysForecast(forecastUrl) {
 	fetch(forecastUrl)
 		.then(function(response) {
@@ -216,7 +233,8 @@ function getDaysForecast(forecastUrl) {
 			
 		})
 }
-	
+
+//Display hourly forecast
 function getHoursForecast(forecastHourly) {
 	fetch(forecastHourly) 
 		.then(function(response) {
@@ -231,22 +249,27 @@ function getHoursForecast(forecastHourly) {
 
 
 
-// DISPLAY WEATHER TO UI
+// Display temperature and icon in html
 function displayWeather(){
     iconElement.innerHTML = `<img src=${weather.iconUrl}>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;
     descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}`;
+	locationElement.innerHTML = `${weather.city}`;
+
+	windElement.innerHTML = weather.wind;
+	precipitationElement.innerHTML = weather.precipitation;
+	humidityElement.innerHTML = weather.humidity;
+	heatIndexElement.innerHTML = weather.heatIndex;
+	visibilityElement.innerHTML = weather.visibility;
 }
 
 
-// F to C conversion
+// F to C conversion (for some reasons, some servers output temperature in celsius)
 function fahrenheitToCelsius(temperature){
-    //return ((temperature-32)*5/9);
 	return (temperature-32)*5/9;
 }
 
-// WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
+// Onclick to switch between fahrenheit and celsius
 tempElement.addEventListener("click", function(){
 	console.log(weather.temperature.value);
     if(weather.temperature.value === undefined) return;
@@ -264,11 +287,4 @@ tempElement.addEventListener("click", function(){
         weather.temperature.unit = "fahrenheit"
     }
 	
-	
-
-	
-	
-	
-	
 });
-
