@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,8 +9,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-    
+<body class="bg-image">
+
     <div class="container">
 		<h3>Weather Lai</h3>
 		<div class="notification"> </div> 
@@ -18,25 +18,25 @@
 			<table class="table">
 			  <tbody>
 				<tr>
-				  <td>
+				  <td class=currIcon>
 					<div class="location">
-						<p>-</p>
-					</div>
-					<div class="temperature-description">
-						<p> - </p>
+						<p>-</p><br>
 					</div>
 					<div class="weather-icon">
 						<img src="#" alt="unknown">
 					</div>
+					<div class="temperature-description">
+						<p> - </p>
+					</div>
 				  </td>
 
-				  <td>
-					<div class="temperature-value">
+				  <td class="currTemp">
+					<div class="temperature-value" "font-effect-3d-float">
 						<p>- °<span>F</span></p>
 					</div>
 				  </td>
 				  
-				  <td>
+				  <td class="currDd" "font-effect-3d-float">
 					<!--div class="compass">
 						<div class="direction">
 							<p>NE <span>10 mph</span></p>
@@ -63,27 +63,146 @@
 				
 				<tr>
 				  <td colspan="3">
-					  <div class= "forecast-5days icon-bar">
-						  <a><i class="#">
-							  <div class="#">
-								  <p>-</p>
-							  </div>
-						  </i></a> 
-						  <a><i class="#">
-							  <div class="#">
-								  <p>-</p>
-							  </div>
-						  </i></a> 
-						  <a><i class="#">
-							  <div class="#">
-								  <p>-</p>
-							  </div>
-						  </i></a> 
-						  <a><i class="#">
-							  <div class="#">
-								  <p>-</p>
-							  </div>
-						  </i></a> 
+					  <div class= "icon-bar">
+						<a><div class="forecastShort">
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+							<span class="forecastDetails"> Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
+
+						<a><div class="forecastShort">
+							<span class="forecastDetails">Scattered showers and thunderstorms after midnight. Mostly cloudy, with a low around 73. Southwest wind 5 to 12 mph. Chance of precipitation is 30%.</span>
+							<p>Tonight1</p>
+							<img src="tsra_hi,30.png" alt="">
+							<br><br>
+							<p>73°F</p>
+							<p>5 to 12 mph</p>
+							<p>Mostly Cloudy then Scattered Showers And Thunderstorms</p>
+						</div></a>
 					  </div>
 				  </td>			
 				</tr> 

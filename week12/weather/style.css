@@ -1,7 +1,5 @@
 
 @import url(https://fonts.googleapis.com/css?family=Dosis:200,400,500,600);
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Dosis&family=Economica&family=Grand+Hotel&family=Muli&family=Open+Sans+Condensed:wght@300&family=Over+the+Rainbow&family=Snowburst+One&family=Sunshiney&display=swap');
 
 * {
@@ -28,24 +26,25 @@ h1, h3 {
     color: white;
 }
 
-p {
+td>div>p {
     color: white;
     text-shadow: 2px 2px 8px #494949;
-    
 }
 
 
 
-
-body{
-    background-color: #FFF;
+body {
+    /*background-image: url(${weather.iconUrl});*/
+    background-color: deepskyblue;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    -webkit-backdrop-filter: blur(100px) grayscale(40%);
+    backdrop-filter: blur(100px) grayscale(40%);
+    
     /*backdrop-filter: blur(50px);
     backdrop-filter: grayscale(40%);*/
-    -webkit-backdrop-filter: blur(100px) grayscale(80%);
-    backdrop-filter: blur(100px) grayscale(40%);
+    
     /*-webkit-backdrop-filter: grayscale(40%);
     backdrop-filter: grayscale(40%);*/
     /*filter: grayscale(20%);
@@ -65,6 +64,11 @@ body{
     padding-bottom : 50px;
     /*-webkit-backdrop-filter: blur(100px);
     backdrop-filter: blur(100px); */
+}
+
+.currWeather, .currTemp ,.currDb {
+    width: 33%;
+    height: 100%;
 }
 
 .app-title{
@@ -94,8 +98,8 @@ body{
     padding: 10px 0;
 }
 
-.weather-container (max-width 300px) {
-    width: 300px;
+.weather-container (max-width 200px) {
+    width: 800px;
     height: 600px;
     /*background-color: deepskyblue;*/
 }
@@ -119,19 +123,19 @@ body{
 
 
 .temperature-value{
-    width: 100px;
-    height: 100%;
+    width: 33%;
+    height: auto;
     
 }
 
-.temperature-value p{
+.temperature-value p {
+    font-family: 'Dosis', sans-serif, Extra-light 200;
     padding: 0;
-    margin: 0;
+    margin: auto;
     color: white;
     /*font-size: 4em;*/
-    font-size:10vw;
+    font-size:20vw;
     text-align: center;
-    cursor: pointer;
 }
 
 .temperature-value p:hover{
@@ -169,7 +173,7 @@ body{
 
 .icon-bar {
   width: 100%;
-  background-color: white;
+  background-color: #494949;
   overflow: auto;
 }
 
@@ -179,8 +183,8 @@ body{
   text-align: center;
   padding: 12px 0;
   transition: all 0.3s ease;
-  color: white;
-  font-size: 36px;
+  color: black;
+  font-size: 12px;
 }
 
 /*
@@ -273,3 +277,44 @@ body{
       &.nnw { transform: rotate(-24.5deg);}
     }
   }*/
+
+  .icon-bar a {
+    width: 160px;
+  }
+
+  .forecastShort  {
+    background-color: rgb(107, 217, 245);
+    /*overflow: auto;
+    /*transition: transform .2s;*/
+    
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    /*color: white;*/
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+
+
+  .forecastShort .forecastDetails {
+    visibility: hidden;
+    width: 140px;
+    background-color: rgb(59, 13, 185);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 2%;
+    left: 43%;
+    margin-left: -60px;
+    opacity:0;
+    transition: opacity 1s;
+  }
+
+  .forecastShort:hover .forecastDetails {
+    visibility: visible;
+    opacity: 1;
+  }

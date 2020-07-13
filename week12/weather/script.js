@@ -4,7 +4,7 @@ const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
 const notificationElement = document.querySelector(".notification");
-const humidityElement = document.querySelector(".humidity");
+const humidityElement = document.querySelector(".humidity p");
 const windElement = document.querySelector(".wind p");
 const precipitationElement = document.querySelector(".precipitation p");
 const heatIndexElement = document.querySelector(".heatIndex p");
@@ -116,8 +116,11 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.description);
 			weather.iconUrl = data.properties.icon.replace("medium", "large");
 			console.log(weather.iconUrl);
+			//Make a wall paper
 			document.body.style.backgroundImage = `url(${weather.iconUrl})`;
-
+			//document.body.style.background = "#FFF cover no-repeat center";
+			//var bkImage = document.getElementsByClassName("bg-img");
+			//document.bkImage.style.backgroundImage = `url(${weather.iconUrl})`;
 			weather.windDegree = data.properties.windDirection.value;
 			console.log(weather.windDegree);
 			weather.windDirection = getWindDirection(weather.windDegree);
@@ -198,7 +201,7 @@ function getforecast(forecastUrl) {
 			console.log(weather.forecastTemperature);
 			//weather.forecastIcon = forecast.properties.periods[0].icon;
 			//console.log(weather.forecastIcon);
-			weather.forecastWindSpeed = "Wind Speed: "+forecast.properties.periods[0].windSpeed;
+			weather.forecastWindSpeed = "Wind Speed: "+forecast.properties.periods[0].windSpeed +" mph";
 			console.log(weather.forecastWindSpeed);
             weather.forecastShort = forecast.properties.periods[0].shortForecast;
 			console.log(weather.forecastShort);
