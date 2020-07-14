@@ -8,7 +8,10 @@ const humidityElement = document.querySelector(".humidity p");
 const windElement = document.querySelector(".wind p");
 const precipitationElement = document.querySelector(".precipitation p");
 const heatIndexElement = document.querySelector(".heatIndex p");
+const windChillElement = document.querySelector(".windChill p");
 const visibilityElement = document.querySelector(".visibility p");
+const fcDetailsElement = document.querySelector(".forecastDetails span");
+const fcIconElement = document.querySelector(".forecastIcon");
 const fcNameElement = document.querySelector(".forecastName p");
 const fcTempElement = document.querySelector(".forecastTemperature p");
 const fcWindElement = document.querySelector(".forecastWindSpeed p");
@@ -39,6 +42,7 @@ function setPosition(position){
 	
 }
 
+
 // Show error on geolocation service 
 function showError(error){
     notificationElement.style.display = "block";
@@ -63,12 +67,12 @@ function getWeather(latitude, longitude){
 			console.log(forecastUrl);
 			let forecastHourly = urls.properties.forecastHourly;
 			console.log(forecastHourly);
-			let currLocation = urls.properties.relativeLocation.properties.city+ ", "+urls.properties.relativeLocation.properties.state;
+			let currLocation = urls.properties.relativeLocation.properties.city+ " "+urls.properties.relativeLocation.properties.state;
 			console.log(currLocation);
 		
 		//Get current weather information and forecast server urls
 		getObservation(observationStationsUrl, currLocation);
-		//getforecast(forecastUrl);
+		getforecast(forecastUrl);
 
 		})
 
@@ -110,7 +114,9 @@ function getCurrent(stationUrl, currLocation) {
         })
         .then(function(data){
 			console.log(data.properties.temperature.value);
-			weather.temperature.value = Math.floor((data.properties.temperature.value) * 9/5 + 32);
+			if (data.properties.temperature.value == null) {
+				weather.temperature = "--";
+			} else { weather.temperature.value = Math.floor((data.properties.temperature.value) * 9/5 + 32);}
 			console.log(weather.temperature.value);
             weather.description = data.properties.textDescription;
 			console.log(weather.description);
@@ -129,10 +135,18 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.wind);
 			weather.precipitation = "Last Hour Precipitation: "+((data.properties.precipitationLastHour.value)/39.37).toFixed(2)+" in";
 			console.log(weather.precipitation);
-			weather.humidity = "Humidity: "+Math.floor(data.properties.relativeHumidity.value)+"%";
+			if (data.properties.relativeHumidity.value == null) {
+				weather.humidity = "Humidity: --";
+			} else { weather.humidity = "Humidity: "+Math.floor(data.properties.relativeHumidity.value)+"%";}
 			console.log(weather.humidity);
-			weather.heatIndex = "Heat Index: "+Math.floor((data.properties.heatIndex.value) * 9/5 + 32)+ "°F";
+			if (data.properties.heatIndex.value == null) {
+				weather.heatIndex = "Heat Index: --";
+			} else { weather.heatIndex = "Heat Index: "+Math.floor((data.properties.heatIndex.value) * 9/5 + 32)+ "°F";}
 			console.log(weather.heatIndex);
+			if (data.properties.windChill.value == null) {
+				weather.windChill = "Wind Chill: --";
+			} else { weather.windChill = "Wind Chill: "+Math.floor((data.properties.windChill.value) * 9/5 + 32)+ "°F";}
+			console.log(weather.windChill);
             weather.visibility = "Visibility: "+((data.properties.visibility.value)/1609).toFixed(2)+" mi";
 			console.log(weather.visibility);
             weather.city = currLocation;
@@ -141,7 +155,7 @@ function getCurrent(stationUrl, currLocation) {
 	
 	//Call display function
 	.then(function(){
-            displayWeather();
+        displayWeather();
     });
 	
 }
@@ -199,42 +213,33 @@ function getforecast(forecastUrl) {
 			console.log(weather.forecastName);
 			weather.forecastTemperature = forecast.properties.periods[0].temperature;
 			console.log(weather.forecastTemperature);
-			//weather.forecastIcon = forecast.properties.periods[0].icon;
-			//console.log(weather.forecastIcon);
-			weather.forecastWindSpeed = "Wind Speed: "+forecast.properties.periods[0].windSpeed +" mph";
+			weather.forecastIcon = forecast.properties.periods[0].icon;
+			console.log(weather.forecastIcon);
+			weather.forecastWindSpeed = "Wind: "+forecast.properties.periods[0].windSpeed;
 			console.log(weather.forecastWindSpeed);
             weather.forecastShort = forecast.properties.periods[0].shortForecast;
 			console.log(weather.forecastShort);
 			weather.detailedForecast = forecast.properties.periods[0].detailedForecast;
 			console.log(weather.detailedForecast);
 		})
-		
-		.then(function(){
-            displayToday();
+	
+	//call display forecast function
+	.then(function(){
+		displayForecast();
     });
 
 }
 
 //Display today's forecast to html
-function displayToday(){
-    //fcNameElement.innerHTML = weather.forecastName;
-    //fcTempElement.innerHTML = `${weather.forecastTemperature}°<span>F</span>`;
-	//console.log(weather.forecastWindSpeed);
-	//fcWindElement.innerHTML = `${weather.forecastWindSpeed}`;
-	//fcShortElement.innerHTML = weather.forecastShort;
-}
-
-//Display next days forecast
-function getDaysForecast(forecastUrl) {
-	fetch(forecastUrl)
-		.then(function(response) {
-			let forecast = response.json();
-			console.log(weather.forecast);
-			return forecast;
-		})
-		.then(function() {
-			
-		})
+function displayForecast(){
+	console.log(weather.forecastName);
+	fcNameElement.innerHTML = `${weather.forecastName}`;
+	fcIconElement.innerHTML = `<img src=${weather.forecastIcon}>`;
+    fcTempElement.innerHTML = `${weather.forecastTemperature}<span>°F</span>`;
+	console.log(weather.forecastWindSpeed);
+	fcWindElement.innerHTML = `${weather.forecastWindSpeed}`;
+	fcShortElement.innerHTML = `${weather.forecastShort}`;
+	fcDetailsElement.innerHTML = `${weather.detailedForecast}`;
 }
 
 //Display hourly forecast
@@ -255,14 +260,15 @@ function getHoursForecast(forecastHourly) {
 // Display temperature and icon in html
 function displayWeather(){
     iconElement.innerHTML = `<img src=${weather.iconUrl}>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;
-    descElement.innerHTML = weather.description;
+    tempElement.innerHTML = `${weather.temperature.value}<span>°F</span>`;
+    descElement.innerHTML = `${weather.description}`;
 	locationElement.innerHTML = `${weather.city}`;
 
 	windElement.innerHTML = weather.wind;
 	precipitationElement.innerHTML = weather.precipitation;
 	humidityElement.innerHTML = weather.humidity;
 	heatIndexElement.innerHTML = weather.heatIndex;
+	windChillElement.innerHTML = weather.windChill;
 	visibilityElement.innerHTML = weather.visibility;
 }
 
@@ -291,3 +297,8 @@ tempElement.addEventListener("click", function(){
     }
 	
 });
+
+/*function unhideText() {
+	var hidedText = document.getElementsByClassName("forecastDetails");
+	hidedText.style.visibility = "visible";
+} */
