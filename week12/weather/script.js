@@ -18,29 +18,82 @@ const fcWindElement = document.querySelector(".forecastWindSpeed p");
 const fcShortElement = document.querySelector(".forecastShort p");
 
 
-
 weather.temperature = {
     unit : "fahrenheit"
 }
-	
+
+
+var x = getCookie("latitude");
+var y = getCookie("longitude");
+console.log(x);
+console.log(y);
+if (x != "" && y != "") {
+  getWeather(x, y);
+} else {
+  if('geolocation' in navigator){
+	  navigator.geolocation.getCurrentPosition(setPosition, showError);
+  }else{
+	  notificationElement.style.display = "block";
+	  notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+  }
+  /*console.log(latitude, longitude);
+  if (x != "" && x != null && y !="" & y != null) {
+	setCookie("latitude", x, 1);
+	setCookie("longitude", y, 1);
+  }*/
+}
+
+
+
+
+function getCookie(cPosition) {
+var location = cPosition + "=";
+var ca = document.cookie.split(';');
+for(var i = 0; i < ca.length; i++) {
+  var c = ca[i];
+  while (c.charAt(0) == ' ') {
+	c = c.substring(1);
+  }
+  if (c.indexOf(location) == 0) {
+	return c.substring(location.length, c.length);
+  }
+}
+return "";
+}
+
+
+/*
 // Check if browser supports geolocation
 if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError);
 }else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
-}
+}*/
 
 // Set coonkies and user location
 function setPosition(position){
-	let latitude = position.coords.latitude.toFixed(4);
-    let longitude = position.coords.longitude.toFixed(4);
-	document.cookie="latitude";
-    document.cookie="longitude";
+	var x = position.coords.latitude.toFixed(4);
+	var y = position.coords.longitude.toFixed(4);
+	console.log(x, y);
+	setCookie("latitude", x, 1);
+	setCookie("longitude", y, 1);
+	/*let x = "latitude="+latitude+"; 1; path=/";
+	let y = "longitude="+longitude+"; 1; path=/";
+	document.cookie = x;
+    document.cookie = y;
     
-    getWeather(latitude, longitude);
+    getWeather(latitude, longitude);*/
 	
 }
+
+function setCookie(cPosition, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = "expires="+d.toUTCString();
+	document.cookie = cPosition + "=" + cvalue + "; " + expires + ";";
+	console.log(cPosition + "=" + cvalue + "; " + expires + ";");
+	}
 
 
 // Show error on geolocation service 
@@ -51,7 +104,8 @@ function showError(error){
 
 // Get API from weather.gov, it is not great but free and no key
 function getWeather(latitude, longitude){
-    let api = `https://api.weather.gov/points/${latitude},${longitude}`;
+	//let api = `https://api.weather.gov/points/${latitude},${longitude}`;
+	let api = `https://api.weather.gov/points/39.9744,-75.0314`;
 	 console.log(api);
     
     fetch(api)
@@ -61,18 +115,23 @@ function getWeather(latitude, longitude){
             return urls;
         })
         .then(function(urls){
-			let observationStationsUrl = urls.properties.observationStations;
+			//let observationStationsUrl = urls.properties.observationStations;
+			let observationStationsUrl = `https://api.weather.gov/gridpoints/PHI/53,76/stations`;
 			console.log(observationStationsUrl);
-			let forecastUrl = urls.properties.forecast;
+			//let forecastUrl = urls.properties.forecast;
+			let forecastUrl = `https://api.weather.gov/gridpoints/PHI/53,76/forecast`;
 			console.log(forecastUrl);
-			let forecastHourly = urls.properties.forecastHourly;
+			//let forecastHourly = urls.properties.forecastHourly;
+			let forecastHourly = `https://api.weather.gov/gridpoints/PHI/53,76/forecast/hourly`;
 			console.log(forecastHourly);
-			let currLocation = urls.properties.relativeLocation.properties.city+ " "+urls.properties.relativeLocation.properties.state;
+			let currLocation = urls.properties.relativeLocation.properties.city+ ", "+urls.properties.relativeLocation.properties.state;
 			console.log(currLocation);
 		
 		//Get current weather information and forecast server urls
-		getObservation(observationStationsUrl, currLocation);
-		getforecast(forecastUrl);
+		////////////getObservation(observationStationsUrl, currLocation);
+		
+		//Get Forecasts
+		///////////getforecast(forecastUrl);
 
 		})
 
@@ -95,7 +154,8 @@ function getObservation(observationStationsUrl, currLocation) {
 			return stations;
 		})
 		.then(function(stations) {
-			let stationUrl = stations.observationStations[0]+"/observations/current";
+			//let stationUrl = stations.observationStations[0]+"/observations/current";
+			let stationUrl = `https://api.weather.gov/stations/KPNE/observations/current`;
 			console.log(stationUrl);
 
 			getCurrent(stationUrl, currLocation);
@@ -131,7 +191,7 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.windDegree);
 			weather.windDirection = getWindDirection(weather.windDegree);
 			console.log(weather.windDirection);
-			weather.wind = "Wind: "+weather.windDirection+", "+((data.properties.windSpeed.value)/1.069).toFixed(2)+" mph";
+			weather.wind = "Wind: "+weather.windDirection+" "+((data.properties.windSpeed.value)/1.069).toFixed(2)+" mph";
 			console.log(weather.wind);
 			weather.precipitation = "Last Hour Precipitation: "+((data.properties.precipitationLastHour.value)/39.37).toFixed(2)+" in";
 			console.log(weather.precipitation);
@@ -149,8 +209,8 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.windChill);
             weather.visibility = "Visibility: "+((data.properties.visibility.value)/1609).toFixed(2)+" mi";
 			console.log(weather.visibility);
-            weather.city = currLocation;
-			console.log(weather.city);
+            //////weather.city = currLocation;
+			//////console.log(weather.city);
         })
 	
 	//Call display function
