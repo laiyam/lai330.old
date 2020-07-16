@@ -2,7 +2,7 @@ const weather = {};
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
-const locationElement = document.querySelector(".location p");
+const locationElement = document.querySelector(".location h3");
 const notificationElement = document.querySelector(".notification");
 const humidityElement = document.querySelector(".humidity p");
 const windElement = document.querySelector(".wind p");
@@ -10,19 +10,12 @@ const precipitationElement = document.querySelector(".precipitation p");
 const heatIndexElement = document.querySelector(".heatIndex p");
 const windChillElement = document.querySelector(".windChill p");
 const visibilityElement = document.querySelector(".visibility p");
-const fcDetailsElement = document.querySelector(".forecastDetails span");
-const fcIconElement = document.querySelector(".forecastIcon");
-const fcNameElement = document.querySelector(".forecastName p");
-const fcTempElement = document.querySelector(".forecastTemperature p");
-const fcWindElement = document.querySelector(".forecastWindSpeed p");
-const fcShortElement = document.querySelector(".forecastShort p");
-
 
 weather.temperature = {
     unit : "fahrenheit"
 }
 
-
+//check geolocation cookies
 var x = getCookie("latitude");
 var y = getCookie("longitude");
 console.log(x);
@@ -36,64 +29,47 @@ if (x != "" && y != "") {
 	  notificationElement.style.display = "block";
 	  notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
   }
-  /*console.log(latitude, longitude);
-  if (x != "" && x != null && y !="" & y != null) {
-	setCookie("latitude", x, 1);
-	setCookie("longitude", y, 1);
-  }*/
 }
 
-
-
-
+//Read cookies
 function getCookie(cPosition) {
 var location = cPosition + "=";
-var ca = document.cookie.split(';');
+console.log(location);
+var decodedCookie = decodeURIComponent(document.cookie);
+console.log(decodedCookie);
+var ca = decodedCookie.split(';');
+console.log(ca);
 for(var i = 0; i < ca.length; i++) {
   var c = ca[i];
   while (c.charAt(0) == ' ') {
 	c = c.substring(1);
+	console.log(c);
   }
   if (c.indexOf(location) == 0) {
 	return c.substring(location.length, c.length);
+	console.log(`c.substring(location.length, c.length)`);
   }
 }
 return "";
 }
 
-
-/*
-// Check if browser supports geolocation
-if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
-}else{
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
-}*/
-
-// Set coonkies and user location
+// Set geolocation cookies
 function setPosition(position){
 	var x = position.coords.latitude.toFixed(4);
 	var y = position.coords.longitude.toFixed(4);
 	console.log(x, y);
 	setCookie("latitude", x, 1);
 	setCookie("longitude", y, 1);
-	/*let x = "latitude="+latitude+"; 1; path=/";
-	let y = "longitude="+longitude+"; 1; path=/";
-	document.cookie = x;
-    document.cookie = y;
-    
-    getWeather(latitude, longitude);*/
-	
+    getWeather(x, y);
 }
 
 function setCookie(cPosition, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 	var expires = "expires="+d.toUTCString();
-	document.cookie = cPosition + "=" + cvalue + "; " + expires + ";";
-	console.log(cPosition + "=" + cvalue + "; " + expires + ";");
-	}
+	document.cookie = cPosition + "=" + cvalue + "; " + expires + "; path-/";
+	console.log(cPosition + "=" + cvalue + "; " + expires + "; path-/");
+}
 
 
 // Show error on geolocation service 
@@ -102,36 +78,62 @@ function showError(error){
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
+
+//Greetings
+var date = new Date();
+var nowTime = date.toDateString();
+var now = document.getElementsByClassName("todayTime");
+ now[0].innerHTML = nowTime;
+var hrs24 = date.getHours();
+var hrs12 = (date.getHours())%12;
+console.log(hrs24);
+var mins = date.getMinutes();
+console.log(mins);
+
+var greet;
+if (hrs24 < 12)
+	greet = "Good Morning";
+	else if (hrs24 >= 12 && hrs24 <= 17)
+		greet = "Good Afternoon";
+	else if (hrs24 >= 17 && hrs24 <= 24)
+		greet = "Good Evening";
+
+
+
 // Get API from weather.gov, it is not great but free and no key
 function getWeather(latitude, longitude){
-	//let api = `https://api.weather.gov/points/${latitude},${longitude}`;
-	let api = `https://api.weather.gov/points/39.9744,-75.0314`;
+	let api = `https://api.weather.gov/points/${latitude},${longitude}`;
+	//let api = `https://api.weather.gov/points/39.9744,-75.0314`;
 	 console.log(api);
     
     fetch(api)
         .then(function(response){
+			if (!response.ok) {
+				throw Error("ERROR");
+			}
             let urls = response.json();
 			console.log(urls);
             return urls;
         })
         .then(function(urls){
-			//let observationStationsUrl = urls.properties.observationStations;
-			let observationStationsUrl = `https://api.weather.gov/gridpoints/PHI/53,76/stations`;
+			let observationStationsUrl = urls.properties.observationStations;
+			//let observationStationsUrl = `https://api.weather.gov/gridpoints/PHI/53,76/stations`;
 			console.log(observationStationsUrl);
-			//let forecastUrl = urls.properties.forecast;
-			let forecastUrl = `https://api.weather.gov/gridpoints/PHI/53,76/forecast`;
+			let forecastUrl = urls.properties.forecast;
+			//let forecastUrl = `https://api.weather.gov/gridpoints/PHI/53,76/forecast`;
 			console.log(forecastUrl);
-			//let forecastHourly = urls.properties.forecastHourly;
-			let forecastHourly = `https://api.weather.gov/gridpoints/PHI/53,76/forecast/hourly`;
+			let forecastHourly = urls.properties.forecastHourly;
+			//let forecastHourly = `https://api.weather.gov/gridpoints/PHI/53,76/forecast/hourly`;
 			console.log(forecastHourly);
-			let currLocation = urls.properties.relativeLocation.properties.city+ ", "+urls.properties.relativeLocation.properties.state;
+			let currLocation = greet+ " " +urls.properties.relativeLocation.properties.city;
+			//let currLocation = greet+ ", Merchantville!";
 			console.log(currLocation);
 		
 		//Get current weather information and forecast server urls
-		////////////getObservation(observationStationsUrl, currLocation);
+		getObservation(observationStationsUrl, currLocation);
 		
 		//Get Forecasts
-		///////////getforecast(forecastUrl);
+		getForecast(forecastUrl);
 
 		})
 
@@ -142,24 +144,30 @@ function getWeather(latitude, longitude){
 		})
 }
 
-
-
 // Get current weather server url
 function getObservation(observationStationsUrl, currLocation) {
 	console.log(observationStationsUrl);
 	fetch(observationStationsUrl)
 		.then(function(response) {
+			if (!response.ok) {
+				throw Error("ERROR");
+			}
 			let stations = response.json();
 			console.log(stations);
 			return stations;
 		})
 		.then(function(stations) {
-			//let stationUrl = stations.observationStations[0]+"/observations/current";
-			let stationUrl = `https://api.weather.gov/stations/KPNE/observations/current`;
+			let stationUrl = stations.observationStations[0]+"/observations/current";
+			//let stationUrl = `https://api.weather.gov/stations/KPNE/observations/current`;
 			console.log(stationUrl);
 
 			getCurrent(stationUrl, currLocation);
 			return stationUrl, currLocation;
+		})
+		.catch( err => {
+			err.text().then( errorMessage => {
+			  this.props.dispatch(displayTheError(errorMessage))
+			})
 		})
 	
 }
@@ -168,11 +176,15 @@ function getObservation(observationStationsUrl, currLocation) {
 function getCurrent(stationUrl, currLocation) {
 	fetch(stationUrl)
         .then(function(response){
+			if (!response.ok) {
+				throw Error("ERROR");
+			}
             let data = response.json();
 			console.log(data);
             return data;
         })
-        .then(function(data){
+		
+		.then(data => {
 			console.log(data.properties.temperature.value);
 			if (data.properties.temperature.value == null) {
 				weather.temperature = "--";
@@ -191,7 +203,7 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.windDegree);
 			weather.windDirection = getWindDirection(weather.windDegree);
 			console.log(weather.windDirection);
-			weather.wind = "Wind: "+weather.windDirection+" "+((data.properties.windSpeed.value)/1.069).toFixed(2)+" mph";
+			weather.wind = "Wind: "+((data.properties.windSpeed.value)/1.069).toFixed(2)+" mph "+weather.windDirection;
 			console.log(weather.wind);
 			weather.precipitation = "Last Hour Precipitation: "+((data.properties.precipitationLastHour.value)/39.37).toFixed(2)+" in";
 			console.log(weather.precipitation);
@@ -209,9 +221,15 @@ function getCurrent(stationUrl, currLocation) {
 			console.log(weather.windChill);
             weather.visibility = "Visibility: "+((data.properties.visibility.value)/1609).toFixed(2)+" mi";
 			console.log(weather.visibility);
-            //////weather.city = currLocation;
-			//////console.log(weather.city);
-        })
+            weather.city = currLocation;
+			console.log(weather.city);
+		})
+
+		.catch( err => {
+			err.text().then( errorMessage => {
+			  this.props.dispatch(displayTheError(errorMessage))
+			})
+		})
 	
 	//Call display function
 	.then(function(){
@@ -260,68 +278,63 @@ function getWindDirection(deg) {
 }
 
 //Get today's forecast
-function getforecast(forecastUrl) {
+function getForecast(forecastUrl) {
 	fetch(forecastUrl) 
 		.then(function(response) {
+			if (!response.ok) {
+				throw Error("ERROR");
+			}
 			let forecast = response.json();
 			console.log(forecast);
 			return forecast;
 		})
-		.then(function(forecast) {
-			console.log(forecast.properties.periods[0].name);
-			weather.forecastName = forecast.properties.periods[0].name;
-			console.log(weather.forecastName);
-			weather.forecastTemperature = forecast.properties.periods[0].temperature;
-			console.log(weather.forecastTemperature);
-			weather.forecastIcon = forecast.properties.periods[0].icon;
-			console.log(weather.forecastIcon);
-			weather.forecastWindSpeed = "Wind: "+forecast.properties.periods[0].windSpeed;
-			console.log(weather.forecastWindSpeed);
-            weather.forecastShort = forecast.properties.periods[0].shortForecast;
-			console.log(weather.forecastShort);
-			weather.detailedForecast = forecast.properties.periods[0].detailedForecast;
-			console.log(weather.detailedForecast);
+		.then(forecast => {
+			console.log(forecast.properties.periods);
+			var html = forecast.properties.periods
+				.map(period => {
+					//console.log(period.detailedForecast);
+					return `
+					<div class="forecast">
+						<div class="forecastDetails">
+							<span>${period.detailedForecast}</span>
+						</div>
+						<div class="forecastName">
+							<p>${period.name}</p>
+						</div>
+						<div class="forecastIcon">
+							<img src=${period.icon} width="90%" height="90%">
+						</div><br>
+						<div class="forecastTemperature">
+							<p>${period.temperature} °F</p>
+						</div>
+						<div class="forecastWindSpeed">
+							<p>${period.windSpeed} ${period.windDirection}</p>
+						</div>
+						<div class="forecastShort">
+							<p>${period.shortForecast}</p>
+						</div>
+					</div>`;
+				})
+				.join("");
+				//console.log(html);
+				document
+					.querySelector("#periods")
+					.insertAdjacentHTML("afterbegin", html);
+		})
+		.catch(error => {
+			//error().then( errorMessage => {
+				console.log(error);
+			  	this.props.dispatch(displayTheError(errorMessage))
 		})
 	
-	//call display forecast function
-	.then(function(){
-		displayForecast();
-    });
-
 }
-
-//Display today's forecast to html
-function displayForecast(){
-	console.log(weather.forecastName);
-	fcNameElement.innerHTML = `${weather.forecastName}`;
-	fcIconElement.innerHTML = `<img src=${weather.forecastIcon}>`;
-    fcTempElement.innerHTML = `${weather.forecastTemperature}<span>°F</span>`;
-	console.log(weather.forecastWindSpeed);
-	fcWindElement.innerHTML = `${weather.forecastWindSpeed}`;
-	fcShortElement.innerHTML = `${weather.forecastShort}`;
-	fcDetailsElement.innerHTML = `${weather.detailedForecast}`;
-}
-
-//Display hourly forecast
-function getHoursForecast(forecastHourly) {
-	fetch(forecastHourly) 
-		.then(function(response) {
-			let forecastHourly = response.json();
-			console.log(forecastHourly);
-			return forecastHourly;
-		})
-		.then(function() {
-			
-		})
-}
-
-
 
 // Display temperature and icon in html
 function displayWeather(){
     iconElement.innerHTML = `<img src=${weather.iconUrl}>`;
     tempElement.innerHTML = `${weather.temperature.value}<span>°F</span>`;
-    descElement.innerHTML = `${weather.description}`;
+	descElement.innerHTML = `${weather.description}`;
+	console.log(`${weather.city}`);
 	locationElement.innerHTML = `${weather.city}`;
 
 	windElement.innerHTML = weather.wind;
@@ -357,8 +370,3 @@ tempElement.addEventListener("click", function(){
     }
 	
 });
-
-/*function unhideText() {
-	var hidedText = document.getElementsByClassName("forecastDetails");
-	hidedText.style.visibility = "visible";
-} */

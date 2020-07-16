@@ -1,6 +1,8 @@
 
-@import url(https://fonts.googleapis.com/css?family=Dosis:200,400,500,600);
-@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Dosis&family=Economica&family=Grand+Hotel&family=Muli&family=Open+Sans+Condensed:wght@300&family=Over+the+Rainbow&family=Snowburst+One&family=Sunshiney&display=swap');
+/*@import url(https://fonts.googleapis.com/css?family=Dosis:200,400,500,600);
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Dosis&family=Economica&family=Grand+Hotel&family=Muli&family=Open+Sans+Condensed:wght@300&family=Over+the+Rainbow&family=Snowburst+One&family=Sunshiney&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Muli:wght@200;400;600&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
 * {
     box-sizing: border-box;
@@ -8,6 +10,7 @@
 
 .body {
     
+    /*font-family: 'Muli', sans-serif;
     font-family: 'Dosis', sans-serif;
     font-family: 'Economica', sans-serif;
     font-family: 'Grand Hotel', cursive;
@@ -17,15 +20,19 @@
     font-family: 'Snowburst One', cursive;
     font-family: 'Sunshiney', cursive;
     font-family: 'Roboto', sans-serif;
-    font-family: 'Calligraffitti', cursive;
-
+    font-family: 'Calligraffitti', cursive;*/
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
-h1, h3 {
+h1, h2, h3, h4, p {
+    font-size: 1.5em;
     text-align: center;
-    font-family: 'Muli', sans-serif;
-    font-weight: 100;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    /*font-weight: 200;*/
     color: white;
+    color: rwhiteed;
+    text-shadow: 2px 2px 15px #3b3b3b;
 }
 
 /*div.container h3, div.container p {
@@ -33,21 +40,21 @@ h1, h3 {
   text-align: center;
 }*/
 
-p {
+/*p {
     color: rwhiteed;
-    text-shadow: 2px 2px 8px #494949;
-}
+    text-shadow: 2px 2px 15px #3b3b3b;
+}*/
 
 
 
 body, html {
     /*background-image: url(${weather.iconUrl});*/
-    background-color: deepskyblue;
+    background-color: lightgrey;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-backdrop-filter: blur(100px) grayscale(40%);
-    backdrop-filter: blur(20px) grayscale(40%);
+    backdrop-filter: blur(100px) grayscale(40%);
     z-index: -1;
     
     /*backdrop-filter: blur(50px);
@@ -113,24 +120,32 @@ body, html {
   /*background-color: deepskyblue;*/
 }
 
-.weather-icon {
-    width: 100%;
-    height: 10em;
-}
 
+.location {
+  top: 1em;
+}
 /*.bottom-right {
   position: absolute;
   bottom: 8px;
   right: 16px;
 }*/
 
-.currIcon {
+.currIcon, .currData {
   text-align: center;
 }
 
-.weather-icon img{
-    display: block;
-    margin: 0 auto;
+.weather-icon img {
+  width: 70%;
+  height: 70%;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+}
+
+.forecastIcon img {
+  border: 1px solid lightgrey;
+  border-radius: 6px;
 }
 
 
@@ -141,12 +156,11 @@ body, html {
 }
 
 .temperature-value p {
-    font-family: 'Dosis', sans-serif, Extra-light 200;
     padding: 0;
     margin: auto;
     color: rewhited;
     /*font-size: 4em;*/
-    font-size:12vw;
+    font-size: 15vw;
     text-align: center;
 }
 
@@ -174,16 +188,16 @@ body, html {
     margin: 0;
     color: white;
     text-align: center;
-    font-size: 1.2em;
+    
 }
 
-.location p {
+/*.location p {
     margin: 0;
     padding: 0;
     color: white;
     text-align: center;
     font-size: 0.8em;
-}
+}*/
 
 /*.weather-container {
   width: 800px;
@@ -206,20 +220,23 @@ body, html {
 }*/
 
 .forecastTitle {
-  background-color: darkblue;
+  background-color: black;
   color: white;
   text-align: center;
   font-size: 1.5em;
   padding: auto;
+  border-radius: 6px;
+  filter: opacity(50%);
   /*margin: auto;*/
   /*outline: 14px solid transparent;*/
   
 }
 
-.icon-bar {
+.dayForecast {
   overflow: scroll;
   white-space: nowrap;
-  border: 1px solid lightgrey;
+  border-radius: 6px;
+  /*border: 1px solid lightgrey;*/
 }
 
 /*div.forecast {
@@ -228,7 +245,7 @@ body, html {
 }*/
 
 .forecast {
-background-color: rgb(107, 217, 245);
+background-color: black;
 /*transition: transform .2s;*/
 position: relative;
 display: inline-block;
@@ -238,6 +255,9 @@ color: white;
 text-align: center;
 padding: 14px;
 text-decoration: none;
+margin: 0.2em;
+border-radius: 6px;
+filter: opacity(50%);
 }
 
 
@@ -245,7 +265,7 @@ text-decoration: none;
 visibility: hidden;
 width: 140px;
 background-color: darkslategrey;
-color: #fff;
+color: white;
 text-align: center;
 border-radius: 6px;
 padding: 0;
@@ -256,10 +276,19 @@ left: 43%;
 margin-left: -60px;
 opacity:0;
 transition: opacity 1s;
-box-shadow: 2px 2px 8px #d2ddff;
+box-shadow: 2px 2px 8px white;
 }
 
 .forecast:hover .forecastDetails {
 visibility: visible;
 opacity: 1;
 }
+
+/*div.forecastTitle > p {
+  text-align: left;
+  box-shadow: 2px 2px 8px white;
+}*/
+
+/*h1, h2, h3, h4, .forecast p .forecast span, .forecastTitle p, .img {
+  filter: opacity(100%);
+}*/
